@@ -172,49 +172,38 @@
                             CERTIFICATES & ACHIEVEMENTS
                         </h2>
 
-                        <div class="timeline" data-animate-el>
+                        <div class="timeline certificates-grid" data-animate-el>
 
-                            <div class="timeline__block">
-                                <div class="timeline__bullet"></div>
-                                <div class="timeline__header">
-                                    <h4 class="timeline__title">1st Runner-up in the category of Microprocessors and Micro-controllers
-                                        Lab</h3>
-                                    <!-- <h5 class="timeline__meta">Product Designer</h5> -->
-                                    <!-- <p class="timeline__timeframe">August 2019 - Present</p> -->
-                                </div>
-                                <div class="timeline__desc">
-                                    <p>CSE Project Show, United International University,Dhaka</p>
-                                </div>
-                            </div>
-    
-                            <div class="timeline__block">
-                                <div class="timeline__bullet"></div>
-                                <div class="timeline__header">
-                                    <h4 class="timeline__title">C Essentials 1 by Cisco Networking Academy program</h4>
-                                    <!-- <h5 class="timeline__meta"></h5> -->
-                                    <div class="timeline__desc">
-                                        <p>Certificate of completion</p>
+                            <!-- Row 1: Image left, text right -->
+                            <div class="certificate-card">
+                                <div class="certificate-card-inner">
+                                    <img src="images/portfolio/cert-microcontroller.jpg" alt="Microprocessors and Micro-controllers Lab Certificate" class="certificate-img-large">
+                                    <div class="certificate-info">
+                                        <h4 class="certificate-title">1st Runner-up in the category of Microprocessors and Micro-controllers Lab</h4>
+                                        <p class="certificate-desc">CSE Project Show, United International University, Dhaka</p>
                                     </div>
                                 </div>
-                                <div class="timeline__desc">
-                                    <p></p>
+                            </div>
+                            <!-- Row 2: Text left, image right -->
+                            <div class="certificate-card certificate-card--reverse">
+                                <div class="certificate-card-inner">
+                                    <div class="certificate-info">
+                                        <h4 class="certificate-title">C Essentials 1 by Cisco Networking Academy program</h4>
+                                        <p class="certificate-desc">Certificate of completion</p>
+                                    </div>
+                                    <img src="images/portfolio/cert-cisco.jpg" alt="C Essentials 1 by Cisco Networking Academy Certificate" class="certificate-img-large">
                                 </div>
                             </div>
-
-                            <div class="timeline__block">
-                                <div class="timeline__bullet"></div>
-                                <div class="timeline__header">
-                                    <h4 class="timeline__title">Adobe Illustrator -Mastering the Fundamentals by Bohibrihi</h4>
-                                    <!-- <h5 class="timeline__meta"></h5> -->
-                                    <div class="timeline__desc">
-                                        <p>Certificate of completion</p>
+                            <!-- Row 3: Image left, text right -->
+                            <div class="certificate-card">
+                                <div class="certificate-card-inner">
+                                    <img src="images/portfolio/cert-illustrator.jpg" alt="Adobe Illustrator Certificate" class="certificate-img-large">
+                                    <div class="certificate-info">
+                                        <h4 class="certificate-title">Adobe Illustrator -Mastering the Fundamentals by Bohibrihi</h4>
+                                        <p class="certificate-desc">Certificate of completion</p>
                                     </div>
                                 </div>
-                                <div class="timeline__desc">
-                                    <p></p>
-                                </div>
                             </div>
-    
                         </div> <!-- end timeline -->
 
                     </div> <!-- end column -->
@@ -264,181 +253,134 @@
             <!-- ### works
             ================================================== -->
             <section id="works" class="s-works target-section">
-
-
-                <div class="row works-portfolio">
-
+                <div class="row works-portfolio enhanced-portfolio">
                     <div class="column lg-12" data-animate-block>
-
-                        <h2 class="text-pretitle" data-animate-el>
-                            Projects
-                        </h2>
-                        <p class="h1" data-animate-el>
-                            Here are my projects. Feel free to check them out.
-                        </p>
-    
+                        <h2 class="text-pretitle" data-animate-el>Projects</h2>
+                        <p class="h1" data-animate-el>Here are my projects. Feel free to check them out.</p>
                         <ul class="folio-list row block-lg-one-half block-stack-on-1000">
-
-                            <li class="folio-list__item column" data-animate-el>
-                                <a class="folio-list__item-link" href="#modal-01">
-                                    <div class="folio-list__item-pic">
-                                        <img src="images/portfolio/fuji.jpg"
-                                             srcset="food1.png 1x, food1.png 2x"  alt="">
-                                    </div>
-                                    
-                                    <div class="folio-list__item-text">
-                                        <div class="folio-list__item-cat">
-                                            Project
+                            <!-- Project 1 -->
+                            <li class="folio-list__item column portfolio-card" data-animate-el>
+                                <div class="portfolio-card-inner">
+                                    <img src="images/portfolio/fuji.jpg" alt="Food Order System" class="portfolio-img">
+                                    <div class="portfolio-overlay">
+                                        <h3 class="portfolio-title">Food Order System</h3>
+                                        <p class="portfolio-desc">A web-based app for browsing food categories, searching items, and placing orders. Includes user and admin panels.</p>
+                                        <div class="portfolio-tags">
+                                            <span>PHP</span><span>MySQL</span><span>HTML</span><span>CSS</span>
                                         </div>
-                                        <div class="folio-list__item-title">
-                                            Food Order System
-                                        </div>
+                                        <a href="https://github.com/ays19/Food_order" class="portfolio-btn" target="_blank">View Code</a>
                                     </div>
-                                </a>
-                                <a class="folio-list__proj-link" href="#" title="project link">
-                                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-                                </a>
-                            </li> <!--end folio-list__item -->
-
-                            <li class="folio-list__item column" data-animate-el>
-                                <a class="folio-list__item-link" href="#modal-02">
-                                    <div class="folio-list__item-pic">
-                                        <img src="healthcare.png" 
-                                             srcset="healthcare.png 1x, healthcare.png2x.jpg 2x" alt="">
-                                    </div>
-                                    
-                                    <div class="folio-list__item-text">
-                                        <div class="folio-list__item-cat">
-                                            Project
+                                </div>
+                            </li>
+                            <!-- Project 2 -->
+                            <li class="folio-list__item column portfolio-card" data-animate-el>
+                                <div class="portfolio-card-inner">
+                                    <img src="healthcare.png" alt="Identity Based Health System" class="portfolio-img">
+                                    <div class="portfolio-overlay">
+                                        <h3 class="portfolio-title">Identity Based Health System</h3>
+                                        <p class="portfolio-desc">A PHP-based web app for hospital management: appointments, user profiles, prescriptions, and more.</p>
+                                        <div class="portfolio-tags">
+                                            <span>PHP</span><span>MySQL</span><span>HTML</span><span>CSS</span>
                                         </div>
-                                        <div class="folio-list__item-title">
-                                            Identity Based Health System
-                                        </div>
+                                        <a href="https://github.com/ays19/Identity-based-health-system" class="portfolio-btn" target="_blank">View Code</a>
                                     </div>
-                                </a>
-                                <a class="folio-list__proj-link" href="#" title="project link">
-                                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-                                </a>
-                            </li> <!--end folio-list__item -->
-
-                           
-                               
-                                <a class="folio-list__proj-link" href="#" title="project link">
-                                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-                                </a>
-                            </li> <!--end folio-list__item -->
-
-                        </ul> <!-- end folio-list -->
-
-                    </div> <!-- end column -->
-
-
-                    <!-- Modal Templates Popup
-                    -------------------------------------------- -->
-                    <div id="modal-01" hidden>
-                        <div class="modal-popup">
-                            <img src="food1.png" alt="">
-                
-                            <div class="modal-popup__desc">
-                                <h5>Food Order System</h5>
-                                <p>This is a web-based application that allows users to browse food categories, search for food items, and place orders.
-                                     The platform includes user-facing pages and an admin panel to manage categories, food items, and orders.</p>
-                                <ul class="modal-popup__cat">
-                                    <li>Branding</li>
-                                    <li>Product Design</li>
-                                </ul>
-                            </div>
-                
-                            <a href="https://github.com/ays19/Food_order" class="modal-popup__details">Project link</a>
-                        </div>
-                    </div> <!-- end modal -->
-
-                    <div id="modal-02" hidden>
-                        <div class="modal-popup">
-                            <img src="healthcare.png" alt="">
-                
-                            <div class="modal-popup__desc">
-                                <h5>Identity Based Health System</h5>
-                                <p>This is a PHP-based web application, likely designed for managing hospital or healthcare-related tasks. This application includes 
-                                    features such as appointment management, user profiles, prescriptions, and various search functionalities.</p>
-                                <ul class="modal-popup__cat">
-                                    <li>Branding</li>
-                                </ul>
-                            </div>
-                
-                            <a href="https://github.com/ays19/Identity-based-health-system" class="modal-popup__details">Project link</a>
-                        </div>
-                    </div> <!-- end modal -->
-
-                    <div id="modal-03" hidden>
-                        <div class="modal-popup">
-                            <img src="images/portfolio/gallery/g-rucksack.jpg" alt="">
-                
-                            <div class="modal-popup__desc">
-                                <h5>Rucksuck</h5>
-                                <p>Exercitationem reprehenderit quod explicabo consequatur aliquid ut magni ut. Deleniti quo corrupti illum velit eveniet ratione necessitatibus ipsam mollitia.</p>
-                                <ul class="modal-popup__cat">
-                                    <li>Product Design</li>
-                                </ul>
-                            </div>
-                
-                            <a href="https://www.behance.net/" class="modal-popup__details">Project link</a>
-                        </div>
-                    </div> <!-- end modal -->
-
-                    <div id="modal-04" hidden>
-                        <div class="modal-popup">
-                            <img src="images/portfolio/gallery/g-skaterboy.jpg" alt="">
-                
-                            <div class="modal-popup__desc">
-                                <h5>Since Day One</h5>
-                                <p>Dolores velit qui quos nobis. Aliquam delectus voluptas quos possimus non voluptatem voluptas voluptas. Est doloribus eligendi porro doloribus voluptatum.</p>
-                                <ul class="modal-popup__cat">
-                                    <li>Website</li>
-                                </ul>
-                            </div>
-                
-                            <a href="https://www.behance.net/" class="modal-popup__details">Project link</a>
-                        </div>
-                    </div> <!-- end modal -->
-
-                    <div id="modal-05" hidden>
-                        <div class="modal-popup">
-
-                            <img src="images/portfolio/gallery/g-sanddunes.jpg" alt="">
-                
-                            <div class="modal-popup__desc">
-                                <h5>Sand Dunes</h5>
-                                <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>
-                                <ul class="modal-popup__cat">
-                                    <li>Illustration</li>
-                                </ul>
-                            </div>
-                
-                            <a href="https://www.behance.net/" class="modal-popup__details">Project link</a>
-                        </div>
-                    </div> <!-- end modal -->
-
-                    <div id="modal-06" hidden>
-                        <div class="modal-popup">
-                            <img src="images/portfolio/gallery/g-minimalismo.jpg" alt="">
-                
-                            <div class="modal-popup__desc">
-                                <h5>Minimalismo</h5>
-                                <p>Quisquam vel libero consequuntur autem voluptas. Qui aut vero. Omnis fugit mollitia cupiditate voluptas. Aenean sollicitudin, lorem quis bibendum auctor.</p>
-                                <ul class="modal-popup__cat">
-                                    <li>Branding</li>
-                                    <li>Product Design</li>
-                                </ul>
-                            </div>
-                
-                            <a href="https://www.behance.net/" class="modal-popup__details">Project link</a>
-                        </div>
-                    </div> <!-- end modal -->
-
-                </div> <!-- end works-portfolio -->
-
-
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <style>
+                .enhanced-portfolio .folio-list {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+                    gap: 2.2rem 2.2rem;
+                }
+                .portfolio-card {
+                    list-style: none;
+                    border-radius: 18px;
+                    overflow: hidden;
+                    box-shadow: 0 4px 32px 0 rgba(60,60,120,0.09);
+                    background: #fff;
+                    transition: transform 0.2s, box-shadow 0.2s;
+                    position: relative;
+                }
+                .portfolio-card-inner {
+                    position: relative;
+                    overflow: hidden;
+                }
+                .portfolio-img {
+                    width: 100%;
+                    height: 220px;
+                    object-fit: cover;
+                    display: block;
+                    transition: transform 0.4s cubic-bezier(.4,2,.6,1);
+                }
+                .portfolio-card:hover .portfolio-img {
+                    transform: scale(1.08) rotate(-1deg);
+                    filter: brightness(0.85) blur(1px);
+                }
+                .portfolio-overlay {
+                    position: absolute;
+                    top: 0; left: 0; right: 0; bottom: 0;
+                    background: rgba(30,41,59,0.92);
+                    color: #fff;
+                    opacity: 0;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    justify-content: flex-end;
+                    padding: 2rem 1.5rem 1.5rem 1.5rem;
+                    transition: opacity 0.3s;
+                }
+                .portfolio-card:hover .portfolio-overlay {
+                    opacity: 1;
+                }
+                .portfolio-title {
+                    font-size: 1.4rem;
+                    font-weight: 700;
+                    margin-bottom: 0.5rem;
+                }
+                .portfolio-desc {
+                    font-size: 1.05rem;
+                    margin-bottom: 1rem;
+                    color: #cbd5e1;
+                }
+                .portfolio-tags {
+                    margin-bottom: 1.2rem;
+                }
+                .portfolio-tags span {
+                    display: inline-block;
+                    background: #2563eb;
+                    color: #fff;
+                    font-size: 0.85rem;
+                    border-radius: 12px;
+                    padding: 0.2em 0.8em;
+                    margin-right: 0.5em;
+                    margin-bottom: 0.2em;
+                }
+                .portfolio-btn {
+                    background: linear-gradient(90deg, #2563eb 60%, #1e293b 100%);
+                    color: #fff;
+                    font-weight: 600;
+                    border: none;
+                    border-radius: 8px;
+                    padding: 0.6em 1.4em;
+                    text-decoration: none;
+                    box-shadow: 0 2px 16px 0 rgba(37,99,235,0.13);
+                    transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+                    margin-top: 0.5em;
+                    display: inline-block;
+                }
+                .portfolio-btn:hover {
+                    background: linear-gradient(90deg, #1e293b 60%, #2563eb 100%);
+                    box-shadow: 0 6px 32px 0 rgba(37,99,235,0.18);
+                    transform: translateY(-2px) scale(1.03);
+                }
+                @media (max-width: 700px) {
+                    .portfolio-img { height: 150px; }
+                    .portfolio-overlay { padding: 1.2rem 0.7rem 0.7rem 0.7rem; }
+                }
+                </style>
             </section> <!-- end s-works -->
 
 
@@ -460,26 +402,33 @@
                     </div>
                 </div> <!-- end contact-top -->
 
-                <div class="row contact-bottom">
+                <div class="row contact-bottom enhanced-contact">
                     <div class="column lg-3 md-5 tab-6 stack-on-550 contact-block">
                         <h3 class="text-pretitle">Reach me at</h3>
                         <p class="contact-links">
-                            <a href="mailto:sayhello@luther.com" class="mailtoui">sahsanyasir@gmail.com</a> <br>
-                            <a href="tel:+1975432345">+880 1729524544</a>
+                            <a href="mailto:sahsanyasir@gmail.com" class="mailtoui contact-link">
+                                <span class="contact-icon"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16v16H4z" fill="none"/><path d="M22 6l-10 7L2 6"/></svg></span>
+                                sahsanyasir@gmail.com
+                            </a><br>
+                            <a href="tel:+8801729524544" class="contact-link">
+                                <span class="contact-icon"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92V19a2 2 0 0 1-2.18 2A19.72 19.72 0 0 1 3 5.18 2 2 0 0 1 5 3h2.09a2 2 0 0 1 2 1.72c.13 1.05.37 2.07.72 3.06a2 2 0 0 1-.45 2.11l-1.27 1.27a16 16 0 0 0 6.29 6.29l1.27-1.27a2 2 0 0 1 2.11-.45c.99.35 2.01.59 3.06.72A2 2 0 0 1 22 16.92z"/></svg></span>
+                                +880 1729524544
+                            </a>
                         </p>
                     </div>
                     <div class="column lg-4 md-5 tab-6 stack-on-550 contact-block">
                         <h3 class="text-pretitle">Social</h3>
-                        <ul class="contact-social">
-                            <!-- <li><a href="#0">Behance</a></li> -->
-                            <!-- <li><a href="#0">Dribble</a></li> -->
-                            <li><a href="https://www.linkedin.com/in/ays19/">Linkdin</a></li>
-                            <li><a href="https://github.com/ays19">Github</a></li>
-                            <li><a href="https://x.com/AYSharar19">Twitter</a></li>
+                        <ul class="contact-social enhanced-social">
+                            <li><a href="https://www.linkedin.com/in/ays19/" target="_blank" title="LinkedIn"><img src="images/icons/icon-linkedin.svg" alt="LinkedIn" class="social-icon" /></a></li>
+                            <li><a href="https://github.com/ays19" target="_blank" title="GitHub"><img src="images/icons/icon-github.svg" alt="GitHub" class="social-icon" /></a></li>
+                            <li><a href="https://x.com/AYSharar19" target="_blank" title="Twitter"><img src="images/icons/icon-twitter.svg" alt="Twitter" class="social-icon" /></a></li>
                         </ul>
                     </div>
-                    <div class="column lg-4 md-12 contact-block">
-                        <a href="sahsanyasir@gmail.com" class="mailtoui btn btn--medium u-fullwidth contact-btn">Say Hello.</a>
+                    <div class="column lg-4 md-12 contact-block contact-btn-block">
+                        <a href="mailto:sahsanyasir@gmail.com" class="mailtoui btn btn--medium u-fullwidth contact-btn enhanced-btn">
+                            <span class="btn-icon"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16v16H4z" fill="none"/><path d="M22 6l-10 7L2 6"/></svg></span>
+                            Say Hello.
+                        </a>
                     </div>
                 </div> <!-- end contact-bottom -->
 
@@ -514,6 +463,77 @@
     ================================================== -->
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
+
+    <style>
+    .certificate-img {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-bottom: 0.7em;
+        margin-right: 1em;
+        box-shadow: 0 2px 12px 0 rgba(60,60,120,0.10);
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .timeline__header {
+        display: flex;
+        align-items: center;
+        gap: 1em;
+    }
+    .timeline__block--reverse .timeline__header {
+        flex-direction: row-reverse;
+        text-align: right;
+    }
+    .timeline__header--reverse {
+        flex-direction: row-reverse;
+        text-align: right;
+    }
+    .timeline__block--reverse .certificate-img {
+        margin-right: 0;
+        margin-left: 1em;
+    }
+    @media (max-width: 700px) {
+        .certificate-img { width: 64px; height: 64px; }
+        .timeline__header, .timeline__header--reverse { gap: 0.5em; }
+    }
+    /* CERTIFICATES & ACHIEVEMENTS section: black background, white text */
+.certificates-grid {
+    background: #111;
+    color: #fff;
+    border-radius: 18px;
+    padding: 2.2rem 1.5rem 2.2rem 1.5rem;
+}
+.certificate-card {
+    background: transparent;
+    color: #fff;
+    border: 1.5px solid #222;
+    box-shadow: 0 4px 32px 0 rgba(0,0,0,0.18);
+}
+.certificate-card-inner {
+    /* no-op, for structure only */
+}
+.certificate-title {
+    color: #fff;
+}
+.certificate-desc {
+    color: #e5e7eb;
+}
+.certificate-img-large {
+    background: #222;
+    border: 2px solid #333;
+}
+.certificate-card:hover {
+    box-shadow: 0 8px 40px 0 rgba(37,99,235,0.18);
+    border-color: #2563eb;
+    background: #18181b;
+}
+@media (max-width: 900px) {
+    .certificates-grid {
+        padding: 1.2rem 0.5rem 1.2rem 0.5rem;
+    }
+}
+    </style>
 
 </body>
 </html>
