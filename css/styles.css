@@ -3408,11 +3408,12 @@ img.u-pull-left {
 }
 
 .about-info__pic {
-    object-fit     : cover;
-    margin         : 0;
-    vertical-align : bottom;
-    
-    
+    width: 450px;
+    height: 450px;
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: 0 2px 16px 0 rgba(60,60,120,0.13);
+    margin-bottom: 1.2rem;
 }
 
 .about-info__text {
@@ -3427,6 +3428,13 @@ img.u-pull-left {
 .about-info__text .btn {
     margin-top    : var(--vspace-1);
     margin-bottom : 0;
+}
+
+@media (max-width: 700px) {
+    .about-info__pic {
+        width: 110px;
+        height: 110px;
+    }
 }
 
 /* --------------------------------------------------------------------
@@ -4031,212 +4039,128 @@ img.u-pull-left {
     }
 }
 
-
-
-/* ===================================================================
- * # CONTACT
- *
- *
- * ------------------------------------------------------------------- */
-
-.contact-top {
-    padding-top : var(--vspace-5);
-    border-top  : 1px solid var(--color-border);
+/* Moved from index.html lines 292-383 */
+.enhanced-portfolio .folio-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 2.2rem 2.2rem;
 }
-
-.contact-top .h1 {
-    margin-top : 0;
+.portfolio-card {
+    list-style: none;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 4px 32px 0 rgba(60,60,120,0.09);
+    background: #fff;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
 }
-
-.contact-bottom {
-    padding-bottom : var(--vspace-3);
-    margin-top     : var(--vspace-3);
-    border-bottom  : 1px solid var(--color-border);
+.portfolio-card-inner {
+    position: relative;
+    overflow: hidden;
 }
-
-.contact-bottom .text-pretitle {
-    margin-bottom : var(--vspace-0_125);
+.portfolio-img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s cubic-bezier(.4,2,.6,1);
 }
-
-.contact-links,
-.contact-social {
-    font-size   : var(--text-md);
-    font-weight : 300;
-    line-height : var(--vspace-1_25);
-    color       : var(--color-text-light);
+.portfolio-card:hover .portfolio-img {
+    transform: scale(1.08) rotate(-1deg);
+    filter: brightness(0.85) blur(1px);
 }
-
-.contact-links a,
-.contact-social a {
-    color : var(--color-text-light);
+.portfolio-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(30,41,59,0.92);
+    color: #fff;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding: 2rem 1.5rem 1.5rem 1.5rem;
+    transition: opacity 0.3s;
 }
-
-.contact-links a:focus,
-.contact-links a:hover,
-.contact-social a:focus,
-.contact-social a:hover {
-    color : var(--color-1);
+.portfolio-card:hover .portfolio-overlay {
+    opacity: 1;
 }
-
-.contact-social {
-    list-style  : none;
-    margin-left : 0;
+.portfolio-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
 }
-
-.contact-social li {
-    display      : inline-block;
-    padding-left : 0;
+.portfolio-desc {
+    font-size: 1.05rem;
+    margin-bottom: 1rem;
+    color: #cbd5e1;
 }
-
-.contact-social li::after {
-    content : ",  ";
+.portfolio-tags {
+    margin-bottom: 1.2rem;
 }
-
-.contact-social li:last-child::after {
-    display : none;
+.portfolio-tags span {
+    display: inline-block;
+    background: #2563eb;
+    color: #fff;
+    font-size: 0.85rem;
+    border-radius: 12px;
+    padding: 0.2em 0.8em;
+    margin-right: 0.5em;
+    margin-bottom: 0.2em;
 }
-
-.contact-btn {
-    margin-left  : auto;
-    margin-right : 5vw;
+.portfolio-btn {
+    background: linear-gradient(90deg, #2563eb 60%, #1e293b 100%);
+    color: #fff;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    padding: 0.6em 1.4em;
+    text-decoration: none;
+    box-shadow: 0 2px 16px 0 rgba(37,99,235,0.13);
+    transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+    margin-top: 0.5em;
+    display: inline-block;
 }
-
-/* ------------------------------------------------------------------- 
- * responsive:
- * contact
- * ------------------------------------------------------------------- */
-@media screen and (max-width: 1200px) {
-    .contact-btn {
-        margin-top   : var(--vspace-0_5);
-        margin-left  : 0;
-        margin-right : 0;
+.portfolio-btn:hover {
+    background: linear-gradient(90deg, #1e293b 60%, #2563eb 100%);
+    box-shadow: 0 6px 32px 0 rgba(37,99,235,0.18);
+    transform: translateY(-2px) scale(1.03);
+}
+@media (max-width: 700px) {
+    .portfolio-img { height: 150px; }
+    .portfolio-overlay { padding: 1.2rem 0.7rem 0.7rem 0.7rem; }
+}
+.certificates-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    align-items: stretch;
+}
+.certificates-row .certificate-card {
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: 340px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+@media (min-width: 900px) {
+    .certificates-row {
+        flex-wrap: nowrap;
+    }
+    .certificates-row .certificate-card {
+        max-width: 33.33%;
+        flex-basis: 33.33%;
     }
 }
-
-@media screen and (max-width: 800px) {
-    .contact-top {
-        padding-top : var(--vspace-4);
+@media (max-width: 900px) {
+    .certificates-row {
+        flex-direction: column;
+        gap: 1.2rem;
     }
-}
-
-
-
-/* ===================================================================
- * # FOOTER
- *
- *
- * ------------------------------------------------------------------- */
-
-.s-footer {
-    margin-top     : auto;
-    padding-top    : var(--vspace-1);
-    padding-bottom : var(--vspace-3);
-    color          : var(--color-text-light);
-}
-
-.s-footer>.row {
-    position : relative;
-}
-
-.s-footer a {
-    color : var(--color-text);
-}
-
-.s-footer a:focus,
-.s-footer a:hover {
-    color : white;
-}
-
-/* ------------------------------------------------------------------- 
- * ## copyright
- * ------------------------------------------------------------------- */
-.ss-copyright {
-    margin-top   : calc(var(--vspace-0_25) * -1);
-    margin-right : 5.2rem;
-    line-height  : var(--vspace-0_875);
-}
-
-.ss-copyright span {
-    font-size : var(--text-sm);
-    display   : inline-block;
-}
-
-.ss-copyright span::after {
-    content : "|";
-    display : inline-block;
-    padding : 0 .8rem 0 1rem;
-    color   : rgba(255, 255, 255, 0.1);
-}
-
-.ss-copyright span:last-child::after {
-    display : none;
-}
-
-/* ------------------------------------------------------------------- 
- * ## go top
- * ------------------------------------------------------------------- */
-.ss-go-top {
-    z-index  : 2;
-    position : absolute;
-    top      : calc(var(--vspace-1) * -1);
-    right    : var(--gutter);
-}
-
-.ss-go-top a {
-    display          : flex;
-    align-items      : center;
-    justify-content  : center;
-    text-decoration  : none;
-    border           : 0 none;
-    height           : calc(1.625 * var(--space));
-    width            : var(--vspace-1_5);
-    background-color : var(--color-body);
-    position         : relative;
-    border           : 1px solid var(--color-text);
-}
-
-.ss-go-top a:focus,
-.ss-go-top a:hover {
-    background-color : white;
-    border-color     : white;
-}
-
-.ss-go-top a:focus svg path,
-.ss-go-top a:hover svg path {
-    fill : black;
-}
-
-.ss-go-top svg {
-    height     : var(--vspace-0_5);
-    width      : var(--vspace-0_5);
-    transition : all 0.3s ease-in-out;
-}
-
-.ss-go-top svg path {
-    fill : white;
-}
-
-/* ------------------------------------------------------------------- 
- * responsive:
- * footer
- * ------------------------------------------------------------------- */
-@media screen and (max-width: 600px) {
-    .ss-copyright span {
-        display : block;
-    }
-
-    .ss-copyright span::after {
-        display : none;
-    }
-
-    .ss-go-top {
-        top   : calc(var(--vspace-0_25) * -1);
-        right : calc(6vw + var(--gutter));
-    }
-}
-
-@media screen and (max-width: 400px) {
-    .ss-go-top {
-        right : 6vw;
+    .certificates-row .certificate-card {
+        max-width: 100%;
+        flex-basis: 100%;
     }
 }
