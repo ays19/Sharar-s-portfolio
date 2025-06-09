@@ -4131,36 +4131,117 @@ img.u-pull-left {
     .portfolio-overlay { padding: 1.2rem 0.7rem 0.7rem 0.7rem; }
 }
 .certificates-row {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
-    justify-content: center;
+    justify-items: center;
     align-items: stretch;
 }
 .certificates-row .certificate-card {
-    flex: 1 1 0;
-    min-width: 0;
     max-width: 340px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: stretch;
 }
-@media (min-width: 900px) {
+@media (max-width: 1100px) {
     .certificates-row {
-        flex-wrap: nowrap;
-    }
-    .certificates-row .certificate-card {
-        max-width: 33.33%;
-        flex-basis: 33.33%;
+        grid-template-columns: repeat(2, 1fr);
     }
 }
-@media (max-width: 900px) {
+@media (max-width: 700px) {
     .certificates-row {
-        flex-direction: column;
+        grid-template-columns: 1fr;
         gap: 1.2rem;
     }
     .certificates-row .certificate-card {
         max-width: 100%;
-        flex-basis: 100%;
+    }
+}
+
+/* Simpler hover effect for certificates & achievements cards, keep image big */
+.certificate-card {
+    transition: transform 0.16s cubic-bezier(.4,2,.6,1), box-shadow 0.16s cubic-bezier(.4,2,.6,1);
+    box-shadow: 0 2px 12px 0 rgba(60,60,120,0.10);
+    background: #18181b;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+}
+.certificate-card:hover {
+    transform: translateY(-6px) scale(1.025);
+    box-shadow: 0 8px 24px 0 rgba(37,99,235,0.13);
+    background: #23232a;
+}
+.certificate-card-inner {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    height: 100%;
+}
+.certificate-img-large {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 12px 12px 0 0;
+    margin-bottom: 0;
+    box-shadow: none;
+    transition: box-shadow 0.16s;
+    display: block;
+}
+.certificate-info {
+    padding: 1.2rem 1.2rem 1.5rem 1.2rem;
+    background: #18181b;
+    border-radius: 0 0 12px 12px;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+@media (max-width: 700px) {
+    .certificate-img-large {
+        height: 150px;
+    }
+}
+
+/* Make social icons smaller to fit nicely */
+.social-icon {
+    width: 26px;
+    height: 26px;
+    object-fit: contain;
+    vertical-align: middle;
+    margin: 0 4px;
+}
+
+@media (max-width: 700px) {
+    .social-icon {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+/* Make GitHub icon more visible in the contact section */
+.contact-social .social-icon[alt="GitHub"] {
+    background: #fff;
+    border-radius: 50%;
+    padding: 3px;
+    box-shadow: 0 2px 8px 0 rgba(37,99,235,0.10);
+    border: 1.5px solid #23272f;
+}
+
+/* Make Education and CERTIFICATES & ACHIEVEMENTS section titles bigger */
+.text-pretitle[data-animate-el],
+.text-pretitle {
+    font-size: 2.2rem;
+    letter-spacing: 0.04em;
+    font-weight: 700;
+}
+
+@media (max-width: 700px) {
+    .text-pretitle[data-animate-el],
+    .text-pretitle {
+        font-size: 1.5rem;
     }
 }
