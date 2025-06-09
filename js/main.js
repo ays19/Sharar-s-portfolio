@@ -147,10 +147,9 @@
             let scrollY = window.pageYOffset;
         
             // Loop through sections to get height(including padding and border), 
-            // top and ID values for each
-            sections.forEach(function(current) {
+            // top and ID values for each            sections.forEach(function(current) {
                 const sectionHeight = current.offsetHeight;
-                const sectionTop = current.offsetTop - 50;
+                const sectionTop = current.offsetTop - 80; // Increased offset to ensure smoother scroll
                 const sectionId = current.getAttribute("id");
             
                /* If our current scroll position enters the space where current section 

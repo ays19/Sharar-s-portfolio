@@ -3570,7 +3570,11 @@ img.u-pull-left {
     }
 
     .about-timelines .column+.column {
-        margin-top : var(--vspace-1_5);
+        margin-top: 4.5rem;
+    }
+
+    .about-timelines .column.lg-12.tab-12 + .column.lg-12.tab-12 {
+        margin-top: 5.5rem;
     }
 }
 
@@ -3585,8 +3589,6 @@ img.u-pull-left {
         --timeline-left-padding : var(--vspace-1);
     }
 }
-
-
 
 /* ===================================================================
  * # WORKS
@@ -4136,7 +4138,7 @@ img.u-pull-left {
     gap: 2rem;
     justify-items: center;
     align-items: stretch;
-    margin-top: 3.5rem;
+    margin-top: 5.5rem;
 }
 .certificates-row .certificate-card {
     max-width: 340px;
@@ -4245,5 +4247,17 @@ img.u-pull-left {
     .text-pretitle[data-animate-el],
     .text-pretitle {
         font-size: 1.5rem;
+    }
+}
+
+.about-timelines #certificates {
+    margin-top: calc(var(--vspace-2_5) + var(--header-height));
+    scroll-margin-top: var(--header-height); /* Add scroll margin to account for fixed header */
+}
+
+/* Ensure proper spacing when viewing on mobile */
+@media screen and (max-width: 800px) {
+    .about-timelines #certificates {
+        margin-top: calc(var(--vspace-2) + var(--header-height));
     }
 }
