@@ -4136,6 +4136,7 @@ img.u-pull-left {
     gap: 2rem;
     justify-items: center;
     align-items: stretch;
+    margin-top: 3.5rem;
 }
 .certificates-row .certificate-card {
     max-width: 340px;
