@@ -3590,6 +3590,8 @@ img.u-pull-left {
     }
 }
 
+
+
 /* ===================================================================
  * # WORKS
  *
@@ -4138,7 +4140,7 @@ img.u-pull-left {
     gap: 2rem;
     justify-items: center;
     align-items: stretch;
-    margin-top: 5.5rem;
+    margin-top: 2.5rem;
 }
 .certificates-row .certificate-card {
     max-width: 340px;
@@ -4175,6 +4177,25 @@ img.u-pull-left {
     transform: translateY(-6px) scale(1.025);
     box-shadow: 0 8px 24px 0 rgba(37,99,235,0.13);
     background: #23232a;
+}
+
+.certificate-lightbox-trigger {
+    cursor: pointer;
+}
+
+.certificate-lightbox {
+    max-width: 90vw;
+    max-height: 90vh;
+}
+
+.basicLightbox .certificate-img-large {
+    width: auto;
+    height: auto;
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
 }
 .certificate-card-inner {
     padding: 0;
@@ -4250,14 +4271,31 @@ img.u-pull-left {
     }
 }
 
-.about-timelines #certificates {
-    margin-top: calc(var(--vspace-2_5) + var(--header-height));
-    scroll-margin-top: var(--header-height); /* Add scroll margin to account for fixed header */
+#certificates {
+    background-color: var(--color-body);
+    padding-top: var(--vspace-4);
+    padding-bottom: var(--vspace-2);
 }
 
-/* Ensure proper spacing when viewing on mobile */
+/* ===================================================================
+ * # CERTIFICATES
+ *
+ *
+ * ------------------------------------------------------------------- */
+
+.s-certificates {
+    padding-top: var(--vspace-4);
+    padding-bottom: var(--vspace-2);
+    background-color: var(--color-body);
+}
+
+.s-certificates .text-pretitle {
+    margin-bottom: var(--vspace-1_5);
+}
+
 @media screen and (max-width: 800px) {
-    .about-timelines #certificates {
-        margin-top: calc(var(--vspace-2) + var(--header-height));
+    .s-certificates {
+        padding-top: var(--vspace-2_5);
+        padding-bottom: var(--vspace-1_5);
     }
 }

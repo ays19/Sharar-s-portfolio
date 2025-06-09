@@ -147,9 +147,10 @@
             let scrollY = window.pageYOffset;
         
             // Loop through sections to get height(including padding and border), 
-            // top and ID values for each            sections.forEach(function(current) {
+            // top and ID values for each
+            sections.forEach(function(current) {
                 const sectionHeight = current.offsetHeight;
-                const sectionTop = current.offsetTop - 80; // Increased offset to ensure smoother scroll
+                const sectionTop = current.offsetTop - 50;
                 const sectionId = current.getAttribute("id");
             
                /* If our current scroll position enters the space where current section 
@@ -278,6 +279,29 @@
     };  // end ssLightbox
 
 
+   /* Lightbox for Certificates
+    * ------------------------------------------------------ */
+    const ssCertificateLightbox = function() {
+        const certificateCards = document.querySelectorAll('.certificate-lightbox-trigger');
+        
+        certificateCards.forEach(function(card) {
+            card.addEventListener('click', function() {
+                const imgSrc = card.querySelector('img').src;
+                const instance = basicLightbox.create(`
+                    <img src="${imgSrc}" class="certificate-img-large">
+                `, {
+                    onShow: (instance) => {
+                        document.addEventListener('keydown', function(e) {
+                            if (e.key === 'Escape') instance.close();
+                        });
+                    }
+                });
+                instance.show();
+            });
+        });
+    }; // end ssCertificateLightbox
+
+
    /* Alert boxes
     * ------------------------------------------------------ */
     const ssAlertBoxes = function() {
@@ -357,6 +381,7 @@
         ssLightbox();
         ssAlertBoxes();
         ssMoveTo();
+        ssCertificateLightbox();
 
     })();
 
