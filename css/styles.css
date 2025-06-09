@@ -4299,3 +4299,63 @@ img.u-pull-left {
         padding-bottom: var(--vspace-1_5);
     }
 }
+
+/* Enhanced Portfolio Styles */
+
+.intro-description {
+    margin-top: var(--vspace-1_25);
+    color: var(--color-text-light);
+}
+
+.intro-description p {
+    font-size: 1.8rem;
+    margin-bottom: var(--vspace-1);
+}
+
+.intro-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: var(--vspace-1_25);
+}
+
+.about-highlights {
+    margin: var(--vspace-1) 0;
+}
+
+.highlight-item {
+    margin-bottom: var(--vspace-0_75);
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+.highlight-item strong {
+    color: var(--color-1);
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--vspace-2);
+    margin-top: var(--vspace-1);
+}
+
+.skill-category h3 {
+    color: var(--color-1);
+    font-size: 1.8rem;
+    margin-bottom: var(--vspace-0_75);
+}
+
+@media screen and (max-width: 800px) {
+    .skills-grid {
+        grid-template-columns: 1fr;
+        gap: var(--vspace-1_5);
+    }
+    
+    .intro-actions {
+        flex-direction: column;
+    }
+    
+    .intro-actions .btn {
+        width: 100%;
+    }
+}
