@@ -4231,12 +4231,13 @@ img.u-pull-left {
     border: 1.5px solid #23272f;
 }
 
-/* Make Education and CERTIFICATES & ACHIEVEMENTS section titles bigger */
+/* Make Education and CERTIFICATES & ACHIEVEMENTS section titles color like About Me */
 .text-pretitle[data-animate-el],
 .text-pretitle {
     font-size: 2.2rem;
     letter-spacing: 0.04em;
     font-weight: 700;
+    color: var(--color-1); /* matches About Me accent color */
 }
 
 @media (max-width: 700px) {
