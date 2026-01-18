@@ -2686,7 +2686,7 @@ img.u-pull-left {
 }
 
 .text-huge-title {
-    --text-huge : 9.8rem;
+    --text-huge : 6.5rem;
     font-size   : var(--text-huge);
     line-height : 1.0740;
     margin-top  : 0;
@@ -4308,7 +4308,7 @@ img.u-pull-left {
 }
 
 .intro-description p {
-    font-size: 1.8rem;
+    font-size: 1.3rem;
     margin-bottom: var(--vspace-1);
 }
 
