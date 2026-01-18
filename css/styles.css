@@ -4088,11 +4088,41 @@ img.u-pull-left {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 2rem 1.5rem 1.5rem 1.5rem;
+    gap: 1.5rem;
+    padding: 2rem 1.5rem;
     transition: opacity 0.3s;
 }
 .portfolio-card:hover .portfolio-overlay {
     opacity: 1;
+}
+.portfolio-overlay .portfolio-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    justify-content: center;
+}
+.portfolio-overlay .portfolio-tags span {
+    display: inline-block;
+    background: #2563eb;
+    color: #fff;
+    font-size: 0.9rem;
+    border-radius: 20px;
+    padding: 0.6rem 1.2rem;
+    font-weight: 600;
+}
+.portfolio-overlay .portfolio-btn {
+    padding: 0.8rem 2rem;
+    background: #2563eb;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 1.05rem;
+    transition: background 0.3s;
+    display: inline-block;
+}
+.portfolio-overlay .portfolio-btn:hover {
+    background: #1d4ed8;
 }
 .portfolio-info {
     padding: 1.5rem;
