@@ -4059,8 +4059,8 @@ img.u-pull-left {
     position: relative;
 }
 .portfolio-card-inner {
-    position: relative;
-    overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 .portfolio-img {
     width: 100%;
@@ -4073,25 +4073,12 @@ img.u-pull-left {
     transform: scale(1.08) rotate(-1deg);
     filter: brightness(0.85) blur(1px);
 }
-.portfolio-overlay {
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(30,41,59,0.92);
-    color: #fff;
-    opacity: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-end;
-    padding: 2rem 1.5rem 1.5rem 1.5rem;
-    transition: opacity 0.3s;
-}
-.portfolio-card:hover .portfolio-overlay {
-    opacity: 1;
-}
 .portfolio-info {
     padding: 1.5rem;
     background: #fff;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 .portfolio-title {
     font-size: 1.4rem;
