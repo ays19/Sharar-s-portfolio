@@ -65,7 +65,7 @@ export const projects: Project[] = [
     techStack: ['Django', 'Django REST Framework', 'PostgreSQL', 'Redis', 'Docker', 'PyTest'],
     githubUrl: 'https://github.com/ays19/storefront',
     demoUrl: 'https://sharar-prod.up.railway.app/store/',
-    images: ['https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800&q=80'],
+    images: ['/media/ays19/Learning2/portfolio/public/Project/Storefront_ss/11.png'],
     metrics: [
       'Handles 50k+ daily active API transactions safely',
       '35% database response latency reduction',
