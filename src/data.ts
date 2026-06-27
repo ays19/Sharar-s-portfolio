@@ -51,6 +51,8 @@ export const education: Experience[] = [
     description: [
       'Graduated with a CGPA of 3.38/4.00.',
       'In-depth coursework in Data Structures, Algorithms, Object-Oriented Programming (OOP), Database Management Systems, and Software Engineering.',
+      'Awarded 1st Runner-up in Microprocessor and Microcontroller Project at UIU Project Show 2022.',
+      'Received academic excellence scholarship multiple times throughout the undergraduate program.',
       'Thesis: Cultivating The Future — developed a CNN model for real-time plant disease detection achieving 92% validation accuracy, deployed on AWS with Raspberry Pi for hardware integration.'
     ],
     skillsUsed: ['Data Structures', 'Algorithms', 'OOP', 'SQL', 'Software Engineering', 'Software Testing & Quality Assurance', 'Machine Learning', 'TensorFlow']
