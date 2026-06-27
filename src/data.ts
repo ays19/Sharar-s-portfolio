@@ -36,7 +36,7 @@ export const experiences: Experience[] = [
       'Performed manual testing and defect analysis to improve software quality before deployment.',
       'Prepared technical documentation and designed training materials for Cisco DevNet, CyberOps, and Java EE7 certification programs.'
     ],
-    skillsUsed: ['Python', 'Django', 'Manual Testing', 'Cisco DevNet', 'Documentation', 'Git']
+    skillsUsed: ['Python', 'Manual Testing', 'Cisco DevNet', 'Documentation', 'Git']
   }
 ];
 
@@ -50,9 +50,10 @@ export const education: Experience[] = [
     type: 'Education',
     description: [
       'Graduated with a CGPA of 3.38/4.00.',
-      'In-depth coursework in Data Structures, Algorithms, Object-Oriented Programming (OOP), Database Management Systems, and Software Engineering.'
+      'In-depth coursework in Data Structures, Algorithms, Object-Oriented Programming (OOP), Database Management Systems, and Software Engineering.',
+      'Thesis: Cultivating The Future — developed a CNN model for real-time plant disease detection achieving 92% validation accuracy, deployed on AWS with Raspberry Pi 4 hardware integration.'
     ],
-    skillsUsed: ['Data Structures', 'Algorithms', 'OOP', 'SQL', 'Software Engineering']
+    skillsUsed: ['Data Structures', 'Algorithms', 'OOP', 'SQL', 'Software Engineering', 'Machine Learning', 'TensorFlow']
   }
 ];
 
