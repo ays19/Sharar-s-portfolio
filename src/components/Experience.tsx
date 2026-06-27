@@ -15,7 +15,7 @@ export default function Experience() {
             Professional Experience
           </h2>
           <p className="text-neutral-400 max-w-xl text-sm sm:text-base">
-            Highlighting my software engineering journey, rigorous testing standards, and development workflows.
+            My professional experience in backend development, AI integration, and software engineering.
           </p>
         </div>
 

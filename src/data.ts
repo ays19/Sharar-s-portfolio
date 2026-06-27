@@ -34,9 +34,9 @@ export const experiences: Experience[] = [
     description: [
       'Collaborated with a 4-member engineering team on requirement analysis and feature delivery.',
       'Performed manual testing and defect analysis to improve software quality before deployment.',
-      'Designed technical training materials for Cisco DevNet, CyberOps, and Java EE7 certification programs.'
+      'Prepared technical documentation and designed training materials for Cisco DevNet, CyberOps, and Java EE7 certification programs.'
     ],
-    skillsUsed: ['Python', 'Django', 'Manual Testing', 'Cisco DevNet', 'CyberOps', 'Java EE7']
+    skillsUsed: ['Python', 'Django', 'Manual Testing', 'Cisco DevNet', 'Documentation', 'Git']
   }
 ];
 
