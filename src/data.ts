@@ -68,7 +68,7 @@ export const projects: Project[] = [
     techStack: ['Django', 'Django REST Framework', 'PostgreSQL', 'Redis', 'Docker', 'PyTest'],
     githubUrl: 'https://github.com/ays19/storefront',
     demoUrl: 'https://sharar-prod.up.railway.app/store/',
-    projectVideoUrl: '',
+    projectVideoUrl: 'https://www.youtube.com/watch?v=W3Roy7Ab0rI&t=18s',
     images: [
       import.meta.env.BASE_URL + 'Project/Storefront_ss/11.png',
       import.meta.env.BASE_URL + 'Project/Storefront_ss/12.png',
