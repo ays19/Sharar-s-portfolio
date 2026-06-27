@@ -37,9 +37,12 @@ export const experiences: Experience[] = [
       'Designed technical training materials for Cisco DevNet, CyberOps, and Java EE7 certification programs.'
     ],
     skillsUsed: ['Python', 'Django', 'Manual Testing', 'Cisco DevNet', 'CyberOps', 'Java EE7']
-  },
+  }
+];
+
+export const education: Experience[] = [
   {
-    id: 'exp-2',
+    id: 'edu-1',
     role: 'B.Sc. in Computer Science and Engineering',
     company: 'United International University',
     location: 'Dhaka, Bangladesh',
@@ -56,7 +59,7 @@ export const experiences: Experience[] = [
 export const projects: Project[] = [
   {
     id: 'proj-1',
-    title: 'Storefront API',
+    title: 'Storefront — Production-Grade E-Commerce REST API',
     category: 'Backend',
     description: 'A high-performance, robust e-commerce API backend designed with Django and PostgreSQL. Features secure JWT authentication, nested category catalogs, automated inventory checks, and stripe payment gateway integration.',
     techStack: ['Django', 'Django REST Framework', 'PostgreSQL', 'Redis', 'Docker', 'PyTest'],
