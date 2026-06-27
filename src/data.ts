@@ -53,7 +53,7 @@ export const education: Experience[] = [
       'In-depth coursework in Data Structures, Algorithms, Object-Oriented Programming (OOP), Database Management Systems, and Software Engineering.',
       'Awarded 1st Runner-up in Microprocessor and Microcontroller Project at UIU Project Show 2022.',
       'Received academic excellence scholarship multiple times throughout the undergraduate program.',
-      'Thesis: Cultivating The Future — developed a CNN model for real-time plant disease detection achieving 92% validation accuracy, deployed on AWS with Raspberry Pi for hardware integration.'
+      'Thesis: Cultivating The Future: IoT-Based Plant Disease Detection — developed a CNN model for real-time plant disease detection achieving 92% validation accuracy, deployed on AWS with Raspberry Pi for hardware integration.'
     ],
     skillsUsed: ['Data Structures', 'Algorithms', 'OOP', 'SQL', 'Software Engineering', 'Software Testing & Quality Assurance', 'Machine Learning', 'TensorFlow']
   }

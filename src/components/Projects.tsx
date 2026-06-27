@@ -189,16 +189,18 @@ export default function Projects() {
                       <Github size={14} className="group-hover/link:text-indigo-500" />
                       Source Code
                     </a>
-                    <a
-                      id={`project-${project.id}-demo`}
-                      href={project.demoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-xs font-mono font-semibold text-indigo-500 hover:text-indigo-600 flex items-center gap-1.5 group/link transition-colors"
-                    >
-                      <ExternalLink size={14} />
-                      Live Demo
-                    </a>
+                    {project.demoUrl && (
+                      <a
+                        id={`project-${project.id}-demo`}
+                        href={project.demoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-xs font-mono font-semibold text-indigo-500 hover:text-indigo-600 flex items-center gap-1.5 group/link transition-colors"
+                      >
+                        <ExternalLink size={14} />
+                        Live Demo
+                      </a>
+                    )}
                   </div>
                 </div>
               </motion.div>
