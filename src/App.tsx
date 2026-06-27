@@ -25,7 +25,7 @@ export default function App() {
   const [isResumeOpen, setIsResumeOpen] = useState(false);
 
   return (
-    <div className="bg-neutral-950 min-h-screen text-neutral-100 selection:bg-indigo-600 selection:text-white antialiased">
+    <div className="bg-neutral-950 min-h-screen text-neutral-100 selection:bg-indigo-600 selection:text-white antialiased overflow-x-hidden w-full relative">
       <Header />
       
       <main id="portfolio-main-content">
