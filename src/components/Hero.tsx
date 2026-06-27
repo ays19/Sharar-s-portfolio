@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { ArrowDown, Github, Linkedin, Download, Terminal, Briefcase, Zap } from 'lucide-react';
 import { personalInfo } from '../data';
-import profileImg from '../assets/images/profile.svg';
+import profileImg from '../assets/images/pic.png';
 
 interface HeroProps {
   onOpenResumeModal: () => void;
@@ -93,12 +93,9 @@ export default function Hero({ onOpenResumeModal }: HeroProps) {
               <div className="relative w-32 h-32 rounded-2xl overflow-hidden border border-neutral-800/80 bg-neutral-950 flex items-center justify-center shadow-xl">
                 <img
                   src={profileImg}
-                  alt="Ahsan Yasir Sharar"
+                  alt={personalInfo.name}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover/avatar:scale-[1.05]"
                   referrerPolicy="no-referrer"
-                  onError={(e) => {
-                    e.currentTarget.src = "/src/assets/images/profile.svg";
-                  }}
                 />
               </div>
               
