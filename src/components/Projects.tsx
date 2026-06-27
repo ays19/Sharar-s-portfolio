@@ -1,11 +1,41 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Github, ExternalLink, Sparkles, Database, Layers, Check } from 'lucide-react';
+import { Github, ExternalLink, Sparkles, Database, Layers, Check, ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { projects } from '../data';
 import { Project } from '../types';
 
 export default function Projects() {
   const [activeTab, setActiveTab] = useState<'All' | 'Backend' | 'AI & Agents' | 'Full-stack'>('All');
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  // Handle ESC key for modal
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setSelectedProject(null);
+      if (e.key === 'ArrowRight' && selectedProject) nextImage();
+      if (e.key === 'ArrowLeft' && selectedProject) prevImage();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  });
+
+  const nextImage = () => {
+    if (selectedProject) {
+      setCurrentImageIndex((prev) => (prev === selectedProject.images.length - 1 ? 0 : prev + 1));
+    }
+  };
+
+  const prevImage = () => {
+    if (selectedProject) {
+      setCurrentImageIndex((prev) => (prev === 0 ? selectedProject.images.length - 1 : prev - 1));
+    }
+  };
+
+  const openLightbox = (project: Project) => {
+    setSelectedProject(project);
+    setCurrentImageIndex(0);
+  };
 
   const categories: ('All' | 'Backend' | 'AI & Agents' | 'Full-stack')[] = [
     'All',
@@ -80,14 +110,24 @@ export default function Projects() {
                 className="rounded-2xl bg-neutral-900/40 border border-neutral-800/60 hover:border-indigo-500/40 transition-all duration-300 flex flex-col h-full overflow-hidden group"
               >
                 {/* Project Image */}
-                <div className="relative h-48 overflow-hidden bg-neutral-950">
-                  <div className="absolute inset-0 bg-neutral-950/20 z-10 group-hover:bg-neutral-950/0 transition-all" />
+                <div 
+                  className="relative h-48 overflow-hidden bg-neutral-950 cursor-pointer"
+                  onClick={() => openLightbox(project)}
+                >
+                  <div className="absolute inset-0 bg-neutral-950/20 z-10 group-hover:bg-neutral-950/0 transition-all pointer-events-none" />
                   <img
-                    src={project.image}
+                    src={project.images[0]}
                     alt={`${project.title} Screenshot`}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     referrerPolicy="no-referrer"
                   />
+                  
+                  {/* Photo count indicator if multiple */}
+                  {project.images.length > 1 && (
+                    <div className="absolute bottom-3 right-3 z-20 bg-neutral-900/80 backdrop-blur border border-neutral-700/50 text-white text-[10px] font-mono px-2 py-1 rounded-md flex items-center gap-1 shadow-lg pointer-events-none">
+                      <span>1/{project.images.length}</span>
+                    </div>
+                  )}
                   
                   {/* Category Pill Tag Overlay */}
                   <div className="absolute top-4 left-4 z-20 flex items-center gap-1.5 px-3 py-1 bg-neutral-950/90 border border-neutral-800 rounded-full text-[10px] font-mono font-semibold text-neutral-200">
@@ -166,6 +206,86 @@ export default function Projects() {
           </AnimatePresence>
         </motion.div>
       </div>
+
+      {/* Lightbox / Image Gallery Modal */}
+      <AnimatePresence>
+        {selectedProject && selectedProject.images.length > 0 && (
+          <motion.div
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-neutral-950/90 backdrop-blur-md"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedProject(null)}
+          >
+            {/* Close Button */}
+            <button
+              onClick={() => setSelectedProject(null)}
+              className="absolute top-6 right-6 z-50 w-12 h-12 rounded-full bg-neutral-900 border border-neutral-800 text-neutral-400 hover:text-white flex items-center justify-center hover:bg-neutral-800 transition-all cursor-pointer shadow-xl"
+            >
+              <X size={24} />
+            </button>
+
+            {/* Modal Content container */}
+            <motion.div
+              className="relative max-w-5xl w-full flex flex-col items-center gap-4 outline-none"
+              initial={{ opacity: 0, scale: 0.95, y: 15 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 15 }}
+              transition={{ type: 'spring', damping: 25, stiffness: 220 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Header Title */}
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">{selectedProject.title}</h3>
+
+              {/* Main Image Frame */}
+              <div className="relative rounded-2xl overflow-hidden bg-neutral-900 border border-neutral-800/80 shadow-2xl flex items-center justify-center max-h-[70vh] w-full group">
+                
+                {/* Navigation: Left */}
+                {selectedProject.images.length > 1 && (
+                  <button 
+                    onClick={(e) => { e.stopPropagation(); prevImage(); }}
+                    className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-neutral-950/60 hover:bg-neutral-900 border border-neutral-700/50 text-white flex items-center justify-center backdrop-blur-sm transition-all z-20"
+                  >
+                    <ChevronLeft size={20} />
+                  </button>
+                )}
+
+                <img
+                  src={selectedProject.images[currentImageIndex]}
+                  alt={`${selectedProject.title} screenshot ${currentImageIndex + 1}`}
+                  className="max-h-[70vh] w-full object-contain select-none"
+                  referrerPolicy="no-referrer"
+                />
+
+                {/* Navigation: Right */}
+                {selectedProject.images.length > 1 && (
+                  <button 
+                    onClick={(e) => { e.stopPropagation(); nextImage(); }}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-neutral-950/60 hover:bg-neutral-900 border border-neutral-700/50 text-white flex items-center justify-center backdrop-blur-sm transition-all z-20"
+                  >
+                    <ChevronRight size={20} />
+                  </button>
+                )}
+              </div>
+
+              {/* Image Indicators */}
+              {selectedProject.images.length > 1 && (
+                <div className="flex items-center gap-2 mt-4">
+                  {selectedProject.images.map((_, idx) => (
+                    <button
+                      key={idx}
+                      onClick={(e) => { e.stopPropagation(); setCurrentImageIndex(idx); }}
+                      className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                        idx === currentImageIndex ? 'bg-indigo-500 w-6' : 'bg-neutral-700 hover:bg-neutral-500'
+                      }`}
+                    />
+                  ))}
+                </div>
+              )}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

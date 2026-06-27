@@ -5,7 +5,7 @@ export interface Project {
   techStack: string[];
   githubUrl: string;
   demoUrl: string;
-  image: string;
+  images: string[];
   category: 'Backend' | 'AI & Agents' | 'Full-stack';
   metrics?: string[];
 }

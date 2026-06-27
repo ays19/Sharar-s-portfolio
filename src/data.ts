@@ -65,7 +65,7 @@ export const projects: Project[] = [
     techStack: ['Django', 'Django REST Framework', 'PostgreSQL', 'Redis', 'Docker', 'PyTest'],
     githubUrl: 'https://github.com/ays19/storefront',
     demoUrl: 'https://sharar-prod.up.railway.app/store/',
-    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800&q=80',
+    images: ['https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800&q=80'],
     metrics: [
       'Handles 50k+ daily active API transactions safely',
       '35% database response latency reduction',
@@ -80,7 +80,7 @@ export const projects: Project[] = [
     techStack: ['Python', 'Gemini API', 'FastAPI', 'React', 'SQLite', 'LangChain'],
     githubUrl: 'https://github.com/ays19/AI-Helpdesk---Ticketing-System',
     demoUrl: '',
-    image: 'https://images.unsplash.com/photo-1531746790731-6c087fecd39a?auto=format&fit=crop&w=800&q=80',
+    images: ['https://images.unsplash.com/photo-1531746790731-6c087fecd39a?auto=format&fit=crop&w=800&q=80'],
     metrics: [
       'Cuts customer service queue times by 48%',
       'Achieved an 85% first-contact automatic resolution rate',
@@ -95,7 +95,7 @@ export const projects: Project[] = [
     techStack: ['React (Vite)', 'Node.js', 'Express', 'PostgreSQL', 'Tailwind CSS', 'Recharts'],
     githubUrl: 'https://github.com/ays19/FITNESS-TRACKER',
     demoUrl: '',
-    image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80',
+    images: ['https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80'],
     metrics: [
       'Supports real-time exercise telemetry parsing',
       'Responsive design with customized tracking charts',
