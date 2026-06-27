@@ -125,6 +125,57 @@ export const projects: Project[] = [
       'Responsive design with customized tracking charts',
       'Optimized backend routes with index caching'
     ]
+  },
+  {
+    id: 'proj-4',
+    title: 'E-Commerce Project',
+    category: 'Full-stack',
+    description: 'A full-featured e-commerce platform with product catalog, shopping cart, payment processing, and order management system.',
+    techStack: ['Python', 'Django', 'SQLite', 'HTML', 'CSS'],
+    githubUrl: 'https://github.com/ays19/FITNESS-TRACKER',
+    demoUrl: '',
+    images: [import.meta.env.BASE_URL + 'Project/Fitness/1.png',
+      import.meta.env.BASE_URL + 'Project/Fitness/2.png',
+      import.meta.env.BASE_URL + 'Project/Fitness/3.png',],
+    metrics: [
+      'Supports real-time exercise telemetry parsing',
+      'Responsive design with customized tracking charts',
+      'Optimized backend routes with index caching'
+    ]
+  },
+  {
+    id: 'proj-5',
+    title: 'E-Commerce Project',
+    category: 'Full-stack',
+    description: 'A full-featured e-commerce platform with product catalog, shopping cart, payment processing, and order management system.',
+    techStack: ['Python', 'Django', 'SQLite', 'HTML', 'CSS'],
+    githubUrl: 'https://github.com/ays19/FITNESS-TRACKER',
+    demoUrl: '',
+    images: [import.meta.env.BASE_URL + 'Project/Fitness/1.png',
+      import.meta.env.BASE_URL + 'Project/Fitness/2.png',
+      import.meta.env.BASE_URL + 'Project/Fitness/3.png',],
+    metrics: [
+      'Supports real-time exercise telemetry parsing',
+      'Responsive design with customized tracking charts',
+      'Optimized backend routes with index caching'
+    ]
+  },
+  {
+    id: 'proj-6',
+    title: 'E-Commerce Project',
+    category: 'Full-stack',
+    description: 'A full-featured e-commerce platform with product catalog, shopping cart, payment processing, and order management system.',
+    techStack: ['Python', 'Django', 'SQLite', 'HTML', 'CSS'],
+    githubUrl: 'https://github.com/ays19/FITNESS-TRACKER',
+    demoUrl: '',
+    images: [import.meta.env.BASE_URL + 'Project/Fitness/1.png',
+      import.meta.env.BASE_URL + 'Project/Fitness/2.png',
+      import.meta.env.BASE_URL + 'Project/Fitness/3.png',],
+    metrics: [
+      'Supports real-time exercise telemetry parsing',
+      'Responsive design with customized tracking charts',
+      'Optimized backend routes with index caching'
+    ]
   }
 ];
 
@@ -132,49 +183,46 @@ export const skillsMatrix: SkillCategory[] = [
   {
     title: 'Languages',
     skills: [
-      { name: 'Python', level: 95 },
-      { name: 'TypeScript', level: 85 },
-      { name: 'JavaScript', level: 90 },
-      { name: 'SQL (PostgreSQL/MySQL)', level: 88 },
-      { name: 'HTML5 & CSS3', level: 90 },
-      { name: 'C++', level: 75 }
+      { name: 'Python' },
+      { name: 'JavaScript' },
+      { name: 'SQL (PostgreSQL/MySQL)' },
+      { name: 'HTML & CSS' },
+      { name: 'C++' }
     ]
   },
   {
     title: 'Frameworks & Server-side',
     skills: [
-      { name: 'Django / Django REST Framework', level: 95 },
-      { name: 'FastAPI', level: 88 },
-      { name: 'Node.js / Express', level: 85 },
-      { name: 'React.js (Vite)', level: 82 }
+      { name: 'Django' },
+      { name: 'Django REST Framework' },
+      { name: 'FastAPI' }
     ]
   },
   {
     title: 'AI & Agentic Workflows',
     skills: [
-      { name: 'Gemini API', level: 95 },
-      { name: 'Claude Code', level: 92 },
-      { name: 'Cursor', level: 94 },
-      { name: 'Antigravity CLI', level: 90 },
-      { name: 'Vercel AI SDK', level: 88 }
+      { name: 'Gemini API' },
+      { name: 'Claude Code' },
+      { name: 'Cursor' },
+      { name: 'Antigravity CLI' },
+      { name: 'Vercel AI SDK' }
     ]
   },
   {
     title: 'Databases & Cache',
     skills: [
-      { name: 'PostgreSQL', level: 90 },
-      { name: 'Redis (Caching & Pub/Sub)', level: 85 },
-      { name: 'MongoDB', level: 78 },
-      { name: 'SQLite', level: 88 }
+      { name: 'MySQL' },
+      { name: 'Redis (Caching & Pub/Sub)' },
+      { name: 'SQLite' }
     ]
   },
   {
     title: 'DevOps & Testing',
     skills: [
-      { name: 'Docker / Containerization', level: 88 },
-      { name: 'CI/CD (GitHub Actions)', level: 85 },
-      { name: 'PyTest & Jest Testing', level: 92 },
-      { name: 'Linux / Shell Scripting', level: 80 }
+      { name: 'Docker / Containerization' },
+      { name: 'CI/CD (GitHub Actions)' },
+      { name: 'PyTest, Locust & End-to-End Playwright Testing' },
+      { name: 'Linux / Shell Scripting' }
     ]
   }
 ];

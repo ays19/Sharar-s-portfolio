@@ -23,7 +23,7 @@ export interface Experience {
 
 export interface SkillCategory {
   title: string;
-  skills: { name: string; level: number; iconName?: string }[];
+  skills: { name: string; iconName?: string }[];
 }
 
 export interface ContactMessage {
