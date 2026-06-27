@@ -230,7 +230,7 @@ export const certificates: Certificate[] = [
     title: 'Entrepreneurial Skills Assessment & Training',
     distributor: 'Nagorik Sheba Bangladesh',
     year: '2025',
-    imageUrl: 'Certificates/10.png',
+    imageUrl: 'Certificates/10.jpg',
     credentialUrl: '#'
   },
   {
@@ -238,7 +238,7 @@ export const certificates: Certificate[] = [
     title: 'Engineering Summit',
     distributor: 'Youth for Better Future Society',
     year: '2023',
-    imageUrl: 'Certificates/11.png',
+    imageUrl: 'Certificates/11.jpg',
     credentialUrl: '#'
   },
   {
