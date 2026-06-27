@@ -134,7 +134,7 @@ export const projects: Project[] = [
     techStack: ['Python', 'Django', 'SQLite', 'HTML', 'CSS','Bootstrap'],
     githubUrl: 'https://github.com/ays19/E-Commerce-Project',
     demoUrl: '',
-    images: [import.meta.env.BASE_URL + 'Project/ecommerce.png'],
+    images: [import.meta.env.BASE_URL + 'ecommerce.png'],
     metrics: [
       'Built user registration, login, and profile management using Django\'s built-in auth system,',
       'Structured project with modular Django apps (product, user_account) and integrated Bootstrap frontend templates'
@@ -143,12 +143,12 @@ export const projects: Project[] = [
   {
     id: 'proj-5',
     title: 'Authentication System',
-    category: 'Full-stack',
+    category: 'Backend',
     description: 'A Django-based custom authentication system implementing user registration, login, logout, and session management from scratch.',
     techStack: ['Python', 'Django', 'SQLite', 'HTML', 'CSS'],
     githubUrl: 'https://github.com/ays19/AUTHENTICATION',
     demoUrl: '',
-    images: [import.meta.env.BASE_URL + 'Project/authentication.png'],
+    images: [import.meta.env.BASE_URL + 'authentication.png'],
     metrics: [
       'Implemented custom user registration and login flows using Django\'s auth framework',
       'Built session-based authentication with form validation and error handling',
