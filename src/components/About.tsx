@@ -12,7 +12,7 @@ export default function About() {
     {
       icon: <Code className="text-indigo-500" size={24} />,
       title: 'Agentic AI Workflows',
-      desc: 'Connecting models like Gemini to secure tools and custom knowledge databases to solve complex customer and system workflows automatically.',
+      desc: 'Integrating Gemini and AI Studio APIs into backend workflows to automate ticket classification, response generation, and summarization.',
     },
     {
       icon: <TestTube className="text-indigo-500" size={24} />,
@@ -41,7 +41,7 @@ export default function About() {
             <div className="flex flex-col gap-2">
               <span className="text-xs font-mono text-indigo-500 uppercase tracking-widest font-semibold">About Me</span>
               <h2 className="text-3xl sm:text-4xl font-sans font-bold tracking-tight text-white">
-                Bridging Computer Science with Intelligent Systems
+                Building Backend Systems Powered by AI
               </h2>
             </div>
 

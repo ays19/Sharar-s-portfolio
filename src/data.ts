@@ -13,12 +13,12 @@ export const personalInfo = {
   linkedin: 'https://www.linkedin.com/in/yasirsharar/',
   resumeUrl: 'https://drive.google.com/drive/folders/1SyanyPV7CAICJ0kf5XGzR0U311YQNKZX?usp=drive_link',
   about: {
-    summary: 'A meticulous and performance-driven Backend Software Engineer with a strong Computer Science foundation. I specialize in designing highly scalable Python/Django backend systems, architecting intelligent agentic AI workflows, and establishing robust testing strategies. Passionate about operational efficiency, microservices, and developing AI-driven solutions that bridge complex backend architecture with cutting-edge language models.',
+    summary: 'A backend-focused Python developer with a Computer Science foundation. I build production-grade REST APIs with Django, integrate LLM-powered features using Gemini and Claude APIs, and implement automated testing pipelines. Passionate about writing clean, maintainable code and shipping reliable software.',
     highlights: [
       { label: 'Core Focus', value: 'Backend Architecture & Agentic AI' },
       { label: 'Testing Standard', value: 'Manual and automated testing with defect analysis' },
-      { label: 'AI Integration', value: 'Gemini API, Claude Code, Cursor, Antigravity CLI' },
-      { label: 'Deployment Strategy', value: 'Cisco DevNet, CyberOps and Java EE7 program architectures' }
+      { label: 'AI & Dev Tools', value: 'Gemini API, Antigravity CLI, Claude Code, Cursor'},
+      { label: 'Deployment Strategy', value: 'Railway, Docker, GitHub Actions' }
     ]
   }
 };
