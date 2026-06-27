@@ -14,8 +14,8 @@ export const personalInfo = {
   location: 'Dhaka, Bangladesh',
   phone: '+880 1729 524544',
   email: 'sahsanyasir@gmail.com',
-  github: 'https://github.com/sahsanyasir',
-  linkedin: 'https://linkedin.com/in/sahsanyasir',
+  github: 'https://github.com/ays19',
+  linkedin: 'https://www.linkedin.com/in/yasirsharar/',
   resumeUrl: 'https://drive.google.com/drive/folders/1SyanyPV7CAICJ0kf5XGzR0U311YQNKZX?usp=drive_link',
   about: {
     summary: 'A meticulous and performance-driven Backend Software Engineer with a strong Computer Science foundation. I specialize in designing highly scalable Python/Django backend systems, architecting intelligent agentic AI workflows, and establishing robust testing strategies. Passionate about operational efficiency, microservices, and developing AI-driven solutions that bridge complex backend architecture with cutting-edge language models.',
@@ -65,8 +65,8 @@ export const projects: Project[] = [
     category: 'Backend',
     description: 'A high-performance, robust e-commerce API backend designed with Django and PostgreSQL. Features secure JWT authentication, nested category catalogs, automated inventory checks, and stripe payment gateway integration.',
     techStack: ['Django', 'Django REST Framework', 'PostgreSQL', 'Redis', 'Docker', 'PyTest'],
-    githubUrl: 'https://github.com/sahsanyasir/storefront-api',
-    demoUrl: 'https://storefront-api.example.com',
+    githubUrl: 'https://github.com/ays19/storefront',
+    demoUrl: 'https://sharar-prod.up.railway.app/store/',
     image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800&q=80',
     metrics: [
       'Handles 50k+ daily active API transactions safely',
@@ -80,8 +80,8 @@ export const projects: Project[] = [
     category: 'AI & Agents',
     description: 'An intelligent ticketing dashboard and support agent. Using Google Gemini API and custom semantic routes, it reads user support issues, cross-references internal markdown guides, classifies severity, and drafts highly context-aware replies.',
     techStack: ['Python', 'Gemini API', 'FastAPI', 'React', 'SQLite', 'LangChain'],
-    githubUrl: 'https://github.com/sahsanyasir/ai-support-agent',
-    demoUrl: 'https://ai-support-agent.example.com',
+    githubUrl: 'https://github.com/ays19/AI-Helpdesk---Ticketing-System',
+    demoUrl: '',
     image: 'https://images.unsplash.com/photo-1531746790731-6c087fecd39a?auto=format&fit=crop&w=800&q=80',
     metrics: [
       'Cuts customer service queue times by 48%',
@@ -95,8 +95,8 @@ export const projects: Project[] = [
     category: 'Full-stack',
     description: 'A comprehensive fitness tracking dashboard allowing users to log workouts, define customized goals, and review progress charts. Utilizes PostgreSQL to aggregate history and charts generated with Recharts.',
     techStack: ['React (Vite)', 'Node.js', 'Express', 'PostgreSQL', 'Tailwind CSS', 'Recharts'],
-    githubUrl: 'https://github.com/sahsanyasir/fitness-tracker',
-    demoUrl: 'https://fitness-tracker.example.com',
+    githubUrl: 'https://github.com/ays19/FITNESS-TRACKER',
+    demoUrl: '',
     image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80',
     metrics: [
       'Supports real-time exercise telemetry parsing',
