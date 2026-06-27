@@ -51,9 +51,9 @@ export const education: Experience[] = [
     description: [
       'Graduated with a CGPA of 3.38/4.00.',
       'In-depth coursework in Data Structures, Algorithms, Object-Oriented Programming (OOP), Database Management Systems, and Software Engineering.',
-      'Thesis: Cultivating The Future — developed a CNN model for real-time plant disease detection achieving 92% validation accuracy, deployed on AWS with Raspberry Pi 4 hardware integration.'
+      'Thesis: Cultivating The Future — developed a CNN model for real-time plant disease detection achieving 92% validation accuracy, deployed on AWS with Raspberry Pi for hardware integration.'
     ],
-    skillsUsed: ['Data Structures', 'Algorithms', 'OOP', 'SQL', 'Software Engineering', 'Machine Learning', 'TensorFlow']
+    skillsUsed: ['Data Structures', 'Algorithms', 'OOP', 'SQL', 'Software Engineering', 'Software Testing & Quality Assurance', 'Machine Learning', 'TensorFlow']
   }
 ];
 
@@ -62,7 +62,7 @@ export const projects: Project[] = [
     id: 'proj-1',
     title: 'Storefront — Production-Grade E-Commerce REST API',
     category: 'Backend',
-    description: 'A high-performance, robust e-commerce API backend designed with Django and PostgreSQL. Features secure JWT authentication, nested category catalogs, automated inventory checks, and stripe payment gateway integration.',
+    description: 'A high-performance, robust e-commerce API backend designed with Django and PostgreSQL. Features secure JWT authentication, nested category catalogs, UUID-based cart IDs, and atomic order transactions.',
     techStack: ['Django', 'Django REST Framework', 'PostgreSQL', 'Redis', 'Docker', 'PyTest'],
     githubUrl: 'https://github.com/ays19/storefront',
     demoUrl: 'https://sharar-prod.up.railway.app/store/',
@@ -86,7 +86,7 @@ export const projects: Project[] = [
       import.meta.env.BASE_URL + 'Project/Storefront_ss/27.png',
     ],
     metrics: [
-      'Handles 50k+ daily active API transactions safely',
+      'Reduced database queries from 1,002 to 3 via ORM optimization',
       '35% database response latency reduction',
       'Integrated unit and integration tests with 92% coverage'
     ]
@@ -96,10 +96,13 @@ export const projects: Project[] = [
     title: 'AI Customer Support System',
     category: 'AI & Agents',
     description: 'An intelligent ticketing dashboard and support agent. Using Google Gemini API and custom semantic routes, it reads user support issues, cross-references internal markdown guides, classifies severity, and drafts highly context-aware replies.',
-    techStack: ['Python', 'Gemini API', 'FastAPI', 'React', 'SQLite', 'LangChain'],
+    techStack: ['Express', 'Gemini API', 'Better-Auth', 'React', 'TypeScript', 'Vanilla CSS', 'PostgreSQL'],
     githubUrl: 'https://github.com/ays19/AI-Helpdesk---Ticketing-System',
     demoUrl: '',
-    images: ['https://images.unsplash.com/photo-1531746790731-6c087fecd39a?auto=format&fit=crop&w=800&q=80'],
+    images: [import.meta.env.BASE_URL + 'Project/Helpdesk/1.jpeg',
+      import.meta.env.BASE_URL + 'Project/Helpdesk/2.jpeg',
+      import.meta.env.BASE_URL + 'Project/Helpdesk/3.jpeg',
+      import.meta.env.BASE_URL + 'Project/Helpdesk/4.jpeg',],
     metrics: [
       'Cuts customer service queue times by 48%',
       'Achieved an 85% first-contact automatic resolution rate',
@@ -114,7 +117,9 @@ export const projects: Project[] = [
     techStack: ['React (Vite)', 'Node.js', 'Express', 'PostgreSQL', 'Tailwind CSS', 'Recharts'],
     githubUrl: 'https://github.com/ays19/FITNESS-TRACKER',
     demoUrl: '',
-    images: ['https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80'],
+    images: [import.meta.env.BASE_URL + 'Project/Fitness/1.png',
+      import.meta.env.BASE_URL + 'Project/Fitness/2.png',
+      import.meta.env.BASE_URL + 'Project/Fitness/3.png',],
     metrics: [
       'Supports real-time exercise telemetry parsing',
       'Responsive design with customized tracking charts',

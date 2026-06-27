@@ -69,7 +69,7 @@ export default function Projects() {
             Featured Projects
           </h2>
           <p className="text-neutral-400 max-w-xl text-sm sm:text-base">
-            An exploration of robust backend services, agentic generative AI pipelines, and interactive web tools.
+            Production-grade backend APIs, LLM-powered applications, and full-stack web projects.
           </p>
         </div>
 
