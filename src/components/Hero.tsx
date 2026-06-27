@@ -81,34 +81,10 @@ export default function Hero({ onOpenResumeModal }: HeroProps) {
           initial="hidden"
           animate="visible"
         >
-          {/* Flexbox Wrapper: Image and Text Block with Responsive Stacking */}
-          <div className="flex flex-col md:flex-row items-center md:items-start gap-8 lg:gap-12">
-            
-            {/* Beautiful Glowing Avatar (with shrink-0 to prevent squishing) */}
-            <motion.div variants={itemVariants} className="relative group/avatar shrink-0">
-              {/* Outer Pulsing Glow */}
-              <div className="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-2xl blur opacity-30 group-hover/avatar:opacity-60 transition-opacity duration-500" />
-              
-              {/* Image Frame */}
-              <div className="relative w-32 h-32 rounded-2xl overflow-hidden border border-neutral-800/80 bg-neutral-950 flex items-center justify-center shadow-xl">
-                <img
-                  src={profileImg}
-                  alt={personalInfo.name}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover/avatar:scale-[1.05]"
-                  referrerPolicy="no-referrer"
-                />
-              </div>
-              
-              {/* Mini Status Indicator */}
-              <span className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-neutral-900 border-2 border-neutral-950 flex items-center justify-center" title="Active now">
-                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
-              </span>
-            </motion.div>
-
-            {/* Introductory Text Block */}
-            <div className="flex flex-col gap-6 flex-1 text-center md:text-left items-center md:items-start">
+          {/* Introductory Text Block */}
+          <div className="flex flex-col gap-6 text-center lg:text-left items-center lg:items-start">
               {/* Badge & Location */}
-              <motion.div variants={itemVariants} className="flex flex-col gap-2 items-center md:items-start">
+              <motion.div variants={itemVariants} className="flex flex-col gap-2 items-center lg:items-start">
                 <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-950/40 border border-indigo-900/30 text-xs font-mono text-indigo-300 w-fit">
                   <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse" />
                   Available for full-time roles & contracts
@@ -117,9 +93,9 @@ export default function Hero({ onOpenResumeModal }: HeroProps) {
               </motion.div>
 
               {/* Heading */}
-              <motion.div variants={itemVariants} className="flex flex-col gap-2 w-full items-center md:items-start">
+              <motion.div variants={itemVariants} className="flex flex-col gap-2 w-full items-center lg:items-start">
                 <span className="text-sm font-mono text-neutral-400 font-medium">Hello, World! I am</span>
-                <h1 className="text-4xl sm:text-5xl font-sans font-bold tracking-tight text-white leading-tight min-h-[1.2em] flex items-center justify-center md:justify-start">
+                <h1 className="text-4xl sm:text-5xl font-sans font-bold tracking-tight text-white leading-tight min-h-[1.2em] flex items-center justify-center lg:justify-start">
                   <span>{typedName}</span>
                   <span className="inline-block w-[3px] h-[0.8em] bg-indigo-500 ml-1.5 animate-pulse" style={{ animationDuration: '0.8s' }} />
                 </h1>
@@ -137,7 +113,7 @@ export default function Hero({ onOpenResumeModal }: HeroProps) {
               </motion.p>
 
               {/* Call to Actions */}
-              <motion.div variants={itemVariants} className="flex flex-wrap justify-center md:justify-start gap-4 pt-2">
+              <motion.div variants={itemVariants} className="flex flex-wrap justify-center lg:justify-start gap-4 pt-2">
                 <button
                   id="hero-cta-projects"
                   onClick={scrollToProjects}
@@ -185,78 +161,43 @@ export default function Hero({ onOpenResumeModal }: HeroProps) {
                 </div>
               </motion.div>
             </div>
-          </div>
         </motion.div>
 
-        {/* Hero Illustration / Interactive Console Right */}
+        {/* Large Profile Picture Right */}
         <motion.div
-          className="lg:col-span-5"
+          className="lg:col-span-5 flex justify-center lg:justify-end"
           initial={{ opacity: 0, x: 30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ type: 'spring', duration: 1, delay: 0.3 }}
         >
-          <div className="relative mx-auto max-w-md lg:max-w-none">
-            {/* Ambient Backlight */}
-            <div className="absolute -inset-1.5 bg-gradient-to-r from-indigo-600 to-violet-600 rounded-2xl blur-lg opacity-30 animate-pulse pointer-events-none" />
-
-            {/* Simulated Terminal Card */}
-            <div className="relative bg-neutral-900/90 border border-neutral-800/80 rounded-2xl shadow-2xl overflow-hidden font-mono text-xs text-neutral-400">
-              {/* Terminal Title Bar */}
-              <div className="bg-neutral-950 px-4 py-3 border-b border-neutral-800/80 flex items-center justify-between">
-                <div className="flex items-center gap-1.5">
-                  <span className="w-3 h-3 rounded-full bg-rose-500/80" />
-                  <span className="w-3 h-3 rounded-full bg-amber-500/80" />
-                  <span className="w-3 h-3 rounded-full bg-emerald-500/80" />
-                </div>
-                <div className="text-[10px] text-neutral-500 font-mono">system_engineer.py</div>
-                <div className="w-12" />
-              </div>
-
-              {/* Terminal Body */}
-              <div className="p-5 flex flex-col gap-4">
-                <div>
-                  <span className="text-neutral-500">&gt;&gt;&gt;</span> <span className="text-emerald-400">import</span> backend_stack
-                </div>
-                <div>
-                  <span className="text-neutral-500">&gt;&gt;&gt;</span> <span className="text-neutral-200">developer = backend_stack.create_profile()</span>
-                </div>
-                <div>
-                  <span className="text-neutral-500">&gt;&gt;&gt;</span> <span className="text-neutral-200">developer.print_metrics()</span>
-                  <div className="mt-2 text-indigo-300 pl-4 bg-indigo-950/30 py-3 rounded-lg border border-indigo-900/40 flex flex-col gap-1.5">
-                    <span className="flex items-center gap-2">
-                      <Terminal size={12} className="text-indigo-400" />
-                      <span><strong>Query Optimization:</strong> Reduced DB queries from 1002 {"->"} 3</span>
-                    </span>
-                    <span className="flex items-center gap-2">
-                      <Zap size={12} className="text-indigo-400" />
-                      <span><strong>LLM Classification:</strong> 48% speedup</span>
-                    </span>
-                    <span className="flex items-center gap-2">
-                      <Briefcase size={12} className="text-indigo-400" />
-                      <span><strong>Testing Coverage:</strong> 92% (PyTest)</span>
-                    </span>
-                  </div>
-                </div>
-                <div className="text-neutral-500 mt-2">
-                  <span># Ready to collaborate. Launching server...</span>
-                  <br />
-                  <span className="text-emerald-400"># Local Server active on port 3000!</span>
-                </div>
-              </div>
+          <div className="relative mx-auto lg:mx-0 w-full max-w-sm">
+            {/* Ambient Backlight Glow */}
+            <div className="absolute -inset-2 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-3xl blur-xl opacity-30 animate-pulse pointer-events-none" />
+            
+            {/* Image Frame */}
+            <div className="relative aspect-[4/5] rounded-3xl overflow-hidden border border-neutral-800/80 bg-neutral-900 shadow-2xl group">
+              <img
+                src={profileImg}
+                alt={personalInfo.name}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                referrerPolicy="no-referrer"
+              />
+              <div className="absolute inset-0 shadow-[inset_0_0_40px_rgba(0,0,0,0.6)] pointer-events-none rounded-3xl" />
             </div>
 
-            {/* Floating metrics badge */}
+            {/* Floating Status Badge */}
             <motion.div
-              className="absolute -bottom-6 -right-4 md:-right-6 bg-neutral-900 border border-neutral-800 rounded-xl p-4 shadow-xl flex items-center gap-3"
-              animate={{ y: [0, -6, 0] }}
-              transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+              className="absolute -bottom-6 -left-6 bg-neutral-900 border border-neutral-800 rounded-xl p-4 shadow-xl flex items-center gap-3 z-10"
+              animate={{ y: [0, -8, 0] }}
+              transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
             >
-              <div className="w-10 h-10 rounded-lg bg-emerald-950 flex items-center justify-center text-emerald-400">
-                <Zap size={20} />
+              <div className="w-10 h-10 rounded-lg bg-indigo-950 flex items-center justify-center text-indigo-400 relative">
+                <Terminal size={20} />
+                <span className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-emerald-500 border-2 border-neutral-900 animate-pulse" />
               </div>
               <div>
-                <p className="text-xs text-neutral-400 font-mono">Performance Impact</p>
-                <p className="text-sm font-bold text-white">O(1) Query Performance</p>
+                <p className="text-xs text-neutral-400 font-mono">System Status</p>
+                <p className="text-sm font-bold text-white">Ready for Impact</p>
               </div>
             </motion.div>
           </div>
