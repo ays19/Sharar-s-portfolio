@@ -128,53 +128,31 @@ export const projects: Project[] = [
   },
   {
     id: 'proj-4',
-    title: 'E-Commerce Project',
+    title: 'E-Commerce Web',
     category: 'Full-stack',
-    description: 'A full-featured e-commerce platform with product catalog, shopping cart, payment processing, and order management system.',
-    techStack: ['Python', 'Django', 'SQLite', 'HTML', 'CSS'],
-    githubUrl: 'https://github.com/ays19/FITNESS-TRACKER',
+    description: 'A Django-based e-commerce platform with user authentication, product catalog, cart management, and order processing built on Django\'s MVT architecture.',
+    techStack: ['Python', 'Django', 'SQLite', 'HTML', 'CSS','Bootstrap'],
+    githubUrl: 'https://github.com/ays19/E-Commerce-Project',
     demoUrl: '',
-    images: [import.meta.env.BASE_URL + 'Project/Fitness/1.png',
-      import.meta.env.BASE_URL + 'Project/Fitness/2.png',
-      import.meta.env.BASE_URL + 'Project/Fitness/3.png',],
+    images: [import.meta.env.BASE_URL + 'Project/ecommerce.png'],
     metrics: [
-      'Supports real-time exercise telemetry parsing',
-      'Responsive design with customized tracking charts',
-      'Optimized backend routes with index caching'
+      'Built user registration, login, and profile management using Django\'s built-in auth system,',
+      'Structured project with modular Django apps (product, user_account) and integrated Bootstrap frontend templates'
     ]
   },
   {
     id: 'proj-5',
-    title: 'E-Commerce Project',
+    title: 'Authentication System',
     category: 'Full-stack',
-    description: 'A full-featured e-commerce platform with product catalog, shopping cart, payment processing, and order management system.',
+    description: 'A Django-based custom authentication system implementing user registration, login, logout, and session management from scratch.',
     techStack: ['Python', 'Django', 'SQLite', 'HTML', 'CSS'],
-    githubUrl: 'https://github.com/ays19/FITNESS-TRACKER',
+    githubUrl: 'https://github.com/ays19/AUTHENTICATION',
     demoUrl: '',
-    images: [import.meta.env.BASE_URL + 'Project/Fitness/1.png',
-      import.meta.env.BASE_URL + 'Project/Fitness/2.png',
-      import.meta.env.BASE_URL + 'Project/Fitness/3.png',],
+    images: [import.meta.env.BASE_URL + 'Project/authentication.png'],
     metrics: [
-      'Supports real-time exercise telemetry parsing',
-      'Responsive design with customized tracking charts',
-      'Optimized backend routes with index caching'
-    ]
-  },
-  {
-    id: 'proj-6',
-    title: 'E-Commerce Project',
-    category: 'Full-stack',
-    description: 'A full-featured e-commerce platform with product catalog, shopping cart, payment processing, and order management system.',
-    techStack: ['Python', 'Django', 'SQLite', 'HTML', 'CSS'],
-    githubUrl: 'https://github.com/ays19/FITNESS-TRACKER',
-    demoUrl: '',
-    images: [import.meta.env.BASE_URL + 'Project/Fitness/1.png',
-      import.meta.env.BASE_URL + 'Project/Fitness/2.png',
-      import.meta.env.BASE_URL + 'Project/Fitness/3.png',],
-    metrics: [
-      'Supports real-time exercise telemetry parsing',
-      'Responsive design with customized tracking charts',
-      'Optimized backend routes with index caching'
+      'Implemented custom user registration and login flows using Django\'s auth framework',
+      'Built session-based authentication with form validation and error handling',
+      'Structured as a standalone reusable Django app'
     ]
   }
 ];
