@@ -179,7 +179,8 @@ export default function Hero({ onOpenResumeModal }: HeroProps) {
               <img
                 src={profileImg}
                 alt={personalInfo.name}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                // object-[35%_center] shifts the image inside the frame to the right. Adjust the 35% up or down if needed! (50% is perfectly centered)
+                className="w-full h-full object-cover object-[35%_center] transition-transform duration-700 group-hover:scale-105"
                 referrerPolicy="no-referrer"
               />
               <div className="absolute inset-0 shadow-[inset_0_0_40px_rgba(0,0,0,0.6)] pointer-events-none rounded-3xl" />
