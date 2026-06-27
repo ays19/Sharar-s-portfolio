@@ -160,6 +160,14 @@ export const skillsMatrix: SkillCategory[] = [
 export const certificates: Certificate[] = [
   {
     id: 'cert-1',
+    title: 'AWS AI Practitioner Challenge',
+    distributor: 'AWS + Udacity',
+    year: '2026',
+    imageUrl: 'Certificates/1.png',
+    credentialUrl: '#'
+  },
+  {
+    id: 'cert-2',
     title: 'Cisco DevNet Associate',
     distributor: 'Cisco Networking Academy',
     year: '2026',
