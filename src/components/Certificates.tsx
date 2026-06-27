@@ -7,6 +7,14 @@ import { Certificate } from '../types';
 export default function Certificates() {
   const [selectedCert, setSelectedCert] = useState<Certificate | null>(null);
 
+  // Helper to resolve public assets correctly on GitHub Pages
+  const resolveImageUrl = (url: string) => {
+    if (url.startsWith('http') || url.startsWith('data:') || url.startsWith('/')) {
+      return url;
+    }
+    return import.meta.env.BASE_URL + url;
+  };
+
   // Handle ESC key to close modal
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -53,7 +61,7 @@ export default function Certificates() {
                 onClick={() => setSelectedCert(cert)}
               >
                 <img
-                  src={cert.imageUrl}
+                  src={resolveImageUrl(cert.imageUrl)}
                   alt={cert.title}
                   loading="lazy"
                   className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
@@ -142,7 +150,7 @@ export default function Certificates() {
               {/* Image Frame with reflection/neon shadow */}
               <div className="relative rounded-2xl overflow-hidden bg-neutral-900 border border-neutral-800/80 shadow-[0_0_50px_rgba(99,102,241,0.15)] max-h-[75vh] flex items-center justify-center">
                 <img
-                  src={selectedCert.imageUrl}
+                  src={resolveImageUrl(selectedCert.imageUrl)}
                   alt={selectedCert.title}
                   className="max-h-[75vh] object-contain select-none"
                   referrerPolicy="no-referrer"

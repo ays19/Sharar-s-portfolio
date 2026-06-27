@@ -1,11 +1,6 @@
 import { Project, Experience, SkillCategory, Certificate } from './types';
 
-import linkedinAiCert from './assets/images/linkedin_ai_cert_1782491446737.jpg';
-import coderstrustDjangoCert from './assets/images/coderstrust_django_cert_1782491462773.jpg';
-import microsoftSoftwareCert from './assets/images/microsoft_software_cert_1782491480971.jpg';
-import ciscoCCert from './assets/images/cisco_c_cert_1782491494140.jpg';
-import ciscoDevnetCert from './assets/images/cisco_devnet_cert_1782491506757.jpg';
-
+// Certificate images are loaded dynamically from the public/Certificates directory
 
 export const personalInfo = {
   name: 'Ahsan Yasir Sharar',
@@ -171,39 +166,87 @@ export const certificates: Certificate[] = [
     title: 'Cisco DevNet Associate',
     distributor: 'Cisco Networking Academy',
     year: '2026',
-    imageUrl: 'src/assets/images/cisco_devnet_cert_1782491494140.jpg',
-    credentialUrl: '#'
-  },
-  {
-    id: 'cert-2',
-    title: 'Introduction to Artificial Intelligence',
-    distributor: 'LinkedIn Learning',
-    year: '2025',
-    imageUrl: linkedinAiCert,
+    imageUrl: 'Certificates/2.png',
     credentialUrl: '#'
   },
   {
     id: 'cert-3',
-    title: 'Career Essentials in Software Development',
-    distributor: 'Microsoft & LinkedIn',
+    title: 'Introduction to Artificial Intelligence',
+    distributor: 'LinkedIn Learning',
     year: '2025',
-    imageUrl: microsoftSoftwareCert,
+    imageUrl: 'Certificates/3.png',
     credentialUrl: '#'
   },
   {
     id: 'cert-4',
-    title: 'Python & Django',
-    distributor: 'CodersTrust',
+    title: 'Career Essentials in Software Development',
+    distributor: 'Microsoft & LinkedIn',
     year: '2025',
-    imageUrl: coderstrustDjangoCert,
+    imageUrl: 'Certificates/4.jpg',
     credentialUrl: '#'
   },
   {
     id: 'cert-5',
+    title: 'Python & Django',
+    distributor: 'CodersTrust',
+    year: '2025',
+    imageUrl: 'Certificates/5.png',
+    credentialUrl: '#'
+  },
+  {
+    id: 'cert-6',
+    title: 'Python & Django',
+    distributor: 'CodersTrust',
+    year: '2025',
+    imageUrl: 'Certificates/5.png',
+    credentialUrl: '#'
+  },
+  {
+    id: 'cert-7',
+    title: 'Python & Django',
+    distributor: 'CodersTrust',
+    year: '2025',
+    imageUrl: 'Certificates/5.png',
+    credentialUrl: '#'
+  },
+  {
+    id: 'cert-8',
+    title: 'Python & Django',
+    distributor: 'CodersTrust',
+    year: '2025',
+    imageUrl: 'Certificates/5.png',
+    credentialUrl: '#'
+  },
+  {
+    id: 'cert-9',
+    title: 'Python & Django',
+    distributor: 'CodersTrust',
+    year: '2025',
+    imageUrl: 'Certificates/5.png',
+    credentialUrl: '#'
+  },
+  {
+    id: 'cert-10',
+    title: 'Python & Django',
+    distributor: 'CodersTrust',
+    year: '2025',
+    imageUrl: 'Certificates/5.png',
+    credentialUrl: '#'
+  },
+  {
+    id: 'cert-11',
+    title: 'Python & Django',
+    distributor: 'CodersTrust',
+    year: '2025',
+    imageUrl: 'Certificates/5.png',
+    credentialUrl: '#'
+  },
+  {
+    id: 'cert-12',
     title: 'C Essentials 1',
     distributor: 'Cisco Networking Academy',
     year: '2024',
-    imageUrl: ciscoCCert,
+    imageUrl: 'Certificates/6.png',
     credentialUrl: '#'
   }
 ];
