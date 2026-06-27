@@ -163,7 +163,7 @@ export const certificates: Certificate[] = [
     title: 'Cisco DevNet Associate',
     distributor: 'Cisco Networking Academy',
     year: '2026',
-    imageUrl: ciscoDevnetCert,
+    imageUrl: 'src/assets/images/cisco_devnet_cert_1782491494140.jpg',
     credentialUrl: '#'
   },
   {
