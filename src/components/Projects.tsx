@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Github, ExternalLink, Sparkles, Database, Layers, Check, ChevronLeft, ChevronRight, X } from 'lucide-react';
+import { Github, ExternalLink, Sparkles, Database, Layers, Check, ChevronLeft, ChevronRight, X, PlayCircle } from 'lucide-react';
 import { projects } from '../data';
 import { Project } from '../types';
 
@@ -199,6 +199,18 @@ export default function Projects() {
                       >
                         <ExternalLink size={14} />
                         Live Demo
+                      </a>
+                    )}
+                    {project.projectVideoUrl && (
+                      <a
+                        id={`project-${project.id}-video`}
+                        href={project.projectVideoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-xs font-mono font-semibold text-indigo-500 hover:text-indigo-600 flex items-center gap-1.5 group/link transition-colors"
+                      >
+                        <PlayCircle size={14} />
+                        Project Video
                       </a>
                     )}
                   </div>

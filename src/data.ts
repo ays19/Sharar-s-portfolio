@@ -68,6 +68,7 @@ export const projects: Project[] = [
     techStack: ['Django', 'Django REST Framework', 'PostgreSQL', 'Redis', 'Docker', 'PyTest'],
     githubUrl: 'https://github.com/ays19/storefront',
     demoUrl: 'https://sharar-prod.up.railway.app/store/',
+    projectVideoUrl: '',
     images: [
       import.meta.env.BASE_URL + 'Project/Storefront_ss/11.png',
       import.meta.env.BASE_URL + 'Project/Storefront_ss/12.png',
@@ -101,6 +102,7 @@ export const projects: Project[] = [
     techStack: ['Express', 'Gemini API', 'Better-Auth', 'React', 'TypeScript', 'Vanilla CSS', 'PostgreSQL'],
     githubUrl: 'https://github.com/ays19/AI-Helpdesk---Ticketing-System',
     demoUrl: '',
+    projectVideoUrl: '',
     images: [import.meta.env.BASE_URL + 'Project/Helpdesk/1.jpeg',
       import.meta.env.BASE_URL + 'Project/Helpdesk/2.jpeg',
       import.meta.env.BASE_URL + 'Project/Helpdesk/3.jpeg',
@@ -119,6 +121,7 @@ export const projects: Project[] = [
     techStack: ['React (Vite)', 'Node.js', 'Express', 'PostgreSQL', 'Tailwind CSS', 'Recharts'],
     githubUrl: 'https://github.com/ays19/FITNESS-TRACKER',
     demoUrl: '',
+    projectVideoUrl: '',
     images: [import.meta.env.BASE_URL + 'Project/Fitness/1.png',
       import.meta.env.BASE_URL + 'Project/Fitness/2.png',
       import.meta.env.BASE_URL + 'Project/Fitness/3.png',],
@@ -136,6 +139,7 @@ export const projects: Project[] = [
     techStack: ['Python', 'Django', 'SQLite', 'HTML', 'CSS','Bootstrap'],
     githubUrl: 'https://github.com/ays19/E-Commerce-Project',
     demoUrl: '',
+    projectVideoUrl: '',
     images: [import.meta.env.BASE_URL + 'ecommerce.png'],
     metrics: [
       'Built user registration, login, and profile management using Django\'s built-in auth system,',
@@ -150,6 +154,7 @@ export const projects: Project[] = [
     techStack: ['Python', 'Django', 'SQLite', 'HTML', 'CSS'],
     githubUrl: 'https://github.com/ays19/AUTHENTICATION',
     demoUrl: '',
+    projectVideoUrl: '',
     images: [import.meta.env.BASE_URL + 'authentication.png'],
     metrics: [
       'Implemented custom user registration and login flows using Django\'s auth framework',

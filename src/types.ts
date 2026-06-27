@@ -8,6 +8,7 @@ export interface Project {
   images: string[];
   category: 'Backend' | 'AI & Agents' | 'Full-stack';
   metrics?: string[];
+  projectVideoUrl?: string;
 }
 
 export interface Experience {
