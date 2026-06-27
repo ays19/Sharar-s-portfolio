@@ -171,82 +171,82 @@ export const certificates: Certificate[] = [
   },
   {
     id: 'cert-3',
-    title: 'Introduction to Artificial Intelligence',
-    distributor: 'LinkedIn Learning',
+    title: 'Python & Django',
+    distributor: 'CodersTrust',
     year: '2025',
     imageUrl: 'Certificates/3.png',
     credentialUrl: '#'
   },
   {
     id: 'cert-4',
-    title: 'Career Essentials in Software Development',
-    distributor: 'Microsoft & LinkedIn',
-    year: '2025',
+    title: '1st Runner-up in Microprocessor and Microcontroller Project',
+    distributor: 'UIU Project-Show',
+    year: '2022',
     imageUrl: 'Certificates/4.jpg',
     credentialUrl: '#'
   },
   {
     id: 'cert-5',
-    title: 'Python & Django',
-    distributor: 'CodersTrust',
-    year: '2025',
+    title: 'AI for Career Development',
+    distributor: 'CED Foundation',
+    year: '2026',
     imageUrl: 'Certificates/5.png',
     credentialUrl: '#'
   },
   {
     id: 'cert-6',
-    title: 'Python & Django',
-    distributor: 'CodersTrust',
+    title: 'Career Essentials in Software Development',
+    distributor: 'Microsoft & LinkedIn',
     year: '2025',
-    imageUrl: 'Certificates/5.png',
+    imageUrl: 'Certificates/6.png',
     credentialUrl: '#'
   },
   {
     id: 'cert-7',
-    title: 'Python & Django',
-    distributor: 'CodersTrust',
+    title: 'Career Essentials in Generative AI',
+    distributor: 'Microsoft & LinkedIn',
     year: '2025',
-    imageUrl: 'Certificates/5.png',
+    imageUrl: 'Certificates/7.png',
     credentialUrl: '#'
   },
   {
     id: 'cert-8',
-    title: 'Python & Django',
-    distributor: 'CodersTrust',
+    title: 'Introduction to Artificial Intelligence',
+    distributor: 'LinkedIn Learning',
     year: '2025',
-    imageUrl: 'Certificates/5.png',
+    imageUrl: 'Certificates/8.png',
     credentialUrl: '#'
   },
   {
     id: 'cert-9',
-    title: 'Python & Django',
-    distributor: 'CodersTrust',
+    title: 'C Essentials 1',
+    distributor: 'Cisco Networking Academy',
     year: '2025',
-    imageUrl: 'Certificates/5.png',
+    imageUrl: 'Certificates/9.png',
     credentialUrl: '#'
   },
   {
     id: 'cert-10',
-    title: 'Python & Django',
-    distributor: 'CodersTrust',
+    title: 'Entrepreneurial Skills Assessment & Training',
+    distributor: 'Nagorik Sheba Bangladesh',
     year: '2025',
-    imageUrl: 'Certificates/5.png',
+    imageUrl: 'Certificates/10.png',
     credentialUrl: '#'
   },
   {
     id: 'cert-11',
-    title: 'Python & Django',
-    distributor: 'CodersTrust',
-    year: '2025',
-    imageUrl: 'Certificates/5.png',
+    title: 'Engineering Summit',
+    distributor: 'Youth for Better Future Society',
+    year: '2023',
+    imageUrl: 'Certificates/11.png',
     credentialUrl: '#'
   },
   {
     id: 'cert-12',
-    title: 'C Essentials 1',
-    distributor: 'Cisco Networking Academy',
+    title: 'Adobe Illustrator - Mastering the Fundamentals',
+    distributor: 'Bosubrihi',
     year: '2024',
-    imageUrl: 'Certificates/6.png',
+    imageUrl: 'Certificates/12.png',
     credentialUrl: '#'
   }
 ];
