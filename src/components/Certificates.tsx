@@ -39,7 +39,7 @@ export default function Certificates() {
             Certifications & Credentials
           </h2>
           <p className="text-sm sm:text-base text-neutral-400 max-w-2xl leading-relaxed">
-            Verified professional qualifications in software engineering, cloud systems development, and intelligent agentic workflows.
+            Verified professional qualifications in Python development, AI integration, and cloud computing.
           </p>
         </div>
 

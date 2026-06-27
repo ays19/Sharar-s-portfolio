@@ -14,7 +14,7 @@ export default function Footer() {
             {personalInfo.name} &copy; {new Date().getFullYear()}
           </p>
           <p className="text-[10px]">
-            Designed &amp; engineered for performance &bull; Powered by React
+            Designed &amp; engineered for performance &bull; 
           </p>
         </div>
 

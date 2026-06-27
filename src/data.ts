@@ -87,6 +87,9 @@ export const projects: Project[] = [
       import.meta.env.BASE_URL + 'Project/Storefront_ss/25.png',
       import.meta.env.BASE_URL + 'Project/Storefront_ss/26.png',
       import.meta.env.BASE_URL + 'Project/Storefront_ss/27.png',
+      import.meta.env.BASE_URL + 'Project/Storefront_ss/28.png',
+      import.meta.env.BASE_URL + 'Project/Storefront_ss/29.png',
+      import.meta.env.BASE_URL + 'Project/Storefront_ss/30.png',
     ],
     metrics: [
       'Reduced database queries from 1,002 to 3 via ORM optimization',
