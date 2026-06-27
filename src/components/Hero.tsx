@@ -109,7 +109,7 @@ export default function Hero({ onOpenResumeModal }: HeroProps) {
                 variants={itemVariants}
                 className="text-neutral-400 max-w-xl text-base leading-relaxed"
               >
-                I build production-grade backend APIs, integrate LLM-powered features into real applications, and design automated testing infrastructure. . <span className="text-indigo-400 font-medium">Open to full-time roles and contracts</span>.
+                I build production-grade backend APIs, integrate LLM-powered features into real applications, and design automated testing infrastructure.  <span className="text-indigo-400 font-medium">Open to full-time roles and contracts</span>.
               </motion.p>
 
               {/* Call to Actions */}

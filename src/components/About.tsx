@@ -17,7 +17,7 @@ export default function About() {
     {
       icon: <TestTube className="text-indigo-500" size={24} />,
       title: 'Obsessive Testing',
-      desc: 'Maintaining high stability by implementing mock schemas, continuous integration integrations, and rigorous PyTest unit and load tests.',
+      desc: 'Maintaining high stability with Playwright end-to-end tests, pytest unit and load tests, mock schemas, and automated CI pipelines via GitHub Actions.',
     },
     {
       icon: <Lightbulb className="text-indigo-500" size={24} />,
