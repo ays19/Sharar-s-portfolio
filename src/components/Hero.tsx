@@ -100,7 +100,7 @@ export default function Hero({ onOpenResumeModal }: HeroProps) {
                   <span className="inline-block w-[3px] h-[0.8em] bg-indigo-500 ml-1.5 animate-pulse" style={{ animationDuration: '0.8s' }} />
                 </h1>
                 <p className="text-xl sm:text-2xl font-sans text-neutral-300 font-medium">
-                  Backend Software Engineer & <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-violet-400">AI Architect</span>
+                  Backend Software Engineer & <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-violet-400">AI Application Developer</span>
                 </p>
               </motion.div>
 
@@ -109,7 +109,7 @@ export default function Hero({ onOpenResumeModal }: HeroProps) {
                 variants={itemVariants}
                 className="text-neutral-400 max-w-xl text-base leading-relaxed"
               >
-                I build highly optimized backend APIs, orchestrate agentic language model systems, and design bulletproof testing infrastructures. Currently creating high-impact solutions at <span className="text-indigo-400 font-medium">SWOT System Limited</span>.
+                I build production-grade backend APIs, integrate LLM-powered features into real applications, and design automated testing infrastructure. . <span className="text-indigo-400 font-medium">Open to full-time roles and contracts</span>.
               </motion.p>
 
               {/* Call to Actions */}
