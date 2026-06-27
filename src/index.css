@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  /* Map neutral palette to the Professional Polish zinc colors */
+  --color-neutral-950: #09090b;
+  --color-neutral-900: #18181b;
+  --color-neutral-850: #202023;
+  --color-neutral-800: #27272a;
+  --color-neutral-750: #333336;
+  --color-neutral-700: #3f3f46;
+  --color-neutral-600: #52525b;
+  --color-neutral-500: #71717a;
+  --color-neutral-400: #a1a1aa;
+  --color-neutral-300: #d4d4d8;
+  --color-neutral-200: #e4e4e7;
+  --color-neutral-100: #f4f4f5;
+  
+  /* Map Indigo/Violet to the Professional Polish palette */
+  --color-indigo-950: #12121e;
+  --color-indigo-900: #1e1b4b;
+  --color-indigo-800: #312e81;
+  --color-indigo-600: #4f46e5;
+  --color-indigo-550: #6366f1;
+  --color-indigo-500: #818cf8;
+  --color-indigo-450: #9333ea;
+  --color-indigo-400: #a5b4fc;
+}
+
+/* Custom global scrollbar & focus optimizations */
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #09090b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #818cf8;
+}
+
+
