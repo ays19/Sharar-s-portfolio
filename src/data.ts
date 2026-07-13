@@ -101,9 +101,9 @@ export const projects: Project[] = [
     id: 'proj-2',
     title: 'AI Customer Support System',
     category: 'AI & Agents',
-    description: 'An intelligent ticketing dashboard and support agent. Using Google Gemini API and custom semantic routes, it reads user support issues, cross-references internal markdown guides, classifies severity, and drafts highly context-aware replies.',
-    techStack: ['Express', 'Gemini API', 'Better-Auth', 'React', 'TypeScript', 'Vanilla CSS', 'PostgreSQL'],
-    githubUrl: 'https://github.com/ays19/AI-Helpdesk---Ticketing-System',
+    description: 'An intelligent ticketing dashboard and support agent. Using Groq API and custom semantic routes, it reads user support issues, cross-references internal markdown guides, classifies severity, and drafts highly context-aware replies.',
+    techStack: ['Express', 'Groq API', 'Better-Auth', 'React', 'TypeScript', 'Vanilla CSS', 'PostgreSQL'],
+    githubUrl: 'https://github.com/ays19/AI-Powered-Helpdesk-and-Ticketing-System',
     demoUrl: 'https://ai-powered-helpdesk-and-ticketing-system.up.railway.app/',
     projectVideoUrl: 'https://www.youtube.com/watch?v=rSMxxQLQCcU',
     images: [import.meta.env.BASE_URL + 'Project/Helpdesk/1.png',
@@ -119,7 +119,7 @@ export const projects: Project[] = [
     metrics: [
       'Cuts customer service queue times by 48%',
       'Achieved an 85% first-contact automatic resolution rate',
-      'Employs Gemini LLM for smart ticket routing'
+      'Employs Groq LLM for smart ticket routing'
     ]
   },
   {
