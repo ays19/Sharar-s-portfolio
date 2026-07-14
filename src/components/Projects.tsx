@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Github, ExternalLink, Sparkles, Database, Layers, Check, ChevronLeft, ChevronRight, X, PlayCircle } from 'lucide-react';
+import { Github, ExternalLink, Sparkles, Database, Layers, Check, ChevronLeft, ChevronRight, X, PlayCircle, Trophy } from 'lucide-react';
 import { projects } from '../data';
 import { Project } from '../types';
 
@@ -44,9 +44,12 @@ export default function Projects() {
     'Full-stack',
   ];
 
-  const filteredProjects = activeTab === 'All'
-    ? projects
-    : projects.filter((project) => project.category === activeTab);
+  // Featured projects are always sorted first within any tab
+  const filteredProjects = (
+    activeTab === 'All'
+      ? projects
+      : projects.filter((project) => project.category === activeTab)
+  ).sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0));
 
   const getCategoryIcon = (category: string) => {
     switch (category) {
@@ -55,7 +58,7 @@ export default function Projects() {
       case 'AI & Agents':
         return <Sparkles size={14} className="text-indigo-450" />;
       case 'Full-stack':
-        default:
+      default:
         return <Layers size={14} className="text-emerald-400" />;
     }
   };
@@ -107,10 +110,14 @@ export default function Projects() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.3 }}
-                className="rounded-2xl bg-neutral-900/40 border border-neutral-800/60 hover:border-indigo-500/40 transition-all duration-300 flex flex-col h-full overflow-hidden group"
+                className={`rounded-2xl bg-neutral-900/40 border transition-all duration-300 flex flex-col h-full overflow-hidden group ${
+                  project.featured
+                    ? 'border-amber-500/40 hover:border-amber-400/70 shadow-lg shadow-amber-500/5'
+                    : 'border-neutral-800/60 hover:border-indigo-500/40'
+                }`}
               >
                 {/* Project Image */}
-                <div 
+                <div
                   className="relative h-48 overflow-hidden bg-neutral-950 cursor-pointer"
                   onClick={() => openLightbox(project)}
                 >
@@ -121,25 +128,37 @@ export default function Projects() {
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     referrerPolicy="no-referrer"
                   />
-                  
+
                   {/* Photo count indicator if multiple */}
                   {project.images.length > 1 && (
                     <div className="absolute bottom-3 right-3 z-20 bg-neutral-900/80 backdrop-blur border border-neutral-700/50 text-white text-[10px] font-mono px-2 py-1 rounded-md flex items-center gap-1 shadow-lg pointer-events-none">
                       <span>1/{project.images.length}</span>
                     </div>
                   )}
-                  
+
                   {/* Category Pill Tag Overlay */}
                   <div className="absolute top-4 left-4 z-20 flex items-center gap-1.5 px-3 py-1 bg-neutral-950/90 border border-neutral-800 rounded-full text-[10px] font-mono font-semibold text-neutral-200">
                     {getCategoryIcon(project.category)}
                     {project.category}
                   </div>
+
+                  {/* Kaggle Capstone Badge — only on featured project */}
+                  {project.featured && (
+                    <div className="absolute top-4 right-4 z-20 flex items-center gap-1.5 px-2.5 py-1 bg-amber-500/20 border border-amber-500/50 rounded-full text-[10px] font-mono font-semibold text-amber-300">
+                      <Trophy size={10} className="text-amber-400" />
+                      Kaggle Capstone
+                    </div>
+                  )}
                 </div>
 
                 {/* Card Content details */}
                 <div className="p-6 flex flex-col flex-grow gap-4">
                   <div className="flex flex-col gap-1.5">
-                    <h3 className="text-xl font-bold text-white group-hover:text-indigo-500 transition-colors">
+                    <h3 className={`text-xl font-bold transition-colors ${
+                      project.featured
+                        ? 'text-white group-hover:text-amber-400'
+                        : 'text-white group-hover:text-indigo-500'
+                    }`}>
                       {project.title}
                     </h3>
                     <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed min-h-[72px]">
@@ -149,12 +168,20 @@ export default function Projects() {
 
                   {/* Recruiter-Ready Metrics Highlight */}
                   {project.metrics && (
-                    <div className="flex flex-col gap-1.5 bg-neutral-900/80 border border-neutral-850 p-3 rounded-xl">
-                      <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-wider font-semibold">Key Achievements</span>
+                    <div className={`flex flex-col gap-1.5 border p-3 rounded-xl ${
+                      project.featured
+                        ? 'bg-amber-950/20 border-amber-900/30'
+                        : 'bg-neutral-900/80 border-neutral-850'
+                    }`}>
+                      <span className={`text-[10px] font-mono uppercase tracking-wider font-semibold ${
+                        project.featured ? 'text-amber-500/70' : 'text-neutral-500'
+                      }`}>
+                        Key Achievements
+                      </span>
                       <ul className="flex flex-col gap-1">
                         {project.metrics.map((metric, mIdx) => (
                           <li key={mIdx} className="text-xs text-neutral-300 flex items-center gap-1.5 font-sans">
-                            <Check size={12} className="text-indigo-500 flex-shrink-0" />
+                            <Check size={12} className={project.featured ? 'text-amber-400 flex-shrink-0' : 'text-indigo-500 flex-shrink-0'} />
                             <span>{metric}</span>
                           </li>
                         ))}
@@ -178,7 +205,7 @@ export default function Projects() {
                   <div className="h-[1px] bg-neutral-800/50 w-full mt-2" />
 
                   {/* Action Link Buttons */}
-                  <div className="flex items-center justify-between mt-1">
+                  <div className="flex items-center justify-between mt-1 flex-wrap gap-2">
                     <a
                       id={`project-${project.id}-code`}
                       href={project.githubUrl}
@@ -189,30 +216,45 @@ export default function Projects() {
                       <Github size={14} className="group-hover/link:text-indigo-500" />
                       Source Code
                     </a>
-                    {project.demoUrl && (
-                      <a
-                        id={`project-${project.id}-demo`}
-                        href={project.demoUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-xs font-mono font-semibold text-indigo-500 hover:text-indigo-600 flex items-center gap-1.5 group/link transition-colors"
-                      >
-                        <ExternalLink size={14} />
-                        Live Demo
-                      </a>
-                    )}
-                    {project.projectVideoUrl && (
-                      <a
-                        id={`project-${project.id}-video`}
-                        href={project.projectVideoUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-xs font-mono font-semibold text-indigo-500 hover:text-indigo-600 flex items-center gap-1.5 group/link transition-colors"
-                      >
-                        <PlayCircle size={14} />
-                        Project Video
-                      </a>
-                    )}
+
+                    <div className="flex items-center gap-3 flex-wrap">
+                      {project.demoUrl && (
+                        <a
+                          id={`project-${project.id}-demo`}
+                          href={project.demoUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-xs font-mono font-semibold text-indigo-500 hover:text-indigo-400 flex items-center gap-1.5 group/link transition-colors"
+                        >
+                          <ExternalLink size={14} />
+                          Live Demo
+                        </a>
+                      )}
+                      {project.projectVideoUrl && (
+                        <a
+                          id={`project-${project.id}-video`}
+                          href={project.projectVideoUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-xs font-mono font-semibold text-indigo-500 hover:text-indigo-400 flex items-center gap-1.5 group/link transition-colors"
+                        >
+                          <PlayCircle size={14} />
+                          Video
+                        </a>
+                      )}
+                      {project.kaggleUrl && (
+                        <a
+                          id={`project-${project.id}-kaggle`}
+                          href={project.kaggleUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-xs font-mono font-semibold text-amber-400 hover:text-amber-300 flex items-center gap-1.5 group/link transition-colors"
+                        >
+                          <Trophy size={14} />
+                          Kaggle
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </div>
               </motion.div>
@@ -249,14 +291,22 @@ export default function Projects() {
               onClick={(e) => e.stopPropagation()}
             >
               {/* Header Title */}
-              <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">{selectedProject.title}</h3>
+              <div className="flex items-center gap-3">
+                {selectedProject.featured && (
+                  <span className="flex items-center gap-1.5 px-2.5 py-1 bg-amber-500/20 border border-amber-500/50 rounded-full text-[10px] font-mono font-semibold text-amber-300">
+                    <Trophy size={10} className="text-amber-400" />
+                    Kaggle Capstone
+                  </span>
+                )}
+                <h3 className="text-xl sm:text-2xl font-bold text-white">{selectedProject.title}</h3>
+              </div>
 
               {/* Main Image Frame */}
               <div className="relative rounded-2xl overflow-hidden bg-neutral-900 border border-neutral-800/80 shadow-2xl flex items-center justify-center max-h-[70vh] w-full group">
-                
+
                 {/* Navigation: Left */}
                 {selectedProject.images.length > 1 && (
-                  <button 
+                  <button
                     onClick={(e) => { e.stopPropagation(); prevImage(); }}
                     className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-neutral-950/60 hover:bg-neutral-900 border border-neutral-700/50 text-white flex items-center justify-center backdrop-blur-sm transition-all z-20"
                   >
@@ -273,7 +323,7 @@ export default function Projects() {
 
                 {/* Navigation: Right */}
                 {selectedProject.images.length > 1 && (
-                  <button 
+                  <button
                     onClick={(e) => { e.stopPropagation(); nextImage(); }}
                     className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-neutral-950/60 hover:bg-neutral-900 border border-neutral-700/50 text-white flex items-center justify-center backdrop-blur-sm transition-all z-20"
                   >
@@ -290,7 +340,11 @@ export default function Projects() {
                       key={idx}
                       onClick={(e) => { e.stopPropagation(); setCurrentImageIndex(idx); }}
                       className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                        idx === currentImageIndex ? 'bg-indigo-500 w-6' : 'bg-neutral-700 hover:bg-neutral-500'
+                        idx === currentImageIndex
+                          ? selectedProject.featured
+                            ? 'bg-amber-400 w-6'
+                            : 'bg-indigo-500 w-6'
+                          : 'bg-neutral-700 hover:bg-neutral-500'
                       }`}
                     />
                   ))}
