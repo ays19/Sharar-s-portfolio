@@ -60,6 +60,43 @@ export const education: Experience[] = [
 ];
 
 export const projects: Project[] = [
+  
+  {
+    id: 'proj-2',
+    title: 'HELPDESK — AI Helpdesk & Ticketing System',
+    category: 'AI & Agents',
+    featured: true,
+    description:
+      'Production-deployed multi-agent pipeline that handles the full support ticket lifecycle autonomously. Email arrives → Agent 1 classifies it → Agent 2 resolves it via knowledge base → reply sent — before a human ever sees it. Submitted to the Google × Kaggle 2026 AI Agents Intensive Capstone, "Agents for Business" track.',
+    techStack: [
+      'Bun', 'Express 4', 'TypeScript', 'React 18', 'TanStack Query v5',
+      'Tailwind CSS v4', 'shadcn/ui', 'PostgreSQL', 'Prisma v7', 'PgBoss',
+      'Groq llama-3.1-8b', 'Vercel AI SDK', 'Resend', 'Better Auth',
+      'Sentry', 'Vitest + RTL', 'Playwright', 'Docker', 'Railway',
+    ],
+    githubUrl: 'https://github.com/ays19/HELPDESK',
+    demoUrl: 'https://ai-powered-helpdesk-and-ticketing-system.up.railway.app/',
+    projectVideoUrl: 'https://www.youtube.com/watch?v=rSMxxQLQCcU',
+    kaggleUrl: 'https://www.kaggle.com/competitions/vibecoding-agents-capstone-project/writeups/new-writeup-1783086059176', 
+    images: [
+      import.meta.env.BASE_URL + 'Project/Helpdesk/1.png',
+      import.meta.env.BASE_URL + 'Project/Helpdesk/2.png',
+      import.meta.env.BASE_URL + 'Project/Helpdesk/3.png',
+      import.meta.env.BASE_URL + 'Project/Helpdesk/4.png',
+      import.meta.env.BASE_URL + 'Project/Helpdesk/5.png',
+      import.meta.env.BASE_URL + 'Project/Helpdesk/6.png',
+      import.meta.env.BASE_URL + 'Project/Helpdesk/7.png',
+      import.meta.env.BASE_URL + 'Project/Helpdesk/8.png',
+      import.meta.env.BASE_URL + 'Project/Helpdesk/10.jpg',  
+    ],
+    metrics: [
+      '145 automated tests — 118 Vitest/RTL + 27 Playwright E2E across 20 files',
+      '3-agent PgBoss queue: Classification → Auto-Resolve → Email Worker',
+      'Race condition eliminated with SELECT FOR UPDATE row-level locking',
+      'Google × Kaggle 2026 AI Agents Intensive Capstone — "Agents for Business"',
+    ],
+  },
+
   {
     id: 'proj-1',
     title: 'Storefront — Production-Grade E-Commerce REST API',
@@ -97,31 +134,7 @@ export const projects: Project[] = [
       'Integrated unit and integration tests with 92% coverage'
     ]
   },
-  {
-    id: 'proj-2',
-    title: 'AI Customer Support System',
-    category: 'AI & Agents',
-    description: 'An intelligent ticketing dashboard and support agent. Using Groq API and custom semantic routes, it reads user support issues, cross-references internal markdown guides, classifies severity, and drafts highly context-aware replies.',
-    techStack: ['Express', 'Groq API', 'Better-Auth', 'React', 'TypeScript', 'Vanilla CSS', 'PostgreSQL'],
-    githubUrl: 'https://github.com/ays19/AI-Powered-Helpdesk-and-Ticketing-System',
-    demoUrl: 'https://ai-powered-helpdesk-and-ticketing-system.up.railway.app/',
-    projectVideoUrl: 'https://www.youtube.com/watch?v=rSMxxQLQCcU',
-    images: [import.meta.env.BASE_URL + 'Project/Helpdesk/1.png',
-      import.meta.env.BASE_URL + 'Project/Helpdesk/2.png',
-      import.meta.env.BASE_URL + 'Project/Helpdesk/3.png',
-      import.meta.env.BASE_URL + 'Project/Helpdesk/4.png',
-      import.meta.env.BASE_URL + 'Project/Helpdesk/5.png',
-      import.meta.env.BASE_URL + 'Project/Helpdesk/6.png',
-      import.meta.env.BASE_URL + 'Project/Helpdesk/7.png',
-      import.meta.env.BASE_URL + 'Project/Helpdesk/8.png',
-      import.meta.env.BASE_URL + 'Project/Helpdesk/9.png',
-      import.meta.env.BASE_URL + 'Project/Helpdesk/10.jpg',],
-    metrics: [
-      'Cuts customer service queue times by 48%',
-      'Achieved an 85% first-contact automatic resolution rate',
-      'Employs Groq LLM for smart ticket routing'
-    ]
-  },
+  
   {
     id: 'proj-3',
     title: 'Fitness Tracker Portal',

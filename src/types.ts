@@ -9,8 +9,9 @@ export interface Project {
   category: 'Backend' | 'AI & Agents' | 'Full-stack';
   metrics?: string[];
   projectVideoUrl?: string;
+  featured?: boolean;       
+  kaggleUrl?: string;       
 }
-
 export interface Experience {
   id: string;
   role: string;
