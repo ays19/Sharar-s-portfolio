@@ -18,7 +18,7 @@ export interface Experience {
   company: string;
   location: string;
   period: string;
-  type: 'Full-time' | 'Contract' | 'Internship' | 'Education';
+  type: 'Full-time' | 'Part-time' | 'Contract' | 'Internship' | 'Education';
   description: string[];
   skillsUsed: string[];
 }

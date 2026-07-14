@@ -30,7 +30,7 @@ export const experiences: Experience[] = [
     company: 'SWOT System Limited',
     location: 'Dhaka, Bangladesh',
     period: 'Feb 2025 – Feb 2026',
-    type: 'Full-time',
+    type: 'Part-time',
     description: [
       'Collaborated with a 4-member engineering team on requirement analysis and feature delivery.',
       'Performed manual testing and defect analysis to improve software quality before deployment.',
