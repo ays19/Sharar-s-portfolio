@@ -134,7 +134,37 @@ export const projects: Project[] = [
       'Integrated unit and integration tests with 92% coverage'
     ]
   },
-  
+
+  {
+    id: 'proj-6',
+    title: 'SaaS-Django — Subscription SaaS Platform with Stripe Billing',
+    category: 'Backend',
+    description:
+      'A modular Django SaaS platform across 9 decoupled apps, integrating Stripe API for subscription checkout, upgrades, and cancellations with signal-driven Stripe-to-database synchronization. Features automated CI/CD with Neon Postgres branching and scheduled subscription reconciliation.',
+    techStack: ['Python', 'Django', 'Stripe API', 'PostgreSQL (Neon)', 'GitHub Actions', 'Docker'],
+    githubUrl: 'https://github.com/ays19/SaaS-Django',
+    demoUrl: '',
+    projectVideoUrl: '',
+    images: [
+      import.meta.env.BASE_URL + 'Project/SaaS_Django/thumb_main.png',
+      import.meta.env.BASE_URL + 'Project/SaaS_Django/s_1.png',
+      import.meta.env.BASE_URL + 'Project/SaaS_Django/s_2.png',
+      import.meta.env.BASE_URL + 'Project/SaaS_Django/s_3.png',
+      import.meta.env.BASE_URL + 'Project/SaaS_Django/s_4.png',
+      import.meta.env.BASE_URL + 'Project/SaaS_Django/s_5.png',
+      import.meta.env.BASE_URL + 'Project/SaaS_Django/s_6.png',
+      import.meta.env.BASE_URL + 'Project/SaaS_Django/s_7.png',
+      import.meta.env.BASE_URL + 'Project/SaaS_Django/s_9.png',
+    ],
+    metrics: [
+      'Architected 9 decoupled Django apps with signal-driven Stripe-to-DB sync',
+      'Engineered automatic Stripe Product/Price creation and permission group syncing via model signals',
+      'Built safeguard logic preventing concurrent duplicate subscriptions during plan upgrades',
+      '6-stage GitHub Actions CI/CD pipeline with Neon Postgres database branching',
+      'Automated production reconciliation via scheduled GitHub Actions worker running twice daily',
+    ],
+  },
+
   {
     id: 'proj-3',
     title: 'Fitness Tracker Portal',
