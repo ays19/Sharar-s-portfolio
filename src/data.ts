@@ -17,7 +17,7 @@ export const personalInfo = {
     highlights: [
       { label: 'Core Focus', value: 'Backend Architecture & Agentic AI' },
       { label: 'Testing Standard', value: 'Manual and automated testing with defect analysis' },
-      { label: 'AI & Dev Tools', value: 'Gemini API, Antigravity CLI, Claude Code, Cursor'},
+      { label: 'AI & Dev Tools', value: 'Gemini API, Google ADK, Vercel AI SDK, Claude Code'},
       { label: 'Deployment Strategy', value: 'Railway, Docker, GitHub Actions' }
     ]
   }
@@ -137,14 +137,14 @@ export const projects: Project[] = [
 
   {
     id: 'proj-6',
-    title: 'SaaS-Django — Subscription SaaS Platform with Stripe Billing',
+    title: 'SaaS-Django — Stripe Subscription Platform',
     category: 'Backend',
     description:
       'A modular Django SaaS platform across 9 decoupled apps, integrating Stripe API for subscription checkout, upgrades, and cancellations with signal-driven Stripe-to-database synchronization. Features automated CI/CD with Neon Postgres branching and scheduled subscription reconciliation.',
     techStack: ['Python', 'Django', 'Stripe API', 'PostgreSQL (Neon)', 'GitHub Actions', 'Docker'],
     githubUrl: 'https://github.com/ays19/SaaS-Django',
-    demoUrl: '',
-    projectVideoUrl: '',
+    demoUrl: 'https://saas-django-c41r.onrender.com/',
+    projectVideoUrl: 'https://youtu.be/EhVSQM7U5qk?si=hu6AcQR4Clg33Ddv',
     images: [
       import.meta.env.BASE_URL + 'Project/SaaS_Django/thumb_main.png',
       import.meta.env.BASE_URL + 'Project/SaaS_Django/s_1.png',
@@ -161,7 +161,6 @@ export const projects: Project[] = [
       'Engineered automatic Stripe Product/Price creation and permission group syncing via model signals',
       'Built safeguard logic preventing concurrent duplicate subscriptions during plan upgrades',
       '6-stage GitHub Actions CI/CD pipeline with Neon Postgres database branching',
-      'Automated production reconciliation via scheduled GitHub Actions worker running twice daily',
     ],
   },
 
@@ -182,37 +181,6 @@ export const projects: Project[] = [
       'Responsive design with customized tracking charts',
       'Optimized backend routes with index caching'
     ]
-  },
-  {
-    id: 'proj-4',
-    title: 'E-Commerce Web',
-    category: 'Full-stack',
-    description: 'A Django-based e-commerce platform with user authentication, product catalog, cart management, and order processing built on Django\'s MVT architecture.',
-    techStack: ['Python', 'Django', 'SQLite', 'HTML', 'CSS','Bootstrap'],
-    githubUrl: 'https://github.com/ays19/E-Commerce-Project',
-    demoUrl: '',
-    projectVideoUrl: '',
-    images: [import.meta.env.BASE_URL + 'ecommerce.png'],
-    metrics: [
-      'Built user registration, login, and profile management using Django\'s built-in auth system,',
-      'Structured project with modular Django apps (product, user_account) and integrated Bootstrap frontend templates'
-    ]
-  },
-  {
-    id: 'proj-5',
-    title: 'Authentication System',
-    category: 'Backend',
-    description: 'A Django-based custom authentication system implementing user registration, login, logout, and session management from scratch.',
-    techStack: ['Python', 'Django', 'SQLite', 'HTML', 'CSS'],
-    githubUrl: 'https://github.com/ays19/AUTHENTICATION',
-    demoUrl: '',
-    projectVideoUrl: '',
-    images: [import.meta.env.BASE_URL + 'authentication.png'],
-    metrics: [
-      'Implemented custom user registration and login flows using Django\'s auth framework',
-      'Built session-based authentication with form validation and error handling',
-      'Structured as a standalone reusable Django app'
-    ]
   }
 ];
 
@@ -232,22 +200,24 @@ export const skillsMatrix: SkillCategory[] = [
     skills: [
       { name: 'Django' },
       { name: 'Django REST Framework' },
-      { name: 'FastAPI' }
+      { name: 'FastAPI' },
+      { name: 'Stripe API' }
     ]
   },
   {
     title: 'AI & Agentic Workflows',
     skills: [
       { name: 'Gemini API' },
+      { name: 'Google ADK' },
+      { name: 'Vercel AI SDK' },
       { name: 'Claude Code' },
-      { name: 'Cursor' },
-      { name: 'Antigravity CLI' },
-      { name: 'Vercel AI SDK' }
+      { name: 'Cursor' }
     ]
   },
   {
     title: 'Databases & Cache',
     skills: [
+      { name: 'PostgreSQL' },
       { name: 'MySQL' },
       { name: 'Redis (Caching & Pub/Sub)' },
       { name: 'SQLite' }
