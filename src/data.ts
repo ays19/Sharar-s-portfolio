@@ -236,6 +236,14 @@ export const skillsMatrix: SkillCategory[] = [
 
 export const certificates: Certificate[] = [
   {
+    id: 'cert-13',
+    title: '5-Day AI Agents: Intensive Vibe Coding Course',
+    distributor: 'Google & kaggle',
+    year: '2026',
+    imageUrl: 'Certificates/13.png',
+    credentialUrl: '#'
+  },
+  {
     id: 'cert-1',
     title: 'AWS AI Practitioner Challenge',
     distributor: 'AWS + Udacity',
