@@ -131,7 +131,7 @@ export const projects: Project[] = [
     title: 'Storefront — Production-Grade E-Commerce REST API',
     category: 'Backend',
     description: 'A high-performance, robust e-commerce API backend designed with Django and PostgreSQL. Features secure JWT authentication, nested category catalogs, UUID-based cart IDs, and atomic order transactions.',
-    techStack: ['Django', 'Django REST Framework', 'PostgreSQL', 'Redis', 'Docker', 'PyTest'],
+    techStack: ['Django', 'Django REST Framework', 'MySQL', 'Redis', 'Docker', 'PyTest'],
     githubUrl: 'https://github.com/ays19/storefront',
     demoUrl: 'https://sharar-prod.up.railway.app/store/',
     projectVideoUrl: 'https://www.youtube.com/watch?v=W3Roy7Ab0rI&t=18s',

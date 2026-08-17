@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { ArrowDown, Github, Linkedin, Download, Terminal, Briefcase, Zap } from 'lucide-react';
 import { personalInfo } from '../data';
-import profileImg from '../assets/images/pic.png';
+import profileImg from '../assets/images/pic.webp';
 
 interface HeroProps {
   onOpenResumeModal: () => void;
