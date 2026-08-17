@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ays19.github.io/Sharar-s-portfolio/sitemap.xml
