@@ -16,8 +16,8 @@ export default function About() {
     },
     {
       icon: <TestTube className="text-indigo-500" size={24} />,
-      title: 'Obsessive Testing',
-      desc: 'Maintaining high stability with Playwright end-to-end tests, pytest unit and load tests, mock schemas, and automated CI pipelines via GitHub Actions.',
+      title: 'QA & Test Automation',
+      desc: 'Shipped 145 automated tests (118 Vitest + 27 Playwright) plus pytest-django suites — end-to-end flows, unit coverage, mock schemas, and CI pipelines via GitHub Actions.',
     },
     {
       icon: <Lightbulb className="text-indigo-500" size={24} />,

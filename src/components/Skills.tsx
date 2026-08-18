@@ -13,7 +13,8 @@ export default function Skills() {
         return <Sparkles size={18} className="text-indigo-500" />;
       case 'databases & cache':
         return <Database size={18} className="text-emerald-450" />;
-      case 'devops & testing':
+      case 'qa & test automation':
+      case 'devops & tools':
       default:
         return <ShieldCheck size={18} className="text-emerald-450" />;
     }
