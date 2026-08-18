@@ -13,10 +13,10 @@ export const personalInfo = {
   linkedin: 'https://www.linkedin.com/in/yasirsharar/',
   resumeUrl: 'https://drive.google.com/drive/folders/1SyanyPV7CAICJ0kf5XGzR0U311YQNKZX?usp=drive_link',
   about: {
-    summary: 'A backend-focused Python developer with a Computer Science foundation. I build production-grade REST APIs with Django, integrate LLM-powered features using Gemini and Claude APIs, and implement automated testing pipelines. Passionate about writing clean, maintainable code and shipping reliable software.',
+    summary: 'A backend-focused Python developer with a Computer Science foundation. I build production-grade REST APIs with Django, integrate LLM-powered features using Gemini and Claude APIs, and ship full QA test suites with Playwright and Vitest alongside the code. Passionate about writing clean, maintainable code and shipping reliable software.',
     highlights: [
       { label: 'Core Focus', value: 'Backend Architecture & Agentic AI' },
-      { label: 'Testing Standard', value: 'Manual and automated testing with defect analysis' },
+      { label: 'QA & Testing', value: '145+ automated tests — Playwright, Vitest, pytest-django' },
       { label: 'AI & Dev Tools', value: 'Gemini API, Google ADK, Vercel AI SDK, Claude Code'},
       { label: 'Deployment Strategy', value: 'Railway, Docker, GitHub Actions' }
     ]
@@ -130,7 +130,7 @@ export const projects: Project[] = [
     id: 'proj-1',
     title: 'Storefront — Production-Grade E-Commerce REST API',
     category: 'Backend',
-    description: 'A high-performance, robust e-commerce API backend designed with Django and PostgreSQL. Features secure JWT authentication, nested category catalogs, UUID-based cart IDs, and atomic order transactions.',
+    description: 'A high-performance, robust e-commerce API backend designed with Django and MySQL. Features secure JWT authentication, nested category catalogs, UUID-based cart IDs, and atomic order transactions.',
     techStack: ['Django', 'Django REST Framework', 'MySQL', 'Redis', 'Docker', 'PyTest'],
     githubUrl: 'https://github.com/ays19/storefront',
     demoUrl: 'https://sharar-prod.up.railway.app/store/',
@@ -224,11 +224,20 @@ export const skillsMatrix: SkillCategory[] = [
     ]
   },
   {
-    title: 'DevOps & Testing',
+    title: 'QA & Test Automation',
+    skills: [
+      { name: 'Playwright (End-to-End Testing)' },
+      { name: 'Vitest & pytest-django (Unit Testing)' },
+      { name: 'Locust (Performance Testing)' },
+      { name: 'Postman (API Testing)' },
+      { name: 'Manual Testing & Defect Analysis' }
+    ]
+  },
+  {
+    title: 'DevOps & Tools',
     skills: [
       { name: 'Docker / Containerization' },
       { name: 'CI/CD (GitHub Actions)' },
-      { name: 'PyTest, Locust & End-to-End Playwright Testing' },
       { name: 'Linux / Shell Scripting' }
     ]
   }
@@ -340,4 +349,3 @@ export const certificates: Certificate[] = [
     credentialUrl: '#'
   }
 ];
-
