@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
-import { ArrowDown, Github, Linkedin, Download, Terminal, Briefcase, Zap } from 'lucide-react';
+import { ArrowDown, Github, Linkedin, Download, Terminal, FileText } from 'lucide-react';
 import { personalInfo } from '../data';
 import profileImg from '../assets/images/pic.webp';
 
@@ -125,7 +125,7 @@ export default function Hero({ onOpenResumeModal }: HeroProps) {
                 <button
                   id="hero-cta-projects"
                   onClick={scrollToProjects}
-                  className="bg-indigo-500 hover:bg-indigo-600 text-white font-semibold px-6 py-3 rounded-xl transition-all flex items-center gap-2 shadow-lg shadow-indigo-500/25 group cursor-pointer"
+                  className="bg-indigo-500 hover:bg-indigo-600 text-white font-semibold px-6 py-3 rounded-xl transition-all flex items-center gap-2 shadow-lg shadow-indigo-500/25 group cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400"
                 >
                   View Work
                   <ArrowDown size={16} className="group-hover:translate-y-0.5 transition-transform" />
@@ -135,11 +135,20 @@ export default function Hero({ onOpenResumeModal }: HeroProps) {
                   href={personalInfo.resumeUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-neutral-900 hover:bg-neutral-800 border border-neutral-800 text-neutral-200 font-semibold px-6 py-3 rounded-xl transition-all flex items-center gap-2 group cursor-pointer"
+                  className="bg-neutral-900 hover:bg-neutral-800 border border-neutral-800 text-neutral-200 font-semibold px-6 py-3 rounded-xl transition-all flex items-center gap-2 group cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50"
                 >
                   View Resume
                   <Download size={16} className="group-hover:translate-y-0.5 transition-transform" />
                 </a>
+                <button
+                  id="hero-cta-interactive-resume"
+                  type="button"
+                  onClick={onOpenResumeModal}
+                  className="bg-neutral-900/60 hover:bg-neutral-800 border border-neutral-800 hover:border-indigo-500/40 text-neutral-300 hover:text-white font-mono text-xs font-semibold px-4 py-3 rounded-xl transition-all flex items-center gap-2 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50"
+                >
+                  <FileText size={15} className="text-indigo-400" />
+                  interactive_resume.json
+                </button>
               </motion.div>
 
               {/* Hero Social Links */}
@@ -151,7 +160,7 @@ export default function Hero({ onOpenResumeModal }: HeroProps) {
                     href={personalInfo.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-xl bg-neutral-900 border border-neutral-800 hover:border-indigo-500 text-neutral-400 hover:text-white flex items-center justify-center transition-all shadow-md"
+                    className="w-11 h-11 rounded-xl bg-neutral-900 border border-neutral-800 hover:border-indigo-500 text-neutral-400 hover:text-white flex items-center justify-center transition-all shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50"
                     aria-label="GitHub Profile"
                   >
                     <Github size={18} />
@@ -161,7 +170,7 @@ export default function Hero({ onOpenResumeModal }: HeroProps) {
                     href={personalInfo.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-xl bg-neutral-900 border border-neutral-800 hover:border-indigo-500 text-neutral-400 hover:text-white flex items-center justify-center transition-all shadow-md"
+                    className="w-11 h-11 rounded-xl bg-neutral-900 border border-neutral-800 hover:border-indigo-500 text-neutral-400 hover:text-white flex items-center justify-center transition-all shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50"
                     aria-label="LinkedIn Profile"
                   >
                     <Linkedin size={18} />
@@ -200,7 +209,7 @@ export default function Hero({ onOpenResumeModal }: HeroProps) {
 
             {/* Floating Status Badge */}
             <motion.div
-              className="absolute -bottom-6 -left-6 bg-neutral-900 border border-neutral-800 rounded-xl p-4 shadow-xl flex items-center gap-3 z-10"
+              className="absolute -bottom-4 left-2 sm:-bottom-6 sm:-left-6 bg-neutral-900 border border-neutral-800 rounded-xl p-4 shadow-xl flex items-center gap-3 z-10"
               animate={prefersReducedMotion ? { y: 0 } : { y: [0, -8, 0] }}
               transition={
                 prefersReducedMotion

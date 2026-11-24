@@ -133,7 +133,7 @@ export default function ContactForm() {
                 href={personalInfo.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-xl bg-neutral-900 border border-neutral-850 text-neutral-400 hover:text-white hover:border-indigo-500/50 flex items-center justify-center transition-all"
+                className="w-11 h-11 rounded-xl bg-neutral-900 border border-neutral-850 text-neutral-400 hover:text-white hover:border-indigo-500/50 flex items-center justify-center transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50"
                 aria-label="GitHub Profile"
               >
                 <Github size={18} />
@@ -143,7 +143,7 @@ export default function ContactForm() {
                 href={personalInfo.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-xl bg-neutral-900 border border-neutral-850 text-neutral-400 hover:text-white hover:border-indigo-500/50 flex items-center justify-center transition-all"
+                className="w-11 h-11 rounded-xl bg-neutral-900 border border-neutral-850 text-neutral-400 hover:text-white hover:border-indigo-500/50 flex items-center justify-center transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50"
                 aria-label="LinkedIn Profile"
               >
                 <Linkedin size={18} />
@@ -206,7 +206,7 @@ export default function ContactForm() {
                         value={form.name}
                         onChange={handleChange}
                         placeholder="John Doe"
-                        className="px-4 py-3 bg-neutral-950 border border-neutral-800 rounded-xl focus:border-indigo-500 focus:outline-none transition-colors text-sm text-neutral-200"
+                        className="px-4 py-3 bg-neutral-950 border border-neutral-800 rounded-xl focus:border-indigo-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/40 transition-colors text-sm text-neutral-200"
                         required
                       />
                     </div>
@@ -223,7 +223,7 @@ export default function ContactForm() {
                         value={form.email}
                         onChange={handleChange}
                         placeholder="john@example.com"
-                        className="px-4 py-3 bg-neutral-950 border border-neutral-800 rounded-xl focus:border-indigo-500 focus:outline-none transition-colors text-sm text-neutral-200"
+                        className="px-4 py-3 bg-neutral-950 border border-neutral-800 rounded-xl focus:border-indigo-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/40 transition-colors text-sm text-neutral-200"
                         required
                       />
                     </div>
@@ -241,7 +241,7 @@ export default function ContactForm() {
                       value={form.subject}
                       onChange={handleChange}
                       placeholder="Opportunities, project ideas..."
-                      className="px-4 py-3 bg-neutral-950 border border-neutral-800 rounded-xl focus:border-indigo-500 focus:outline-none transition-colors text-sm text-neutral-200"
+                      className="px-4 py-3 bg-neutral-950 border border-neutral-800 rounded-xl focus:border-indigo-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/40 transition-colors text-sm text-neutral-200"
                     />
                   </div>
 
@@ -257,14 +257,14 @@ export default function ContactForm() {
                       value={form.message}
                       onChange={handleChange}
                       placeholder="Hi Ahsan, I'd love to connect regarding..."
-                      className="px-4 py-3 bg-neutral-950 border border-neutral-800 rounded-xl focus:border-indigo-500 focus:outline-none transition-colors text-sm text-neutral-200 resize-none"
+                      className="px-4 py-3 bg-neutral-950 border border-neutral-800 rounded-xl focus:border-indigo-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/40 transition-colors text-sm text-neutral-200 resize-none"
                       required
                     />
                   </div>
 
                   {/* Errors feedback */}
                   {status === 'error' && (
-                    <div className="flex items-center gap-2 p-3 bg-rose-950/40 border border-rose-900/60 rounded-xl text-rose-300 text-xs">
+                    <div role="alert" className="flex items-center gap-2 p-3 bg-rose-950/40 border border-rose-900/60 rounded-xl text-rose-300 text-xs">
                       <AlertCircle size={14} className="flex-shrink-0" />
                       <span>{errorMessage}</span>
                     </div>
@@ -275,7 +275,7 @@ export default function ContactForm() {
                     id="contact-submit-btn"
                     type="submit"
                     disabled={status === 'submitting'}
-                    className="w-full bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-3.5 rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg shadow-indigo-500/10 cursor-pointer disabled:bg-indigo-900 disabled:cursor-not-allowed"
+                    className="w-full bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-3.5 rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg shadow-indigo-500/10 cursor-pointer disabled:bg-indigo-900 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400"
                   >
                     {status === 'submitting' ? (
                       <>

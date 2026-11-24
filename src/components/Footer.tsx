@@ -38,10 +38,10 @@ export default function Footer() {
           <button
             id="footer-back-to-top"
             onClick={scrollToTop}
-            className="w-8 h-8 rounded-lg bg-neutral-900 border border-neutral-800 hover:border-neutral-700 text-neutral-400 hover:text-white flex items-center justify-center transition-all cursor-pointer"
+            className="w-11 h-11 rounded-lg bg-neutral-900 border border-neutral-800 hover:border-neutral-700 text-neutral-400 hover:text-white flex items-center justify-center transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50"
             aria-label="Back to top"
           >
-            <ArrowUp size={14} />
+            <ArrowUp size={16} />
           </button>
         </div>
       </div>

@@ -77,13 +77,15 @@ export default function Projects() {
         </div>
 
         {/* Categories Tab Bar */}
-        <div className="flex justify-center flex-wrap gap-2 mb-12">
+        <div className="flex justify-center flex-wrap gap-2 mb-12" role="tablist" aria-label="Filter projects by category">
           {categories.map((cat) => (
             <button
               key={cat}
               id={`project-tab-${cat.toLowerCase().replace(/\s+/g, '-')}`}
+              role="tab"
+              aria-selected={activeTab === cat}
               onClick={() => setActiveTab(cat)}
-              className={`relative px-4 py-2 rounded-xl text-xs sm:text-sm font-mono transition-all duration-300 cursor-pointer ${
+              className={`relative min-h-11 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-mono transition-all duration-300 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 ${
                 activeTab === cat
                   ? 'text-white bg-indigo-500 font-semibold shadow-lg shadow-indigo-500/20'
                   : 'text-neutral-400 hover:text-white bg-neutral-900 border border-neutral-800/80 hover:border-neutral-700'
@@ -118,13 +120,24 @@ export default function Projects() {
               >
                 {/* Project Image */}
                 <div
-                  className="relative h-48 overflow-hidden bg-neutral-950 cursor-pointer"
+                  role="button"
+                  tabIndex={0}
+                  aria-label={`Open image gallery for ${project.title}`}
+                  className="relative h-48 overflow-hidden bg-neutral-950 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-indigo-400"
                   onClick={() => openLightbox(project)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      openLightbox(project);
+                    }
+                  }}
                 >
                   <div className="absolute inset-0 bg-neutral-950/20 z-10 group-hover:bg-neutral-950/0 transition-all pointer-events-none" />
                   <img
                     src={project.images[0]}
                     alt={`${project.title} Screenshot`}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     referrerPolicy="no-referrer"
                   />
@@ -267,6 +280,9 @@ export default function Projects() {
       <AnimatePresence>
         {selectedProject && selectedProject.images.length > 0 && (
           <motion.div
+            role="dialog"
+            aria-modal="true"
+            aria-label={`${selectedProject.title} image gallery`}
             className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-neutral-950/90 backdrop-blur-md"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -276,7 +292,8 @@ export default function Projects() {
             {/* Close Button */}
             <button
               onClick={() => setSelectedProject(null)}
-              className="absolute top-6 right-6 z-50 w-12 h-12 rounded-full bg-neutral-900 border border-neutral-800 text-neutral-400 hover:text-white flex items-center justify-center hover:bg-neutral-800 transition-all cursor-pointer shadow-xl"
+              aria-label="Close project image gallery"
+              className="absolute top-6 right-6 z-50 w-12 h-12 rounded-full bg-neutral-900 border border-neutral-800 text-neutral-400 hover:text-white flex items-center justify-center hover:bg-neutral-800 transition-all cursor-pointer shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400"
             >
               <X size={24} />
             </button>
@@ -308,7 +325,8 @@ export default function Projects() {
                 {selectedProject.images.length > 1 && (
                   <button
                     onClick={(e) => { e.stopPropagation(); prevImage(); }}
-                    className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-neutral-950/60 hover:bg-neutral-900 border border-neutral-700/50 text-white flex items-center justify-center backdrop-blur-sm transition-all z-20"
+                    aria-label="Previous project image"
+                    className="absolute left-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-neutral-950/60 hover:bg-neutral-900 border border-neutral-700/50 text-white flex items-center justify-center backdrop-blur-sm transition-all z-20 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400"
                   >
                     <ChevronLeft size={20} />
                   </button>
@@ -325,7 +343,8 @@ export default function Projects() {
                 {selectedProject.images.length > 1 && (
                   <button
                     onClick={(e) => { e.stopPropagation(); nextImage(); }}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-neutral-950/60 hover:bg-neutral-900 border border-neutral-700/50 text-white flex items-center justify-center backdrop-blur-sm transition-all z-20"
+                    aria-label="Next project image"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-neutral-950/60 hover:bg-neutral-900 border border-neutral-700/50 text-white flex items-center justify-center backdrop-blur-sm transition-all z-20 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400"
                   >
                     <ChevronRight size={20} />
                   </button>
@@ -334,19 +353,25 @@ export default function Projects() {
 
               {/* Image Indicators */}
               {selectedProject.images.length > 1 && (
-                <div className="flex items-center gap-2 mt-4">
+                <div className="flex items-center gap-1 mt-2" role="tablist" aria-label="Gallery slide indicators">
                   {selectedProject.images.map((_, idx) => (
                     <button
                       key={idx}
                       onClick={(e) => { e.stopPropagation(); setCurrentImageIndex(idx); }}
-                      className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                        idx === currentImageIndex
-                          ? selectedProject.featured
-                            ? 'bg-amber-400 w-6'
-                            : 'bg-indigo-500 w-6'
-                          : 'bg-neutral-700 hover:bg-neutral-500'
-                      }`}
-                    />
+                      aria-label={`View screenshot ${idx + 1} of ${selectedProject.images.length}`}
+                      aria-current={idx === currentImageIndex ? 'true' : undefined}
+                      className="min-w-11 min-h-11 flex items-center justify-center cursor-pointer rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400"
+                    >
+                      <span
+                        className={`h-2.5 rounded-full transition-all duration-300 ${
+                          idx === currentImageIndex
+                            ? selectedProject.featured
+                              ? 'bg-amber-400 w-6'
+                              : 'bg-indigo-500 w-6'
+                            : 'w-2.5 bg-neutral-700 hover:bg-neutral-500'
+                        }`}
+                      />
+                    </button>
                   ))}
                 </div>
               )}

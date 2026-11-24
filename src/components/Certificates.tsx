@@ -57,8 +57,17 @@ export default function Certificates() {
             >
               {/* Image Preview Container */}
               <div 
-                className="relative aspect-[4/3] overflow-hidden bg-neutral-950 cursor-pointer"
+                role="button"
+                tabIndex={0}
+                aria-label={`View certificate: ${cert.title}`}
+                className="relative aspect-[4/3] overflow-hidden bg-neutral-950 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-indigo-400"
                 onClick={() => setSelectedCert(cert)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    setSelectedCert(cert);
+                  }
+                }}
               >
                 <img
                   src={resolveImageUrl(cert.imageUrl)}
@@ -121,6 +130,9 @@ export default function Certificates() {
         {selectedCert && (
           <motion.div
             id="certificate-lightbox-overlay"
+            role="dialog"
+            aria-modal="true"
+            aria-label={`${selectedCert.title} certificate preview`}
             className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-neutral-950/90 backdrop-blur-md"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -131,7 +143,7 @@ export default function Certificates() {
             <button
               id="lightbox-close-btn"
               onClick={() => setSelectedCert(null)}
-              className="absolute top-6 right-6 z-10 w-12 h-12 rounded-full bg-neutral-900 border border-neutral-800 text-neutral-400 hover:text-white flex items-center justify-center hover:bg-neutral-800 transition-all cursor-pointer shadow-xl"
+              className="absolute top-6 right-6 z-10 w-12 h-12 rounded-full bg-neutral-900 border border-neutral-800 text-neutral-400 hover:text-white flex items-center justify-center hover:bg-neutral-800 transition-all cursor-pointer shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400"
               aria-label="Close image lightbox"
             >
               <X size={24} />

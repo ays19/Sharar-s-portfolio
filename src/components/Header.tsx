@@ -74,13 +74,13 @@ export default function Header() {
         </nav>
 
         {/* Socials & CTA */}
-        <div className="hidden md:flex items-center gap-4">
+        <div className="hidden md:flex items-center gap-3">
           <a
             id="nav-social-github"
             href={personalInfo.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-neutral-400 hover:text-white p-2 hover:bg-neutral-800/50 rounded-lg transition-all"
+            className="w-11 h-11 flex items-center justify-center text-neutral-400 hover:text-white hover:bg-neutral-800/50 rounded-lg transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50"
             aria-label="GitHub Profile"
           >
             <Github size={18} />
@@ -90,7 +90,7 @@ export default function Header() {
             href={personalInfo.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-neutral-400 hover:text-white p-2 hover:bg-neutral-800/50 rounded-lg transition-all"
+            className="w-11 h-11 flex items-center justify-center text-neutral-400 hover:text-white hover:bg-neutral-800/50 rounded-lg transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50"
             aria-label="LinkedIn Profile"
           >
             <Linkedin size={18} />
@@ -98,7 +98,7 @@ export default function Header() {
           <button
             id="nav-cta-contact"
             onClick={() => scrollToSection('#contact')}
-            className="text-xs font-semibold bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2 rounded-lg transition-all flex items-center gap-1.5 shadow-lg shadow-indigo-500/20 cursor-pointer"
+            className="min-h-11 text-xs font-semibold bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2.5 rounded-lg transition-all flex items-center gap-1.5 shadow-lg shadow-indigo-500/20 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400"
           >
             Get in touch
             <ArrowUpRight size={14} />
@@ -109,7 +109,9 @@ export default function Header() {
         <button
           id="mobile-menu-btn"
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden text-neutral-400 hover:text-white p-2 hover:bg-neutral-800/50 rounded-lg transition-all cursor-pointer"
+          aria-expanded={isOpen}
+          aria-controls="mobile-drawer"
+          className="md:hidden w-11 h-11 flex items-center justify-center text-neutral-400 hover:text-white hover:bg-neutral-800/50 rounded-lg transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50"
           aria-label="Toggle menu"
         >
           {isOpen ? <X size={22} /> : <Menu size={22} />}
@@ -128,13 +130,13 @@ export default function Header() {
             className="md:hidden w-full bg-neutral-950 border-b border-neutral-800 absolute left-0 top-full overflow-hidden"
           >
             <div className="px-6 py-8 flex flex-col gap-6">
-              <nav className="flex flex-col gap-5">
+              <nav className="flex flex-col gap-2">
                 {navLinks.map((link) => (
                   <button
                     key={link.name}
                     id={`mobile-nav-link-${link.name.toLowerCase()}`}
                     onClick={() => scrollToSection(link.href)}
-                    className="text-left text-base text-neutral-400 hover:text-white transition-colors cursor-pointer font-medium"
+                    className="min-h-11 text-left text-base text-neutral-400 hover:text-white transition-colors cursor-pointer font-medium flex items-center rounded-lg px-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50"
                   >
                     {link.name}
                   </button>
@@ -150,7 +152,7 @@ export default function Header() {
                     href={personalInfo.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-neutral-400 hover:text-white p-2 bg-neutral-900 rounded-lg transition-all"
+                    className="w-11 h-11 flex items-center justify-center text-neutral-400 hover:text-white bg-neutral-900 rounded-lg transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50"
                     aria-label="GitHub Profile"
                   >
                     <Github size={18} />
@@ -160,7 +162,7 @@ export default function Header() {
                     href={personalInfo.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-neutral-400 hover:text-white p-2 bg-neutral-900 rounded-lg transition-all"
+                    className="w-11 h-11 flex items-center justify-center text-neutral-400 hover:text-white bg-neutral-900 rounded-lg transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50"
                     aria-label="LinkedIn Profile"
                   >
                     <Linkedin size={18} />
@@ -168,7 +170,7 @@ export default function Header() {
                   <a
                     id="mobile-social-mail"
                     href={`mailto:${personalInfo.email}`}
-                    className="text-neutral-400 hover:text-white p-2 bg-neutral-900 rounded-lg transition-all"
+                    className="w-11 h-11 flex items-center justify-center text-neutral-400 hover:text-white bg-neutral-900 rounded-lg transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50"
                     aria-label="Send Email"
                   >
                     <Mail size={18} />
@@ -178,7 +180,7 @@ export default function Header() {
                 <button
                   id="mobile-cta-contact"
                   onClick={() => scrollToSection('#contact')}
-                  className="text-sm font-semibold bg-indigo-500 hover:bg-indigo-600 text-white px-5 py-2.5 rounded-lg transition-all flex items-center gap-1.5 cursor-pointer shadow-lg shadow-indigo-500/10"
+                  className="min-h-11 text-sm font-semibold bg-indigo-500 hover:bg-indigo-600 text-white px-5 py-2.5 rounded-lg transition-all flex items-center gap-1.5 cursor-pointer shadow-lg shadow-indigo-500/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400"
                 >
                   Get in touch
                   <ArrowUpRight size={14} />

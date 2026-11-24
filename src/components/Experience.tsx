@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Calendar, MapPin, CheckCircle, Award, ShieldAlert, TestTube } from 'lucide-react';
+import { Calendar, MapPin, CheckCircle, Award, TestTube } from 'lucide-react';
 import { experiences } from '../data';
 
 export default function Experience() {
@@ -53,7 +53,7 @@ export default function Experience() {
 
                     {/* Header */}
                     <div className="flex flex-col gap-2 mb-4">
-                      <h3 className="text-xl font-bold text-white group-hover:text-indigo-500 transition-colors">
+                      <h3 className="text-xl font-bold text-white group-hover:text-indigo-500 transition-colors pr-20">
                         {exp.role}
                       </h3>
                       <div className="flex flex-wrap gap-x-4 gap-y-1.5 text-xs text-neutral-400 font-mono">
@@ -76,7 +76,15 @@ export default function Experience() {
                     <ul className="flex flex-col gap-3 mb-6 text-sm text-neutral-400 leading-relaxed">
                       {exp.description.map((bullet, bIdx) => {
                         // Highlight metrics and testing words dynamically for recruiter-ready optimization!
-                        const isTesting = bullet.toLowerCase().includes('pytest') || bullet.toLowerCase().includes('testing') || bullet.toLowerCase().includes('coverage');
+                        const lowerBullet = bullet.toLowerCase();
+                        const isTesting =
+                          lowerBullet.includes('pytest') ||
+                          lowerBullet.includes('testing') ||
+                          lowerBullet.includes('test') ||
+                          lowerBullet.includes('qa') ||
+                          lowerBullet.includes('selenium') ||
+                          lowerBullet.includes('playwright') ||
+                          lowerBullet.includes('coverage');
                         return (
                           <li key={bIdx} className="flex items-start gap-2.5">
                             {isTesting ? (

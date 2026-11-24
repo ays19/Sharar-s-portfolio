@@ -1,6 +1,7 @@
-import { X, Printer, Mail, MapPin, Github, Linkedin, Briefcase, Award, GraduationCap, CheckCircle } from 'lucide-react';
+import { useEffect } from 'react';
+import { X, Printer, Mail, MapPin, Github, Linkedin, Briefcase, Award, GraduationCap, CheckCircle, ExternalLink } from 'lucide-react';
 import { motion } from 'motion/react';
-import { personalInfo, experiences, skillsMatrix } from '../data';
+import { personalInfo, experiences, education, skillsMatrix } from '../data';
 
 interface ResumeModalProps {
   isOpen: boolean;
@@ -8,6 +9,15 @@ interface ResumeModalProps {
 }
 
 export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onClose]);
+
   if (!isOpen) return null;
 
   const handlePrint = () => {
@@ -15,26 +25,44 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
   };
 
   return (
-    <div id="resume-modal-overlay" className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 sm:p-6 overflow-y-auto">
+    <div
+      id="resume-modal-overlay"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="resume-modal-title"
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 sm:p-6 overflow-y-auto"
+      onClick={onClose}
+    >
       <motion.div
         id="resume-modal-content"
         initial={{ opacity: 0, scale: 0.95, y: 20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.95, y: 20 }}
         transition={{ duration: 0.3 }}
+        onClick={(e) => e.stopPropagation()}
         className="relative bg-neutral-900 border border-neutral-800 rounded-2xl w-full max-w-4xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden print:p-0 print:border-none print:max-h-none print:bg-white"
       >
         {/* Modal Action Controls (Hidden in print) */}
         <div className="bg-neutral-950 px-6 py-4 border-b border-neutral-800 flex items-center justify-between print:hidden">
           <div className="flex items-center gap-2">
             <span className="w-2.5 h-2.5 rounded-full bg-indigo-500" />
-            <h3 className="text-sm font-mono text-neutral-400 font-semibold">interactive_resume.json</h3>
+            <h3 id="resume-modal-title" className="text-sm font-mono text-neutral-400 font-semibold">interactive_resume.json</h3>
           </div>
           <div className="flex items-center gap-3">
+            <a
+              id="resume-drive-btn"
+              href={personalInfo.resumeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 px-3 py-2 bg-neutral-900 border border-neutral-800 hover:border-neutral-700 rounded-lg text-xs font-mono text-neutral-300 hover:text-white transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50"
+            >
+              <ExternalLink size={13} />
+              Drive PDF
+            </a>
             <button
               id="resume-print-btn"
               onClick={handlePrint}
-              className="flex items-center gap-1.5 px-3 py-1.5 bg-neutral-900 border border-neutral-800 hover:border-neutral-700 rounded-lg text-xs font-mono text-neutral-300 hover:text-white transition-all cursor-pointer"
+              className="flex items-center gap-1.5 px-3 py-2 bg-neutral-900 border border-neutral-800 hover:border-neutral-700 rounded-lg text-xs font-mono text-neutral-300 hover:text-white transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50"
             >
               <Printer size={13} />
               Print / Save PDF
@@ -42,7 +70,7 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
             <button
               id="resume-close-btn"
               onClick={onClose}
-              className="p-1.5 hover:bg-neutral-800 rounded-lg text-neutral-400 hover:text-white transition-all cursor-pointer"
+              className="w-11 h-11 flex items-center justify-center hover:bg-neutral-800 rounded-lg text-neutral-400 hover:text-white transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50"
               aria-label="Close modal"
             >
               <X size={18} />
@@ -107,11 +135,11 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                 </a>
                 <a href={personalInfo.github} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors flex items-center gap-1.5 md:justify-end">
                   <Github size={12} className="text-indigo-500 print:text-indigo-600" />
-                  github.com/sahsanyasir
+                  github.com/ays19
                 </a>
                 <a href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors flex items-center gap-1.5 md:justify-end">
                   <Linkedin size={12} className="text-indigo-500 print:text-indigo-600" />
-                  linkedin.com/in/sahsanyasir
+                  linkedin.com/in/yasirsharar/
                 </a>
               </div>
             </div>
@@ -186,18 +214,32 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
             </div>
 
             {/* Academic Credential */}
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-4">
               <h4 className="text-xs font-mono text-indigo-500 font-bold uppercase tracking-widest flex items-center gap-2 print:text-indigo-600">
                 <GraduationCap size={14} /> Education
               </h4>
-              <div className="flex justify-between items-start text-xs border-l-2 border-neutral-800 pl-4 print:border-neutral-200">
-                <div>
-                  <h5 className="font-bold text-white print:text-black">Bachelor of Science (B.S.) in Computer Science</h5>
-                  <p className="text-neutral-400 mt-0.5 print:text-neutral-600">Key Focus: Software Engineering & Backend Systems</p>
-                </div>
-                <div className="text-right text-neutral-400 print:text-neutral-500 font-mono">
-                  <span>Graduated</span>
-                </div>
+              <div className="flex flex-col gap-6">
+                {education.map((edu) => (
+                  <div key={edu.id} className="flex flex-col gap-2 border-l-2 border-neutral-800 pl-4 print:border-neutral-200">
+                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center">
+                      <h5 className="font-bold text-sm text-white print:text-black">{edu.role}</h5>
+                      <span className="text-xs font-mono text-neutral-400 print:text-neutral-500">{edu.period}</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-xs font-mono text-indigo-500 font-semibold print:text-indigo-600">
+                      <span>{edu.company}</span>
+                      <span className="text-neutral-600">&bull;</span>
+                      <span className="text-neutral-400 font-normal">{edu.location}</span>
+                    </div>
+                    <ul className="flex flex-col gap-1.5 mt-2 text-xs text-neutral-400 print:text-neutral-700 leading-relaxed">
+                      {edu.description.map((bullet, bIdx) => (
+                        <li key={bIdx} className="flex items-start gap-2">
+                          <CheckCircle size={12} className="text-indigo-500 mt-0.5 flex-shrink-0 print:text-indigo-600" />
+                          <span>{bullet}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
