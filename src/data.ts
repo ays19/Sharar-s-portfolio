@@ -25,6 +25,33 @@ export const personalInfo = {
 
 export const experiences: Experience[] = [
   {
+    id: 'exp-2',
+    role: 'Automation Intern',
+    company: 'DataFort Limited',
+    location: 'Dhaka, Bangladesh',
+    period: 'Oct 2026 – Present',
+    type: 'Internship',
+    description: [
+      'Automated 200+ end-to-end QA test cases across the enterprise Robo2mation platform (DMS, Reporting, Workflow, and Core modules) using Python and Selenium WebDriver, covering PDF OCR content search, Role-Based Access Control (RBAC), Maker-Checker review lifecycles, bulk CSV uploads, and multi-format report exports.',
+      'Architected a scalable, data-driven Page Object Model (POM) test automation framework featuring a custom Allure 2 reporting adapter, failure DOM HTML diagnostics, explicit synchronization waits, and automated openpyxl Excel result tracking with clickable screenshot hyperlinks.',
+      'Engineered a standalone Windows GUI Test Runner (Tkinter, PyInstaller) with multi-threaded live console log streaming, module/test filtering, and isolated subprocess execution — empowering non-technical QA and business teams to execute automated suites without an IDE.',
+      'Built ChallanAI, an end-to-end financial OCR & RAG verification web app backed by an n8n and Gemini 2.5 Pro webhook pipeline with triple-copy Bangla tax challan cross-verification, Bangla-to-English digit normalization, real-time SVG scan enhancement filters, and a bilingual RAG chat assistant.',
+      'Designed production n8n AI Agent & RAG workflows (integrating Google Gemini Embeddings, Pinecone vector databases, Google Workspace, and Telegram) and developed UiPath Studio & Orchestrator RPA bots for Excel report consolidation, PDF extraction, and cross-platform n8n-to-UiPath process triggers.'
+    ],
+    skillsUsed: [
+      'Python',
+      'Selenium WebDriver',
+      'Page Object Model (POM)',
+      'Allure Report',
+      'n8n',
+      'RAG & Gemini API',
+      'Pinecone',
+      'UiPath Studio & Orchestrator',
+      'Tkinter & PyInstaller',
+      'openpyxl'
+    ]
+  },
+  {
     id: 'exp-1',
     role: 'Junior Software Developer',
     company: 'SWOT System Limited',
@@ -261,6 +288,14 @@ export const certificates: Certificate[] = [
     credentialUrl: '#'
   },
   {
+    id: 'cert-15',
+    title: 'Automation Developer Associate Training (v2024.10)',
+    distributor: 'UiPath Academy',
+    year: '2026',
+    imageUrl: 'Certificates/15.png',
+    credentialUrl: '#'
+  },
+  {
     id: 'cert-2',
     title: 'Cisco DevNet Associate',
     distributor: 'Cisco Networking Academy',
@@ -274,6 +309,14 @@ export const certificates: Certificate[] = [
     distributor: 'CodersTrust',
     year: '2025',
     imageUrl: 'Certificates/3.png',
+    credentialUrl: '#'
+  },
+  {
+    id: 'cert-14',
+    title: 'Automation Business Analysis Fundamentals (v2024.10)',
+    distributor: 'UiPath Academy',
+    year: '2026',
+    imageUrl: 'Certificates/14.png',
     credentialUrl: '#'
   },
   {
