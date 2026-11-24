@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Github, ExternalLink, Sparkles, Database, Layers, Check, ChevronLeft, ChevronRight, X, PlayCircle, Trophy } from 'lucide-react';
 import { projects } from '../data';
@@ -9,28 +9,29 @@ export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  // Handle ESC key for modal
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setSelectedProject(null);
-      if (e.key === 'ArrowRight' && selectedProject) nextImage();
-      if (e.key === 'ArrowLeft' && selectedProject) prevImage();
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  });
-
-  const nextImage = () => {
+  const nextImage = useCallback(() => {
     if (selectedProject) {
       setCurrentImageIndex((prev) => (prev === selectedProject.images.length - 1 ? 0 : prev + 1));
     }
-  };
+  }, [selectedProject]);
 
-  const prevImage = () => {
+  const prevImage = useCallback(() => {
     if (selectedProject) {
       setCurrentImageIndex((prev) => (prev === 0 ? selectedProject.images.length - 1 : prev - 1));
     }
-  };
+  }, [selectedProject]);
+
+  // Handle ESC and arrow keys for modal
+  useEffect(() => {
+    if (!selectedProject) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setSelectedProject(null);
+      if (e.key === 'ArrowRight') nextImage();
+      if (e.key === 'ArrowLeft') prevImage();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedProject, nextImage, prevImage]);
 
   const openLightbox = (project: Project) => {
     setSelectedProject(project);
@@ -174,7 +175,7 @@ export default function Projects() {
                     }`}>
                       {project.title}
                     </h3>
-                    <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed min-h-[72px]">
+                    <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed">
                       {project.description}
                     </p>
                   </div>

@@ -103,9 +103,19 @@ export default function Hero({ onOpenResumeModal }: HeroProps) {
               {/* Heading */}
               <motion.div variants={itemVariants} className="flex flex-col gap-2 w-full items-center lg:items-start">
                 <span className="text-sm font-mono text-neutral-400 font-medium">Hello, World! I am</span>
-                <h1 className="text-4xl sm:text-5xl font-sans font-bold tracking-tight text-white leading-tight min-h-[1.2em] flex items-center justify-center lg:justify-start">
-                  <span>{typedName}</span>
-                  <span className="inline-block w-[3px] h-[0.8em] bg-indigo-500 ml-1.5 animate-pulse" style={{ animationDuration: '0.8s' }} />
+                <h1 className="relative text-4xl sm:text-5xl font-sans font-bold tracking-tight text-white leading-tight grid">
+                  <span aria-hidden="true" className="invisible pointer-events-none select-none col-start-1 row-start-1">
+                    {personalInfo.name}
+                    <span className="inline-block w-[3px] h-[0.8em] ml-1.5" />
+                  </span>
+                  <span className="col-start-1 row-start-1 flex items-center justify-center lg:justify-start flex-wrap">
+                    <span>{typedName}</span>
+                    <span
+                      aria-hidden="true"
+                      className="inline-block w-[3px] h-[0.8em] bg-indigo-500 ml-1.5 animate-pulse"
+                      style={{ animationDuration: '0.8s' }}
+                    />
+                  </span>
                 </h1>
                 <p className="text-xl sm:text-2xl font-sans text-neutral-300 font-medium">
                   Backend Software Engineer & <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-violet-400">AI Application Developer</span>
