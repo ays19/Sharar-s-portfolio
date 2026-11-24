@@ -25,10 +25,17 @@ export default function App() {
   const [isResumeOpen, setIsResumeOpen] = useState(false);
 
   return (
-    <div className="bg-neutral-950 min-h-screen text-neutral-100 selection:bg-indigo-600 selection:text-white antialiased overflow-x-hidden w-full relative">
+    <div className="bg-neutral-950 min-h-screen text-white selection:bg-indigo-600 selection:text-white antialiased overflow-x-hidden w-full relative">
+      <a
+        href="#portfolio-main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[120] focus:px-4 focus:py-2.5 focus:rounded-xl focus:bg-indigo-500 text-white focus:text-white focus:font-mono focus:text-xs focus:font-semibold focus:shadow-lg focus:shadow-indigo-500/30 focus:outline-none focus:ring-2 focus:ring-indigo-300"
+      >
+        Skip to content
+      </a>
+
       <Header />
       
-      <main id="portfolio-main-content">
+      <main id="portfolio-main-content" tabIndex={-1} className="focus:outline-none">
         <Hero onOpenResumeModal={() => setIsResumeOpen(true)} />
         <About />
         <Experience />

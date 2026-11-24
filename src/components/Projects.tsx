@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Github, ExternalLink, Sparkles, Database, Layers, Check, ChevronLeft, ChevronRight, X, PlayCircle, Trophy } from 'lucide-react';
 import { projects } from '../data';
@@ -8,6 +8,12 @@ export default function Projects() {
   const [activeTab, setActiveTab] = useState<'All' | 'Backend' | 'AI & Agents' | 'Full-stack'>('All');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const closeButtonRef = useRef<HTMLButtonElement | null>(null);
+  const previousFocusRef = useRef<HTMLElement | null>(null);
+
+  const closeLightbox = useCallback(() => {
+    setSelectedProject(null);
+  }, []);
 
   const nextImage = useCallback(() => {
     if (selectedProject) {
@@ -21,19 +27,28 @@ export default function Projects() {
     }
   }, [selectedProject]);
 
-  // Handle ESC and arrow keys for modal
+  // Handle focus management, ESC, and arrow keys for modal
   useEffect(() => {
     if (!selectedProject) return;
+    const focusTimer = window.setTimeout(() => {
+      closeButtonRef.current?.focus();
+    }, 0);
+
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setSelectedProject(null);
+      if (e.key === 'Escape') closeLightbox();
       if (e.key === 'ArrowRight') nextImage();
       if (e.key === 'ArrowLeft') prevImage();
     };
     window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [selectedProject, nextImage, prevImage]);
+    return () => {
+      window.clearTimeout(focusTimer);
+      window.removeEventListener('keydown', handleKeyDown);
+      previousFocusRef.current?.focus();
+    };
+  }, [selectedProject, closeLightbox, nextImage, prevImage]);
 
-  const openLightbox = (project: Project) => {
+  const openLightbox = (project: Project, triggerEl?: HTMLElement | null) => {
+    previousFocusRef.current = triggerEl ?? (document.activeElement as HTMLElement | null);
     setSelectedProject(project);
     setCurrentImageIndex(0);
   };
@@ -125,11 +140,11 @@ export default function Projects() {
                   tabIndex={0}
                   aria-label={`Open image gallery for ${project.title}`}
                   className="relative h-48 overflow-hidden bg-neutral-950 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-indigo-400"
-                  onClick={() => openLightbox(project)}
+                  onClick={(e) => openLightbox(project, e.currentTarget)}
                   onKeyDown={(e) => {
                     if (e.key === 'Enter' || e.key === ' ') {
                       e.preventDefault();
-                      openLightbox(project);
+                      openLightbox(project, e.currentTarget);
                     }
                   }}
                 >
@@ -225,20 +240,20 @@ export default function Projects() {
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-xs font-mono font-semibold text-neutral-400 hover:text-white flex items-center gap-1.5 group/link transition-colors"
+                      className="px-2 py-1.5 -ml-2 rounded-lg text-xs font-mono font-semibold text-neutral-400 hover:text-white flex items-center gap-1.5 group/link transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50"
                     >
                       <Github size={14} className="group-hover/link:text-indigo-500" />
                       Source Code
                     </a>
 
-                    <div className="flex items-center gap-3 flex-wrap">
+                    <div className="flex items-center gap-1.5 flex-wrap -mr-2">
                       {project.demoUrl && (
                         <a
                           id={`project-${project.id}-demo`}
                           href={project.demoUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-xs font-mono font-semibold text-indigo-500 hover:text-indigo-400 flex items-center gap-1.5 group/link transition-colors"
+                          className="px-2 py-1.5 rounded-lg text-xs font-mono font-semibold text-indigo-500 hover:text-indigo-400 flex items-center gap-1.5 group/link transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50"
                         >
                           <ExternalLink size={14} />
                           Live Demo
@@ -250,7 +265,7 @@ export default function Projects() {
                           href={project.projectVideoUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-xs font-mono font-semibold text-indigo-500 hover:text-indigo-400 flex items-center gap-1.5 group/link transition-colors"
+                          className="px-2 py-1.5 rounded-lg text-xs font-mono font-semibold text-indigo-500 hover:text-indigo-400 flex items-center gap-1.5 group/link transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50"
                         >
                           <PlayCircle size={14} />
                           Video
@@ -262,7 +277,7 @@ export default function Projects() {
                           href={project.kaggleUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-xs font-mono font-semibold text-amber-400 hover:text-amber-300 flex items-center gap-1.5 group/link transition-colors"
+                          className="px-2 py-1.5 rounded-lg text-xs font-mono font-semibold text-amber-400 hover:text-amber-300 flex items-center gap-1.5 group/link transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50"
                         >
                           <Trophy size={14} />
                           Kaggle
@@ -292,7 +307,8 @@ export default function Projects() {
           >
             {/* Close Button */}
             <button
-              onClick={() => setSelectedProject(null)}
+              ref={closeButtonRef}
+              onClick={closeLightbox}
               aria-label="Close project image gallery"
               className="absolute top-6 right-6 z-50 w-12 h-12 rounded-full bg-neutral-900 border border-neutral-800 text-neutral-400 hover:text-white flex items-center justify-center hover:bg-neutral-800 transition-all cursor-pointer shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400"
             >

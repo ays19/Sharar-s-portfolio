@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Award, Eye, X, Calendar, Building, ExternalLink } from 'lucide-react';
 import { certificates } from '../data';
@@ -6,6 +6,17 @@ import { Certificate } from '../types';
 
 export default function Certificates() {
   const [selectedCert, setSelectedCert] = useState<Certificate | null>(null);
+  const closeButtonRef = useRef<HTMLButtonElement | null>(null);
+  const previousFocusRef = useRef<HTMLElement | null>(null);
+
+  const openCertModal = useCallback((cert: Certificate, triggerEl?: HTMLElement | null) => {
+    previousFocusRef.current = triggerEl ?? (document.activeElement as HTMLElement | null);
+    setSelectedCert(cert);
+  }, []);
+
+  const closeCertModal = useCallback(() => {
+    setSelectedCert(null);
+  }, []);
 
   // Helper to resolve public assets correctly on GitHub Pages
   const resolveImageUrl = (url: string) => {
@@ -15,16 +26,25 @@ export default function Certificates() {
     return import.meta.env.BASE_URL + url;
   };
 
-  // Handle ESC key to close modal
+  // Handle focus management and ESC key to close modal
   useEffect(() => {
+    if (!selectedCert) return;
+    const focusTimer = window.setTimeout(() => {
+      closeButtonRef.current?.focus();
+    }, 0);
+
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
-        setSelectedCert(null);
+        closeCertModal();
       }
     };
     window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
+    return () => {
+      window.clearTimeout(focusTimer);
+      window.removeEventListener('keydown', handleKeyDown);
+      previousFocusRef.current?.focus();
+    };
+  }, [selectedCert, closeCertModal]);
 
   return (
     <section id="certificates" className="py-24 bg-neutral-950 text-white relative border-t border-neutral-900">
@@ -61,11 +81,11 @@ export default function Certificates() {
                 tabIndex={0}
                 aria-label={`View certificate: ${cert.title}`}
                 className="relative aspect-[4/3] overflow-hidden bg-neutral-950 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-indigo-400"
-                onClick={() => setSelectedCert(cert)}
+                onClick={(e) => openCertModal(cert, e.currentTarget)}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
-                    setSelectedCert(cert);
+                    openCertModal(cert, e.currentTarget);
                   }
                 }}
               >
@@ -99,7 +119,7 @@ export default function Certificates() {
                   
                   <h3 
                     className="text-lg font-bold text-white group-hover:text-indigo-400 transition-colors cursor-pointer"
-                    onClick={() => setSelectedCert(cert)}
+                    onClick={(e) => openCertModal(cert, e.currentTarget)}
                   >
                     {cert.title}
                   </h3>
@@ -112,8 +132,8 @@ export default function Certificates() {
                   </span>
                   
                   <button
-                    onClick={() => setSelectedCert(cert)}
-                    className="text-indigo-500 hover:text-indigo-400 transition-colors flex items-center gap-1 group/btn"
+                    onClick={(e) => openCertModal(cert, e.currentTarget)}
+                    className="px-2.5 py-1.5 -mr-2.5 rounded-lg text-indigo-500 hover:text-indigo-400 transition-colors flex items-center gap-1 group/btn cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50"
                   >
                     Expand View
                     <ExternalLink size={12} className="group-hover/btn:translate-x-0.5 transition-transform" />
@@ -142,7 +162,8 @@ export default function Certificates() {
             {/* Close button top right */}
             <button
               id="lightbox-close-btn"
-              onClick={() => setSelectedCert(null)}
+              ref={closeButtonRef}
+              onClick={closeCertModal}
               className="absolute top-6 right-6 z-10 w-12 h-12 rounded-full bg-neutral-900 border border-neutral-800 text-neutral-400 hover:text-white flex items-center justify-center hover:bg-neutral-800 transition-all cursor-pointer shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400"
               aria-label="Close image lightbox"
             >

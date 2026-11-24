@@ -60,13 +60,13 @@ export default function Header() {
         </motion.a>
 
         {/* Desktop Navigation */}
-        <nav id="desktop-nav" className="hidden md:flex items-center gap-8">
+        <nav id="desktop-nav" className="hidden md:flex items-center gap-4 lg:gap-6">
           {navLinks.map((link) => (
             <button
               key={link.name}
               id={`nav-link-${link.name.toLowerCase()}`}
               onClick={() => scrollToSection(link.href)}
-              className="text-sm text-neutral-400 hover:text-white transition-colors cursor-pointer font-medium"
+              className="px-2.5 py-1.5 rounded-lg text-sm text-neutral-400 hover:text-white transition-colors cursor-pointer font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50"
             >
               {link.name}
             </button>
