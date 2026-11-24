@@ -95,7 +95,7 @@ export default function ContactForm() {
                   <Mail size={18} />
                 </div>
                 <div>
-                  <p className="text-[10px] font-mono text-neutral-500 uppercase">Direct Email</p>
+                  <p className="text-[10px] font-mono text-neutral-400 uppercase">Direct Email</p>
                   <p className="text-sm font-semibold text-neutral-300">{personalInfo.email}</p>
                 </div>
               </a>
@@ -109,7 +109,7 @@ export default function ContactForm() {
                     <Phone size={18} />
                   </div>
                   <div>
-                    <p className="text-[10px] font-mono text-neutral-500 uppercase">Phone Number</p>
+                    <p className="text-[10px] font-mono text-neutral-400 uppercase">Phone Number</p>
                     <p className="text-sm font-semibold text-neutral-300">{personalInfo.phone}</p>
                   </div>
                 </a>
@@ -120,7 +120,7 @@ export default function ContactForm() {
                   <MapPin size={18} />
                 </div>
                 <div>
-                  <p className="text-[10px] font-mono text-neutral-500 uppercase">Location</p>
+                  <p className="text-[10px] font-mono text-neutral-400 uppercase">Location</p>
                   <p className="text-sm font-semibold text-neutral-300">{personalInfo.location}</p>
                 </div>
               </div>
@@ -182,7 +182,7 @@ export default function ContactForm() {
                   </p>
                   <button
                     onClick={() => setStatus('idle')}
-                    className="mt-4 px-4 py-2 bg-neutral-800 hover:bg-neutral-750 text-neutral-300 rounded-lg text-xs font-mono transition-colors cursor-pointer"
+                    className="mt-4 px-4 py-2 bg-neutral-800 hover:bg-neutral-700 text-neutral-300 rounded-lg text-xs font-mono transition-colors cursor-pointer"
                   >
                     Send another message
                   </button>

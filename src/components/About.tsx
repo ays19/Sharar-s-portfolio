@@ -56,7 +56,7 @@ export default function About() {
                   id={`about-highlight-${index}`}
                   className="p-4 rounded-xl bg-neutral-900/60 border border-neutral-800/80 flex flex-col gap-1"
                 >
-                  <span className="text-xs font-mono text-neutral-500">{item.label}</span>
+                  <span className="text-xs font-mono text-neutral-400">{item.label}</span>
                   <span className="text-sm font-semibold text-neutral-200">{item.value}</span>
                 </div>
               ))}

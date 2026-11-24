@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { motion } from 'motion/react';
+import { motion, useReducedMotion } from 'motion/react';
 import { ArrowDown, Github, Linkedin, Download, Terminal, Briefcase, Zap } from 'lucide-react';
 import { personalInfo } from '../data';
 import profileImg from '../assets/images/pic.webp';
@@ -9,11 +9,17 @@ interface HeroProps {
 }
 
 export default function Hero({ onOpenResumeModal }: HeroProps) {
-  const [typedName, setTypedName] = useState('');
+  const prefersReducedMotion = useReducedMotion();
+  const [typedName, setTypedName] = useState(() => (prefersReducedMotion ? personalInfo.name : ''));
 
   useEffect(() => {
-    let currentIndex = 0;
     const nameString = personalInfo.name;
+    if (prefersReducedMotion) {
+      setTypedName(nameString);
+      return;
+    }
+
+    let currentIndex = 0;
     setTypedName('');
 
     const interval = setInterval(() => {
@@ -26,31 +32,33 @@ export default function Hero({ onOpenResumeModal }: HeroProps) {
     }, 120); // Steady modern typing speed
 
     return () => clearInterval(interval);
-  }, []);
+  }, [prefersReducedMotion]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15,
+        staggerChildren: prefersReducedMotion ? 0 : 0.15,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
+    hidden: { y: prefersReducedMotion ? 0 : 20, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
-      transition: { type: 'spring' as const, stiffness: 100 },
+      transition: prefersReducedMotion
+        ? { duration: 0.15 }
+        : { type: 'spring' as const, stiffness: 100 },
     },
   };
 
   const scrollToProjects = () => {
     const element = document.querySelector('#projects');
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth' });
     }
   };
 
@@ -89,7 +97,7 @@ export default function Hero({ onOpenResumeModal }: HeroProps) {
                   <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse" />
                   Available for full-time roles & contracts
                 </span>
-                <span className="text-xs font-mono text-neutral-500">Based in Dhaka, Bangladesh / Remote</span>
+                <span className="text-xs font-mono text-neutral-400">Based in Dhaka, Bangladesh / Remote</span>
               </motion.div>
 
               {/* Heading */}
@@ -136,7 +144,7 @@ export default function Hero({ onOpenResumeModal }: HeroProps) {
 
               {/* Hero Social Links */}
               <motion.div variants={itemVariants} className="flex items-center gap-4 pt-2">
-                <span className="text-xs font-mono text-neutral-500 uppercase tracking-widest">Connect:</span>
+                <span className="text-xs font-mono text-neutral-400 uppercase tracking-widest">Connect:</span>
                 <div className="flex gap-2">
                   <a
                     id="hero-social-github"
@@ -166,9 +174,13 @@ export default function Hero({ onOpenResumeModal }: HeroProps) {
         {/* Large Profile Picture Right */}
         <motion.div
           className="lg:col-span-5 flex justify-center lg:justify-end"
-          initial={{ opacity: 0, x: 30 }}
+          initial={{ opacity: 0, x: prefersReducedMotion ? 0 : 30 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ type: 'spring', duration: 1, delay: 0.3 }}
+          transition={
+            prefersReducedMotion
+              ? { duration: 0.15 }
+              : { type: 'spring', duration: 1, delay: 0.3 }
+          }
         >
           <div className="relative mx-auto lg:mx-0 w-full max-w-sm">
             {/* Ambient Backlight Glow */}
@@ -189,8 +201,12 @@ export default function Hero({ onOpenResumeModal }: HeroProps) {
             {/* Floating Status Badge */}
             <motion.div
               className="absolute -bottom-6 -left-6 bg-neutral-900 border border-neutral-800 rounded-xl p-4 shadow-xl flex items-center gap-3 z-10"
-              animate={{ y: [0, -8, 0] }}
-              transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
+              animate={prefersReducedMotion ? { y: 0 } : { y: [0, -8, 0] }}
+              transition={
+                prefersReducedMotion
+                  ? { duration: 0 }
+                  : { repeat: Infinity, duration: 5, ease: "easeInOut" }
+              }
             >
               <div className="w-10 h-10 rounded-lg bg-indigo-950 flex items-center justify-center text-indigo-400 relative">
                 <Terminal size={20} />
@@ -207,16 +223,20 @@ export default function Hero({ onOpenResumeModal }: HeroProps) {
 
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 hidden sm:flex flex-col items-center gap-2 pointer-events-none">
-        <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest">Scroll</span>
+        <span className="text-[10px] font-mono text-neutral-400 uppercase tracking-widest">Scroll</span>
         <motion.div
           className="w-5 h-9 border-2 border-neutral-800 rounded-full flex items-start justify-center p-1"
-          animate={{ y: [0, 4, 0] }}
-          transition={{ repeat: Infinity, duration: 2 }}
+          animate={prefersReducedMotion ? { y: 0 } : { y: [0, 4, 0] }}
+          transition={prefersReducedMotion ? { duration: 0 } : { repeat: Infinity, duration: 2 }}
         >
           <motion.div 
             className="w-1.5 h-2 bg-indigo-500 rounded-full"
-            animate={{ y: [0, 10, 0] }}
-            transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+            animate={prefersReducedMotion ? { y: 0 } : { y: [0, 10, 0] }}
+            transition={
+              prefersReducedMotion
+                ? { duration: 0 }
+                : { repeat: Infinity, duration: 1.5, ease: "easeInOut" }
+            }
           />
         </motion.div>
       </div>

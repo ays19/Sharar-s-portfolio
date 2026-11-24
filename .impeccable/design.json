@@ -1,0 +1,235 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-24T06:47:00+06:00",
+  "title": "Design System: Ahsan Yasir Sharar Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Signal Indigo",
+        "canonical": "#818cf8",
+        "tonalRamp": ["#12121e", "#1e1b4b", "#312e81", "#4f46e5", "#6366f1", "#818cf8", "#a5b4fc", "#e0e7ff"]
+      },
+      "primary-deep": {
+        "role": "primary",
+        "displayName": "Electric Indigo",
+        "canonical": "#4f46e5",
+        "tonalRamp": ["#12121e", "#1e1b4b", "#312e81", "#4338ca", "#4f46e5", "#6366f1", "#818cf8", "#c7d2fe"]
+      },
+      "secondary": {
+        "role": "secondary",
+        "displayName": "Capstone Amber",
+        "canonical": "#fbbf24",
+        "tonalRamp": ["#451a03", "#78350f", "#92400e", "#b45309", "#d97706", "#f59e0b", "#fbbf24", "#fde68a"]
+      },
+      "tertiary": {
+        "role": "tertiary",
+        "displayName": "Telemetry Emerald",
+        "canonical": "#10b981",
+        "tonalRamp": ["#022c22", "#064e3b", "#065f46", "#047857", "#059669", "#10b981", "#34d399", "#a7f3d0"]
+      },
+      "neutral-bg": {
+        "role": "neutral",
+        "displayName": "Obsidian Zinc",
+        "canonical": "#09090b",
+        "tonalRamp": ["#09090b", "#18181b", "#202023", "#27272a", "#3f3f46", "#71717a", "#a1a1aa", "#f4f4f5"]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Carbon Slate",
+        "canonical": "#18181b",
+        "tonalRamp": ["#09090b", "#18181b", "#202023", "#27272a", "#333336", "#52525b", "#a1a1aa", "#e4e4e7"]
+      },
+      "border": {
+        "role": "neutral",
+        "displayName": "Structural Zinc Border",
+        "canonical": "#27272a",
+        "tonalRamp": ["#18181b", "#202023", "#27272a", "#333336", "#3f3f46", "#52525b", "#71717a", "#a1a1aa"]
+      },
+      "text-primary": {
+        "role": "neutral",
+        "displayName": "Pure White",
+        "canonical": "#ffffff",
+        "tonalRamp": ["#18181b", "#27272a", "#3f3f46", "#71717a", "#a1a1aa", "#d4d4d8", "#f4f4f5", "#ffffff"]
+      },
+      "text-muted": {
+        "role": "neutral",
+        "displayName": "Muted Zinc",
+        "canonical": "#a1a1aa",
+        "tonalRamp": ["#18181b", "#27272a", "#3f3f46", "#52525b", "#71717a", "#a1a1aa", "#d4d4d8", "#f4f4f5"]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero typed name heading with animated Signal Indigo cursor bar."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Primary section titles across all portfolio sections."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Project card headings, timeline role titles, and modal headers."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Lead summaries, project descriptions, and experience bullet lists."
+      },
+      "label": {
+        "displayName": "Label / Telemetry Mono",
+        "purpose": "JetBrains Mono uppercase section eyebrows, tech stack chips, timestamps, and status badges."
+      }
+    },
+    "shadows": [
+      {
+        "name": "cta-indigo-glow",
+        "value": "0 10px 15px -3px rgba(129, 140, 248, 0.25)",
+        "purpose": "Primary CTA button and active filter tab elevation glow."
+      },
+      {
+        "name": "brand-monogram-glow",
+        "value": "0 0 15px rgba(129, 140, 248, 0.5)",
+        "purpose": "Neon badge halo around the header AY monogram square."
+      },
+      {
+        "name": "featured-capstone-aura",
+        "value": "0 10px 15px -3px rgba(245, 158, 11, 0.05)",
+        "purpose": "Warm subtle aura for featured Kaggle Capstone project cards."
+      },
+      {
+        "name": "card-elevated",
+        "value": "0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5)",
+        "purpose": "Structural shadow for timeline cards, certificate cards, and floating badges."
+      },
+      {
+        "name": "certificate-lightbox-halo",
+        "value": "0 0 50px rgba(99, 102, 241, 0.15)",
+        "purpose": "Ambient indigo frame glow around expanded certificate previews."
+      }
+    ],
+    "motion": [
+      {
+        "name": "spring-stagger-item",
+        "value": "spring(stiffness: 100)",
+        "purpose": "Hero entrance stagger and card reveal animations."
+      },
+      {
+        "name": "spring-modal",
+        "value": "spring(damping: 25, stiffness: 220)",
+        "purpose": "Project and certificate lightbox modal zoom-in transitions."
+      },
+      {
+        "name": "transition-standard",
+        "value": "300ms cubic-bezier(0.4, 0, 0.2, 1)",
+        "purpose": "Card border color shifts, button hover states, and filter tab switches."
+      },
+      {
+        "name": "image-zoom-hover",
+        "value": "500ms cubic-bezier(0.4, 0, 0.2, 1)",
+        "purpose": "Smooth 1.03x to 1.05x thumbnail scale on card hover."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary CTA Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Signal Indigo primary action button with directional icon micro-motion and indigo glow.",
+      "html": "<button class=\"ds-btn-primary\"><span>View Work</span><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 5v14\"/><path d=\"m19 12-7 7-7-7\"/></svg></button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 8px; background: #818cf8; color: #ffffff; font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 600; padding: 12px 24px; border-radius: 12px; border: none; cursor: pointer; box-shadow: 0 10px 15px -3px rgba(129, 140, 248, 0.25); transition: background 0.2s ease, transform 0.2s ease; } .ds-btn-primary svg { transition: transform 0.2s ease; } .ds-btn-primary:hover { background: #4f46e5; } .ds-btn-primary:hover svg { transform: translateY(2px); } .ds-btn-primary:focus-visible { outline: 2px solid #a5b4fc; outline-offset: 2px; }"
+    },
+    {
+      "name": "Secondary Surface Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Carbon Slate secondary button with 1px structural zinc border for resume download and secondary actions.",
+      "html": "<button class=\"ds-btn-secondary\"><span>View Resume</span><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4\"/><polyline points=\"7 10 12 15 17 10\"/><line x1=\"12\" x2=\"12\" y1=\"15\" y2=\"3\"/></svg></button>",
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; gap: 8px; background: #18181b; color: #e4e4e7; font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 600; padding: 12px 24px; border-radius: 12px; border: 1px solid #27272a; cursor: pointer; transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease; } .ds-btn-secondary:hover { background: #27272a; border-color: #3f3f46; color: #ffffff; } .ds-btn-secondary:focus-visible { outline: 2px solid #818cf8; outline-offset: 2px; }"
+    },
+    {
+      "name": "Skill Matrix Pill & Tech Chip",
+      "kind": "chip",
+      "refersTo": "chip-tech",
+      "description": "Monospace telemetry pill with Signal Indigo status indicator dot and compact tech stack tag.",
+      "html": "<div class=\"ds-chip-row\"><span class=\"ds-skill-pill\"><span class=\"ds-dot\"></span>Python &amp; Django</span><span class=\"ds-tech-chip\">Playwright</span><span class=\"ds-capstone-badge\"><svg width=\"10\" height=\"10\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M6 9H4.5a2.5 2.5 0 0 1 0-5H6\"/><path d=\"M18 9h1.5a2.5 2.5 0 0 0 0-5H18\"/><path d=\"M4 22h16\"/><path d=\"M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22\"/><path d=\"M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22\"/><path d=\"M18 2H6v7a6 6 0 0 0 12 0V2Z\"/></svg>Kaggle Capstone</span></div>",
+      "css": ".ds-chip-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; } .ds-skill-pill { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 12px; background: rgba(24, 24, 27, 0.6); border: 1px solid rgba(39, 39, 42, 0.8); color: #d4d4d8; font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 500; transition: border-color 0.25s ease, color 0.25s ease; } .ds-skill-pill:hover { border-color: rgba(129, 140, 248, 0.35); color: #ffffff; } .ds-dot { width: 6px; height: 6px; border-radius: 9999px; background: #818cf8; } .ds-tech-chip { padding: 2px 8px; border-radius: 4px; background: rgba(9, 9, 11, 0.6); border: 1px solid #202023; color: #a1a1aa; font-family: 'JetBrains Mono', monospace; font-size: 10px; } .ds-capstone-badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 9999px; background: rgba(245, 158, 11, 0.2); border: 1px solid rgba(245, 158, 11, 0.5); color: #fcd34d; font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 600; }"
+    },
+    {
+      "name": "Telemetry Input Field",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "Obsidian Zinc form input with JetBrains Mono label and Signal Indigo focus border.",
+      "html": "<div class=\"ds-field\"><label class=\"ds-label\">Your Email <span class=\"ds-req\">*</span></label><input class=\"ds-input\" type=\"email\" placeholder=\"john@example.com\" /></div>",
+      "css": ".ds-field { display: flex; flex-direction: column; gap: 6px; max-width: 320px; } .ds-label { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600; color: #a1a1aa; } .ds-req { color: #f43f5e; } .ds-input { padding: 12px 16px; background: #09090b; border: 1px solid #27272a; border-radius: 12px; color: #e4e4e7; font-family: 'Inter', sans-serif; font-size: 14px; transition: border-color 0.2s ease; } .ds-input::placeholder { color: #52525b; } .ds-input:focus, .ds-input:focus-visible { outline: none; border-color: #818cf8; }"
+    },
+    {
+      "name": "Glassmorphic Header Bar",
+      "kind": "nav",
+      "refersTo": "button-primary",
+      "description": "Top navigation bar with glowing AY monogram, function-call wordmark, section links, and compact CTA.",
+      "html": "<header class=\"ds-nav\"><a class=\"ds-brand\" href=\"#\"><span class=\"ds-monogram\">AY</span><span class=\"ds-wordmark\">ahsan.yasir<span class=\"ds-parens\">()</span></span></a><nav class=\"ds-links\"><a href=\"#about\">About</a><a href=\"#projects\">Projects</a><a href=\"#skills\">Skills</a></nav><button class=\"ds-nav-cta\">Get in touch</button></header>",
+      "css": ".ds-nav { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 12px 24px; background: rgba(9, 9, 11, 0.85); backdrop-filter: blur(12px); border: 1px solid rgba(39, 39, 42, 0.6); border-radius: 16px; } .ds-brand { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; } .ds-monogram { width: 32px; height: 32px; border-radius: 8px; background: #818cf8; color: #ffffff; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 14px; display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 0 15px rgba(129, 140, 248, 0.5); } .ds-wordmark { font-family: 'JetBrains Mono', monospace; font-size: 15px; font-weight: 600; color: #d4d4d8; } .ds-parens { color: #818cf8; font-family: 'Inter', sans-serif; } .ds-links { display: flex; gap: 20px; } .ds-links a { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; color: #a1a1aa; text-decoration: none; transition: color 0.2s ease; } .ds-links a:hover { color: #ffffff; } .ds-nav-cta { background: #818cf8; color: #ffffff; font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600; padding: 8px 16px; border-radius: 8px; border: none; cursor: pointer; box-shadow: 0 8px 14px -3px rgba(129, 140, 248, 0.25); transition: background 0.2s ease; } .ds-nav-cta:hover { background: #4f46e5; }"
+    },
+    {
+      "name": "Project Card with Key Achievements Telemetry",
+      "kind": "card",
+      "refersTo": "card-standard",
+      "description": "Translucent Carbon Slate project card featuring a nested Key Achievements metrics box and tech stack micro-tags.",
+      "html": "<article class=\"ds-card\"><div class=\"ds-card-head\"><span class=\"ds-eyebrow\">AI &amp; Agents</span><h3 class=\"ds-card-title\">HELPDESK — AI Ticketing System</h3><p class=\"ds-card-desc\">Multi-agent pipeline handling support ticket classification and resolution autonomously.</p></div><div class=\"ds-metrics\"><span class=\"ds-metrics-label\">Key Achievements</span><ul><li><svg width=\"12\" height=\"12\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#818cf8\" stroke-width=\"2.5\"><polyline points=\"20 6 9 17 4 12\"/></svg>145 automated tests (Vitest + Playwright)</li><li><svg width=\"12\" height=\"12\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#818cf8\" stroke-width=\"2.5\"><polyline points=\"20 6 9 17 4 12\"/></svg>3-agent PgBoss queue with row-level locking</li></ul></div></article>",
+      "css": ".ds-card { background: rgba(24, 24, 27, 0.45); border: 1px solid rgba(39, 39, 42, 0.7); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 16px; max-width: 380px; transition: border-color 0.3s ease, transform 0.3s ease; } .ds-card:hover { border-color: rgba(129, 140, 248, 0.45); transform: translateY(-4px); } .ds-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: #818cf8; } .ds-card-title { font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 700; color: #ffffff; margin: 4px 0; transition: color 0.2s ease; } .ds-card:hover .ds-card-title { color: #818cf8; } .ds-card-desc { font-family: 'Inter', sans-serif; font-size: 13px; line-height: 1.55; color: #a1a1aa; margin: 0; } .ds-metrics { background: rgba(24, 24, 27, 0.85); border: 1px solid #202023; border-radius: 12px; padding: 12px; display: flex; flex-direction: column; gap: 6px; } .ds-metrics-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: #71717a; } .ds-metrics ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 4px; } .ds-metrics li { display: flex; align-items: center; gap: 6px; font-family: 'Inter', sans-serif; font-size: 12px; color: #d4d4d8; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Agentic Terminal Observatory",
+    "overview": "The portfolio operates as a dark obsidian engineering studio where production backend architecture, AI/RAG pipelines, and automated test suites are presented with the clarity of a live telemetry dashboard. Rather than relying on decorative flourishes or abstract agency graphics, the visual language treats real technical proof—query reductions, E2E test counts, architecture badges, and live deployment links—as the primary visual hero.\n\nEvery section balances editorial readability with terminal-inspired precision. Generous dark canvas breathing room keeps dense engineering metrics effortless to scan for time-constrained recruiters and hiring managers, while subtle ambient indigo backlights, monospace eyebrow labels, and spring-physics micro-interactions give the interface a tactile, contemporary developer-tool craft.\n\nThe system rejects light-mode corporate resume templates, unverified skill progress bars (e.g., \"Python 95%\"), and cluttered multi-color neon gradients that obscure text hierarchy.",
+    "keyCharacteristics": [
+      "Deep obsidian-zinc canvas (#09090b) paired with translucent carbon-slate cards (#18181b at 30%–60% opacity) and crisp 1px structural borders.",
+      "Dual-voice typography pairing geometric Inter for narrative clarity with JetBrains Mono for system metadata, tech stack tags, eyebrow labels, and interactive status indicators.",
+      "Role-governed color semantics: Signal Indigo for primary actions and core focus, Capstone Amber exclusively for flagship award recognition (HELPDESK Kaggle Capstone), and Telemetry Emerald for verified metrics and live system status.",
+      "Tactile motion grammar powered by spring transitions, subtle card lift (-4px), image zoom on hover (1.03x–1.05x), and ambient radial glows."
+    ],
+    "rules": [
+      {
+        "name": "The Capstone Amber Exclusivity Rule",
+        "body": "Capstone Amber (#fbbf24) belongs exclusively to featured competition-winning or flagship work (project.featured === true). Never dilute it across ordinary buttons, standard skill tags, or non-featured cards.",
+        "section": "colors"
+      },
+      {
+        "name": "The Telemetry Emerald Rule",
+        "body": "Telemetry Emerald (#10b981) communicates live operational status, verified engineering accomplishments, or successful transmission—never decorative backgrounds.",
+        "section": "colors"
+      },
+      {
+        "name": "The Monospace Telemetry Rule",
+        "body": "Every section header must open with a 12px (0.75rem) uppercase JetBrains Mono eyebrow label in Signal Indigo (#818cf8) with wide tracking (0.1em) above the Inter section headline. All technical tags, timestamps, and system filenames (interactive_resume.json, ahsan.yasir()) are strictly set in JetBrains Mono.",
+        "section": "typography"
+      },
+      {
+        "name": "The Border-First Elevation Rule",
+        "body": "On dark obsidian surfaces, standard drop shadows alone disappear. Every elevated card, chip, button, or modal must carry an explicit 1px border (#27272a at rest, transitioning to a tinted accent border on hover or focus).",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do pair every section headline with a 12px uppercase JetBrains Mono eyebrow kicker in Signal Indigo (#818cf8).",
+      "Do use 1px structural borders (#27272a) on every dark surface and transition the border color to Signal Indigo (#818cf8) or Capstone Amber (#fbbf24) on hover.",
+      "Do highlight quantified engineering outcomes inside the nested Key Achievements telemetry block on project cards.",
+      "Do preserve the @media print light-mode override rules in ResumeModal so printed/PDF resumes export cleanly on white paper.",
+      "Do prefix public asset paths with import.meta.env.BASE_URL so images render reliably under GitHub Pages (/Sharar-s-portfolio/)."
+    ],
+    "donts": [
+      "Don't apply Capstone Amber (#fbbf24) to non-featured cards, ordinary buttons, or general section accents (violates the Capstone Amber Exclusivity Rule).",
+      "Don't introduce arbitrary percentage skill bars or circular gauges in the Skills Matrix; keep skills as structured monospace pills with status dots.",
+      "Don't place borderless dark cards (#18181b) directly on the #09090b background without a 1px border.",
+      "Don't mix serif or decorative display fonts into the Inter + JetBrains Mono dual-font hierarchy."
+    ]
+  }
+}

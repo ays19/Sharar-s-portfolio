@@ -6,7 +6,7 @@ export default function Education() {
   return (
     <section id="education" className="py-24 bg-neutral-950 text-white relative border-t border-neutral-900 overflow-hidden">
       {/* Visual background accents */}
-      <div className="absolute top-[30%] left-[-10%] w-[25rem] h-[25rem] bg-indigo-650/5 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute top-[30%] left-[-10%] w-[25rem] h-[25rem] bg-indigo-600/5 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="flex flex-col items-center text-center gap-3 mb-16">

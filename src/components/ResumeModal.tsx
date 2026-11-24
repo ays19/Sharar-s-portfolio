@@ -82,7 +82,7 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                 background-color: #f3f4f6 !important;
                 border-color: #e5e7eb !important;
               }
-              .border-neutral-800, .border-neutral-750 {
+              .border-neutral-800, .border-neutral-700 {
                 border-color: #e5e7eb !important;
               }
             }

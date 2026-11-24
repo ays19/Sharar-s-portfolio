@@ -174,7 +174,7 @@ export default function Projects() {
                         : 'bg-neutral-900/80 border-neutral-850'
                     }`}>
                       <span className={`text-[10px] font-mono uppercase tracking-wider font-semibold ${
-                        project.featured ? 'text-amber-500/70' : 'text-neutral-500'
+                        project.featured ? 'text-amber-400' : 'text-neutral-400'
                       }`}>
                         Key Achievements
                       </span>
