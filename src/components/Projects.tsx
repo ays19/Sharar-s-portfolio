@@ -1,10 +1,265 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { useState, useEffect, useCallback, useRef, type PointerEvent, type ReactNode } from 'react';
+import { motion, AnimatePresence, LayoutGroup, useReducedMotion } from 'motion/react';
 import { Github, ExternalLink, Sparkles, Database, Layers, Check, ChevronLeft, ChevronRight, X, PlayCircle, Trophy } from 'lucide-react';
 import { projects } from '../data';
 import { Project } from '../types';
 
+const EASE_OUT_EXPO: [number, number, number, number] = [0.16, 1, 0.3, 1];
+
+interface ProjectCardProps {
+  project: Project;
+  index: number;
+  prefersReducedMotion: boolean;
+  getCategoryIcon: (category: string) => ReactNode;
+  onOpenLightbox: (project: Project, triggerEl?: HTMLElement | null) => void;
+}
+
+function ProjectCard({
+  project,
+  index,
+  prefersReducedMotion,
+  getCategoryIcon,
+  onOpenLightbox,
+}: ProjectCardProps) {
+  const cardRef = useRef<HTMLDivElement | null>(null);
+  const [spotlightActive, setSpotlightActive] = useState(false);
+
+  const handlePointerMove = (e: PointerEvent<HTMLDivElement>) => {
+    if (prefersReducedMotion || e.pointerType === 'touch') return;
+    const card = cardRef.current;
+    if (!card) return;
+    const rect = card.getBoundingClientRect();
+    card.style.setProperty('--spotlight-x', `${e.clientX - rect.left}px`);
+    card.style.setProperty('--spotlight-y', `${e.clientY - rect.top}px`);
+    if (!spotlightActive) {
+      setSpotlightActive(true);
+    }
+  };
+
+  const handlePointerLeave = () => {
+    if (spotlightActive) {
+      setSpotlightActive(false);
+    }
+  };
+
+  const surfaceSpotlightGradient = project.featured
+    ? 'radial-gradient(360px circle at var(--spotlight-x, 50%) var(--spotlight-y, 50%), rgba(251, 191, 36, 0.085), transparent 70%)'
+    : 'radial-gradient(360px circle at var(--spotlight-x, 50%) var(--spotlight-y, 50%), rgba(129, 140, 248, 0.08), transparent 70%)';
+
+  const borderSpotlightGradient = project.featured
+    ? 'radial-gradient(240px circle at var(--spotlight-x, 50%) var(--spotlight-y, 50%), rgba(251, 191, 36, 0.7), transparent 70%)'
+    : 'radial-gradient(240px circle at var(--spotlight-x, 50%) var(--spotlight-y, 50%), rgba(129, 140, 248, 0.55), transparent 70%)';
+
+  return (
+    <motion.div
+      ref={cardRef}
+      layout={!prefersReducedMotion}
+      id={`project-card-${project.id}`}
+      initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 12 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.15 }}
+      exit={{
+        opacity: 0,
+        y: prefersReducedMotion ? 0 : 8,
+        scale: prefersReducedMotion ? 1 : 0.98,
+        transition: { duration: prefersReducedMotion ? 0.1 : 0.18, ease: EASE_OUT_EXPO },
+      }}
+      transition={{
+        duration: prefersReducedMotion ? 0.15 : 0.32,
+        delay: prefersReducedMotion ? 0 : Math.min(index * 0.05, 0.2),
+        ease: EASE_OUT_EXPO,
+        layout: prefersReducedMotion
+          ? { duration: 0.1 }
+          : { duration: 0.28, ease: EASE_OUT_EXPO },
+      }}
+      onPointerMove={handlePointerMove}
+      onPointerLeave={handlePointerLeave}
+      className={`relative rounded-2xl bg-neutral-900/40 border transition-colors duration-300 flex flex-col h-full overflow-hidden group ${
+        project.featured
+          ? 'border-amber-500/40 hover:border-amber-400/70 shadow-lg shadow-amber-500/5'
+          : 'border-neutral-800/60 hover:border-indigo-500/40'
+      }`}
+    >
+      {/* Subtle cursor-tracking radial surface & border spotlight (disabled under reduced motion) */}
+      {!prefersReducedMotion && (
+        <>
+          <div
+            aria-hidden="true"
+            className="card-spotlight-surface pointer-events-none absolute inset-0 rounded-2xl z-10 transition-opacity duration-300"
+            style={{
+              opacity: spotlightActive ? 1 : 0,
+              background: surfaceSpotlightGradient,
+            }}
+          />
+          <div
+            aria-hidden="true"
+            className="card-spotlight-border pointer-events-none absolute inset-0 rounded-2xl p-[1px] z-30 transition-opacity duration-300"
+            style={{
+              opacity: spotlightActive ? 1 : 0,
+              background: borderSpotlightGradient,
+            }}
+          />
+        </>
+      )}
+
+      {/* Project Image */}
+      <div
+        role="button"
+        tabIndex={0}
+        aria-label={`Open image gallery for ${project.title}`}
+        className="relative h-48 overflow-hidden bg-neutral-950 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-indigo-400"
+        onClick={(e) => onOpenLightbox(project, e.currentTarget)}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            onOpenLightbox(project, e.currentTarget);
+          }
+        }}
+      >
+        <div className="absolute inset-0 bg-neutral-950/20 z-10 group-hover:bg-neutral-950/0 transition-all pointer-events-none" />
+        <img
+          src={project.images[0]}
+          alt={`${project.title} Screenshot`}
+          loading="lazy"
+          decoding="async"
+          className="w-full h-full object-cover motion-safe:group-hover:scale-105 transition-transform duration-500"
+          referrerPolicy="no-referrer"
+        />
+
+        {/* Photo count indicator if multiple */}
+        {project.images.length > 1 && (
+          <div className="absolute bottom-3 right-3 z-20 bg-neutral-900/80 backdrop-blur border border-neutral-700/50 text-white text-[10px] font-mono px-2 py-1 rounded-md flex items-center gap-1 shadow-lg pointer-events-none">
+            <span>1/{project.images.length}</span>
+          </div>
+        )}
+
+        {/* Category Pill Tag Overlay */}
+        <div className="absolute top-4 left-4 z-20 flex items-center gap-1.5 px-3 py-1 bg-neutral-950/90 border border-neutral-800 rounded-full text-[10px] font-mono font-semibold text-neutral-200">
+          {getCategoryIcon(project.category)}
+          {project.category}
+        </div>
+
+        {/* Kaggle Capstone Badge — only on featured project */}
+        {project.featured && (
+          <div className="absolute top-4 right-4 z-20 flex items-center gap-1.5 px-2.5 py-1 bg-amber-500/20 border border-amber-500/50 rounded-full text-[10px] font-mono font-semibold text-amber-300">
+            <Trophy size={10} className="text-amber-400" />
+            Kaggle Capstone
+          </div>
+        )}
+      </div>
+
+      {/* Card Content details */}
+      <div className="relative z-20 p-6 flex flex-col flex-grow gap-4">
+        <div className="flex flex-col gap-1.5">
+          <h3 className={`text-xl font-bold transition-colors ${
+            project.featured
+              ? 'text-white group-hover:text-amber-400'
+              : 'text-white group-hover:text-indigo-500'
+          }`}>
+            {project.title}
+          </h3>
+          <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed">
+            {project.description}
+          </p>
+        </div>
+
+        {/* Recruiter-Ready Metrics Highlight */}
+        {project.metrics && (
+          <div className={`flex flex-col gap-1.5 border p-3 rounded-xl ${
+            project.featured
+              ? 'bg-amber-950/20 border-amber-900/30'
+              : 'bg-neutral-900/80 border-neutral-850'
+          }`}>
+            <span className={`text-[10px] font-mono uppercase tracking-wider font-semibold ${
+              project.featured ? 'text-amber-400' : 'text-neutral-400'
+            }`}>
+              Key Achievements
+            </span>
+            <ul className="flex flex-col gap-1">
+              {project.metrics.map((metric, mIdx) => (
+                <li key={mIdx} className="text-xs text-neutral-300 flex items-center gap-1.5 font-sans">
+                  <Check size={12} className={project.featured ? 'text-amber-400 flex-shrink-0' : 'text-indigo-500 flex-shrink-0'} />
+                  <span>{metric}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {/* Technology Stack Tags */}
+        <div className="flex flex-wrap gap-1.5 pt-2 mt-auto">
+          {project.techStack.map((tech) => (
+            <span
+              key={tech}
+              className="text-[10px] font-mono px-2 py-0.5 bg-neutral-950/50 border border-neutral-850 rounded text-neutral-400"
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
+
+        {/* Divider line */}
+        <div className="h-[1px] bg-neutral-800/50 w-full mt-2" />
+
+        {/* Action Link Buttons */}
+        <div className="flex items-center justify-between mt-1 flex-wrap gap-2">
+          <a
+            id={`project-${project.id}-code`}
+            href={project.githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-2 py-1.5 -ml-2 rounded-lg text-xs font-mono font-semibold text-neutral-400 hover:text-white flex items-center gap-1.5 group/link transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50"
+          >
+            <Github size={14} className="group-hover/link:text-indigo-500" />
+            Source Code
+          </a>
+
+          <div className="flex items-center gap-1.5 flex-wrap -mr-2">
+            {project.demoUrl && (
+              <a
+                id={`project-${project.id}-demo`}
+                href={project.demoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-2 py-1.5 rounded-lg text-xs font-mono font-semibold text-indigo-500 hover:text-indigo-400 flex items-center gap-1.5 group/link transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50"
+              >
+                <ExternalLink size={14} className="motion-safe:group-hover/link:translate-x-0.5 transition-transform duration-200" />
+                Live Demo
+              </a>
+            )}
+            {project.projectVideoUrl && (
+              <a
+                id={`project-${project.id}-video`}
+                href={project.projectVideoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-2 py-1.5 rounded-lg text-xs font-mono font-semibold text-indigo-500 hover:text-indigo-400 flex items-center gap-1.5 group/link transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50"
+              >
+                <PlayCircle size={14} />
+                Video
+              </a>
+            )}
+            {project.kaggleUrl && (
+              <a
+                id={`project-${project.id}-kaggle`}
+                href={project.kaggleUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-2 py-1.5 rounded-lg text-xs font-mono font-semibold text-amber-400 hover:text-amber-300 flex items-center gap-1.5 group/link transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50"
+              >
+                <Trophy size={14} />
+                Kaggle
+              </a>
+            )}
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
 export default function Projects() {
+  const prefersReducedMotion = Boolean(useReducedMotion());
   const [activeTab, setActiveTab] = useState<'All' | 'Backend' | 'AI & Agents' | 'Full-stack'>('All');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -93,200 +348,58 @@ export default function Projects() {
         </div>
 
         {/* Categories Tab Bar */}
-        <div className="flex justify-center flex-wrap gap-2 mb-12" role="tablist" aria-label="Filter projects by category">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              id={`project-tab-${cat.toLowerCase().replace(/\s+/g, '-')}`}
-              role="tab"
-              aria-selected={activeTab === cat}
-              onClick={() => setActiveTab(cat)}
-              className={`relative min-h-11 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-mono transition-all duration-300 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 ${
-                activeTab === cat
-                  ? 'text-white bg-indigo-500 font-semibold shadow-lg shadow-indigo-500/20'
-                  : 'text-neutral-400 hover:text-white bg-neutral-900 border border-neutral-800/80 hover:border-neutral-700'
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
+        <LayoutGroup id="project-category-tabs">
+          <div className="flex justify-center flex-wrap gap-2 mb-12" role="tablist" aria-label="Filter projects by category">
+            {categories.map((cat) => {
+              const isActive = activeTab === cat;
+              return (
+                <button
+                  key={cat}
+                  id={`project-tab-${cat.toLowerCase().replace(/\s+/g, '-')}`}
+                  role="tab"
+                  aria-selected={isActive}
+                  onClick={() => setActiveTab(cat)}
+                  className={`relative min-h-11 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-mono transition-colors duration-200 cursor-pointer border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 ${
+                    isActive
+                      ? 'text-white font-semibold border-transparent'
+                      : 'text-neutral-400 hover:text-white bg-neutral-900 border-neutral-800/80 hover:border-neutral-700'
+                  }`}
+                >
+                  {isActive && (
+                    <motion.span
+                      layoutId="activeProjectCategoryTab"
+                      aria-hidden="true"
+                      className="absolute -inset-px rounded-xl bg-indigo-500 shadow-lg shadow-indigo-500/25"
+                      transition={
+                        prefersReducedMotion
+                          ? { duration: 0.1 }
+                          : { type: 'spring', stiffness: 420, damping: 32 }
+                      }
+                    />
+                  )}
+                  <span className="relative z-10">{cat}</span>
+                </button>
+              );
+            })}
+          </div>
+        </LayoutGroup>
 
         {/* Projects Grid Container with AnimatePresence */}
         <motion.div
           id="projects-grid"
-          layout
+          layout={!prefersReducedMotion}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           <AnimatePresence mode="popLayout">
-            {filteredProjects.map((project) => (
-              <motion.div
+            {filteredProjects.map((project, index) => (
+              <ProjectCard
                 key={project.id}
-                layout
-                id={`project-card-${project.id}`}
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.3 }}
-                className={`rounded-2xl bg-neutral-900/40 border transition-all duration-300 flex flex-col h-full overflow-hidden group ${
-                  project.featured
-                    ? 'border-amber-500/40 hover:border-amber-400/70 shadow-lg shadow-amber-500/5'
-                    : 'border-neutral-800/60 hover:border-indigo-500/40'
-                }`}
-              >
-                {/* Project Image */}
-                <div
-                  role="button"
-                  tabIndex={0}
-                  aria-label={`Open image gallery for ${project.title}`}
-                  className="relative h-48 overflow-hidden bg-neutral-950 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-indigo-400"
-                  onClick={(e) => openLightbox(project, e.currentTarget)}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                      e.preventDefault();
-                      openLightbox(project, e.currentTarget);
-                    }
-                  }}
-                >
-                  <div className="absolute inset-0 bg-neutral-950/20 z-10 group-hover:bg-neutral-950/0 transition-all pointer-events-none" />
-                  <img
-                    src={project.images[0]}
-                    alt={`${project.title} Screenshot`}
-                    loading="lazy"
-                    decoding="async"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    referrerPolicy="no-referrer"
-                  />
-
-                  {/* Photo count indicator if multiple */}
-                  {project.images.length > 1 && (
-                    <div className="absolute bottom-3 right-3 z-20 bg-neutral-900/80 backdrop-blur border border-neutral-700/50 text-white text-[10px] font-mono px-2 py-1 rounded-md flex items-center gap-1 shadow-lg pointer-events-none">
-                      <span>1/{project.images.length}</span>
-                    </div>
-                  )}
-
-                  {/* Category Pill Tag Overlay */}
-                  <div className="absolute top-4 left-4 z-20 flex items-center gap-1.5 px-3 py-1 bg-neutral-950/90 border border-neutral-800 rounded-full text-[10px] font-mono font-semibold text-neutral-200">
-                    {getCategoryIcon(project.category)}
-                    {project.category}
-                  </div>
-
-                  {/* Kaggle Capstone Badge — only on featured project */}
-                  {project.featured && (
-                    <div className="absolute top-4 right-4 z-20 flex items-center gap-1.5 px-2.5 py-1 bg-amber-500/20 border border-amber-500/50 rounded-full text-[10px] font-mono font-semibold text-amber-300">
-                      <Trophy size={10} className="text-amber-400" />
-                      Kaggle Capstone
-                    </div>
-                  )}
-                </div>
-
-                {/* Card Content details */}
-                <div className="p-6 flex flex-col flex-grow gap-4">
-                  <div className="flex flex-col gap-1.5">
-                    <h3 className={`text-xl font-bold transition-colors ${
-                      project.featured
-                        ? 'text-white group-hover:text-amber-400'
-                        : 'text-white group-hover:text-indigo-500'
-                    }`}>
-                      {project.title}
-                    </h3>
-                    <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed">
-                      {project.description}
-                    </p>
-                  </div>
-
-                  {/* Recruiter-Ready Metrics Highlight */}
-                  {project.metrics && (
-                    <div className={`flex flex-col gap-1.5 border p-3 rounded-xl ${
-                      project.featured
-                        ? 'bg-amber-950/20 border-amber-900/30'
-                        : 'bg-neutral-900/80 border-neutral-850'
-                    }`}>
-                      <span className={`text-[10px] font-mono uppercase tracking-wider font-semibold ${
-                        project.featured ? 'text-amber-400' : 'text-neutral-400'
-                      }`}>
-                        Key Achievements
-                      </span>
-                      <ul className="flex flex-col gap-1">
-                        {project.metrics.map((metric, mIdx) => (
-                          <li key={mIdx} className="text-xs text-neutral-300 flex items-center gap-1.5 font-sans">
-                            <Check size={12} className={project.featured ? 'text-amber-400 flex-shrink-0' : 'text-indigo-500 flex-shrink-0'} />
-                            <span>{metric}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-
-                  {/* Technology Stack Tags */}
-                  <div className="flex flex-wrap gap-1.5 pt-2 mt-auto">
-                    {project.techStack.map((tech) => (
-                      <span
-                        key={tech}
-                        className="text-[10px] font-mono px-2 py-0.5 bg-neutral-950/50 border border-neutral-850 rounded text-neutral-400"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Divider line */}
-                  <div className="h-[1px] bg-neutral-800/50 w-full mt-2" />
-
-                  {/* Action Link Buttons */}
-                  <div className="flex items-center justify-between mt-1 flex-wrap gap-2">
-                    <a
-                      id={`project-${project.id}-code`}
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-2 py-1.5 -ml-2 rounded-lg text-xs font-mono font-semibold text-neutral-400 hover:text-white flex items-center gap-1.5 group/link transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50"
-                    >
-                      <Github size={14} className="group-hover/link:text-indigo-500" />
-                      Source Code
-                    </a>
-
-                    <div className="flex items-center gap-1.5 flex-wrap -mr-2">
-                      {project.demoUrl && (
-                        <a
-                          id={`project-${project.id}-demo`}
-                          href={project.demoUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="px-2 py-1.5 rounded-lg text-xs font-mono font-semibold text-indigo-500 hover:text-indigo-400 flex items-center gap-1.5 group/link transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50"
-                        >
-                          <ExternalLink size={14} />
-                          Live Demo
-                        </a>
-                      )}
-                      {project.projectVideoUrl && (
-                        <a
-                          id={`project-${project.id}-video`}
-                          href={project.projectVideoUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="px-2 py-1.5 rounded-lg text-xs font-mono font-semibold text-indigo-500 hover:text-indigo-400 flex items-center gap-1.5 group/link transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50"
-                        >
-                          <PlayCircle size={14} />
-                          Video
-                        </a>
-                      )}
-                      {project.kaggleUrl && (
-                        <a
-                          id={`project-${project.id}-kaggle`}
-                          href={project.kaggleUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="px-2 py-1.5 rounded-lg text-xs font-mono font-semibold text-amber-400 hover:text-amber-300 flex items-center gap-1.5 group/link transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50"
-                        >
-                          <Trophy size={14} />
-                          Kaggle
-                        </a>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
+                project={project}
+                index={index}
+                prefersReducedMotion={prefersReducedMotion}
+                getCategoryIcon={getCategoryIcon}
+                onOpenLightbox={openLightbox}
+              />
             ))}
           </AnimatePresence>
         </motion.div>
@@ -303,6 +416,7 @@ export default function Projects() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: prefersReducedMotion ? 0.1 : 0.2 }}
             onClick={() => setSelectedProject(null)}
           >
             {/* Close Button */}
@@ -318,10 +432,22 @@ export default function Projects() {
             {/* Modal Content container */}
             <motion.div
               className="relative max-w-5xl w-full flex flex-col items-center gap-4 outline-none"
-              initial={{ opacity: 0, scale: 0.95, y: 15 }}
+              initial={{
+                opacity: 0,
+                scale: prefersReducedMotion ? 1 : 0.96,
+                y: prefersReducedMotion ? 0 : 12,
+              }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 15 }}
-              transition={{ type: 'spring', damping: 25, stiffness: 220 }}
+              exit={{
+                opacity: 0,
+                scale: prefersReducedMotion ? 1 : 0.96,
+                y: prefersReducedMotion ? 0 : 12,
+              }}
+              transition={
+                prefersReducedMotion
+                  ? { duration: 0.12 }
+                  : { duration: 0.28, ease: EASE_OUT_EXPO }
+              }
               onClick={(e) => e.stopPropagation()}
             >
               {/* Header Title */}
