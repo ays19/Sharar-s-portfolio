@@ -149,93 +149,123 @@ function ProjectCard({
       </div>
 
       {/* Card Content details */}
-      <div className="relative z-20 p-6 flex flex-col flex-grow gap-4">
-        <div className="flex flex-col gap-1.5">
-          <h3 className={`text-xl font-bold transition-colors ${
+      <div className="relative z-20 p-5 sm:p-6 flex flex-col flex-grow gap-3.5">
+        {/* Title & 1-line Value Summary */}
+        <div className="flex flex-col gap-1">
+          <h3 className={`text-lg sm:text-xl font-bold leading-snug transition-colors ${
             project.featured
               ? 'text-white group-hover:text-amber-400'
-              : 'text-white group-hover:text-indigo-500'
+              : 'text-white group-hover:text-indigo-400'
           }`}>
             {project.title}
           </h3>
-          <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed">
+          <p
+            title={project.description}
+            className="text-xs sm:text-sm text-neutral-400 leading-snug line-clamp-1"
+          >
             {project.description}
           </p>
         </div>
 
-        {/* Recruiter-Ready Metrics Highlight */}
-        {project.metrics && (
-          <div className={`flex flex-col gap-1.5 border p-3 rounded-xl ${
-            project.featured
-              ? 'bg-amber-950/20 border-amber-900/30'
-              : 'bg-neutral-900/80 border-neutral-850'
-          }`}>
-            <span className={`text-[10px] font-mono uppercase tracking-wider font-semibold ${
-              project.featured ? 'text-amber-400' : 'text-neutral-400'
-            }`}>
-              Key Achievements
-            </span>
-            <ul className="flex flex-col gap-1">
-              {project.metrics.map((metric, mIdx) => (
-                <li key={mIdx} className="text-xs text-neutral-300 flex items-center gap-1.5 font-sans">
-                  <Check size={12} className={project.featured ? 'text-amber-400 flex-shrink-0' : 'text-indigo-500 flex-shrink-0'} />
-                  <span>{metric}</span>
-                </li>
-              ))}
-            </ul>
+        {/* Key Quantified Achievement Badge + Secondary Proof */}
+        {project.metrics && project.metrics.length > 0 && (
+          <div className="flex flex-col gap-2">
+            <div
+              className={`flex items-start gap-2 px-3 py-2 rounded-xl border ${
+                project.featured
+                  ? 'bg-amber-950/25 border-amber-500/35 text-amber-200'
+                  : 'bg-emerald-950/20 border-emerald-500/25 text-emerald-200'
+              }`}
+            >
+              <Check
+                size={14}
+                className={`mt-0.5 flex-shrink-0 ${
+                  project.featured ? 'text-amber-400' : 'text-emerald-400'
+                }`}
+              />
+              <span className="text-xs font-mono font-semibold leading-snug">
+                {project.metrics[0]}
+              </span>
+            </div>
+
+            {project.metrics.length > 1 && (
+              <ul className="flex flex-col gap-1 px-1">
+                {project.metrics.slice(1, 3).map((metric, mIdx) => (
+                  <li key={mIdx} className="text-[11px] text-neutral-400 flex items-start gap-1.5 font-sans leading-snug">
+                    <span
+                      aria-hidden="true"
+                      className={`mt-1.5 w-1 h-1 rounded-full flex-shrink-0 ${
+                        project.featured ? 'bg-amber-400/80' : 'bg-indigo-400/80'
+                      }`}
+                    />
+                    <span>{metric}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
         )}
 
-        {/* Technology Stack Tags */}
-        <div className="flex flex-wrap gap-1.5 pt-2 mt-auto">
-          {project.techStack.map((tech) => (
+        {/* Technology Stack Tags (capped for clean scanning) */}
+        <div className="flex flex-wrap gap-1.5 pt-1 mt-auto">
+          {project.techStack.slice(0, 5).map((tech) => (
             <span
               key={tech}
-              className="text-[10px] font-mono px-2 py-0.5 bg-neutral-950/50 border border-neutral-850 rounded text-neutral-400"
+              className="text-[10px] font-mono px-2 py-0.5 bg-neutral-950/60 border border-neutral-850 rounded text-neutral-300"
             >
               {tech}
             </span>
           ))}
+          {project.techStack.length > 5 && (
+            <span
+              title={project.techStack.slice(5).join(', ')}
+              className="text-[10px] font-mono px-2 py-0.5 bg-neutral-900/80 border border-neutral-800 rounded text-neutral-400"
+            >
+              +{project.techStack.length - 5} more
+            </span>
+          )}
         </div>
 
         {/* Divider line */}
-        <div className="h-[1px] bg-neutral-800/50 w-full mt-2" />
+        <div className="h-[1px] bg-neutral-800/60 w-full mt-1" />
 
         {/* Action Link Buttons */}
-        <div className="flex items-center justify-between mt-1 flex-wrap gap-2">
-          <a
-            id={`project-${project.id}-code`}
-            href={project.githubUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-2 py-1.5 -ml-2 rounded-lg text-xs font-mono font-semibold text-neutral-400 hover:text-white flex items-center gap-1.5 group/link transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50"
-          >
-            <Github size={14} className="group-hover/link:text-indigo-500" />
-            Source Code
-          </a>
-
-          <div className="flex items-center gap-1.5 flex-wrap -mr-2">
+        <div className="flex items-center justify-between flex-wrap gap-2">
+          <div className="flex items-center gap-2 flex-wrap">
             {project.demoUrl && (
               <a
                 id={`project-${project.id}-demo`}
                 href={project.demoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-2 py-1.5 rounded-lg text-xs font-mono font-semibold text-indigo-500 hover:text-indigo-400 flex items-center gap-1.5 group/link transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50"
+                className="px-2.5 py-1.5 rounded-lg bg-indigo-500/15 hover:bg-indigo-500/25 border border-indigo-500/35 text-xs font-mono font-semibold text-indigo-300 hover:text-white flex items-center gap-1.5 group/link transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400"
               >
-                <ExternalLink size={14} className="motion-safe:group-hover/link:translate-x-0.5 transition-transform duration-200" />
+                <ExternalLink size={13} className="motion-safe:group-hover/link:translate-x-0.5 transition-transform duration-200" />
                 Live Demo
               </a>
             )}
+            <a
+              id={`project-${project.id}-code`}
+              href={project.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-2.5 py-1.5 rounded-lg bg-neutral-900/80 hover:bg-neutral-800 border border-neutral-800 hover:border-neutral-700 text-xs font-mono font-semibold text-neutral-300 hover:text-white flex items-center gap-1.5 group/link transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50"
+            >
+              <Github size={13} className="group-hover/link:text-indigo-400 transition-colors" />
+              GitHub
+            </a>
+          </div>
+
+          <div className="flex items-center gap-1.5 flex-wrap">
             {project.projectVideoUrl && (
               <a
                 id={`project-${project.id}-video`}
                 href={project.projectVideoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-2 py-1.5 rounded-lg text-xs font-mono font-semibold text-indigo-500 hover:text-indigo-400 flex items-center gap-1.5 group/link transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50"
+                className="px-2 py-1.5 rounded-lg text-xs font-mono font-semibold text-neutral-400 hover:text-indigo-400 flex items-center gap-1 group/link transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50"
               >
-                <PlayCircle size={14} />
+                <PlayCircle size={13} />
                 Video
               </a>
             )}
@@ -245,9 +275,9 @@ function ProjectCard({
                 href={project.kaggleUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-2 py-1.5 rounded-lg text-xs font-mono font-semibold text-amber-400 hover:text-amber-300 flex items-center gap-1.5 group/link transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50"
+                className="px-2 py-1.5 rounded-lg text-xs font-mono font-semibold text-amber-400 hover:text-amber-300 flex items-center gap-1 group/link transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50"
               >
-                <Trophy size={14} />
+                <Trophy size={13} />
                 Kaggle
               </a>
             )}

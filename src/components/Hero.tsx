@@ -64,10 +64,16 @@ export default function Hero({ onOpenResumeModal }: HeroProps) {
     }
   };
 
+  const impactMetrics = [
+    { value: '1,002 → 3', label: 'DB queries (35% faster)' },
+    { value: '200+', label: 'Selenium E2E tests' },
+    { value: '145', label: 'Vitest & Playwright tests' },
+  ];
+
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center pt-24 pb-12 overflow-hidden bg-neutral-950 text-white"
+      className="relative min-h-screen flex items-center justify-center pt-20 sm:pt-24 pb-10 sm:pb-12 overflow-hidden bg-neutral-950 text-white"
     >
       {/* Visual Background Accent Elements */}
       <div className="absolute inset-0 z-0">
@@ -83,7 +89,7 @@ export default function Hero({ onOpenResumeModal }: HeroProps) {
         />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div className="max-w-7xl mx-auto px-6 relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
         {/* Hero Content Left */}
         <motion.div
           className="lg:col-span-7"
@@ -92,20 +98,20 @@ export default function Hero({ onOpenResumeModal }: HeroProps) {
           animate="visible"
         >
           {/* Introductory Text Block */}
-          <div className="flex flex-col gap-6 text-center lg:text-left items-center lg:items-start">
+          <div className="flex flex-col gap-4 sm:gap-5 text-center lg:text-left items-center lg:items-start">
               {/* Badge & Location */}
-              <motion.div variants={itemVariants} className="flex flex-col gap-2 items-center lg:items-start">
-                <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-950/40 border border-indigo-900/30 text-xs font-mono text-indigo-300 w-fit">
-                  <span className={`w-1.5 h-1.5 rounded-full bg-indigo-400 ${prefersReducedMotion ? '' : 'animate-pulse'}`} />
+              <motion.div variants={itemVariants} className="flex flex-wrap items-center justify-center lg:justify-start gap-x-3 gap-y-1.5">
+                <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-950/40 border border-indigo-900/30 text-xs font-mono text-indigo-300 w-fit">
+                  <span className={`w-1.5 h-1.5 rounded-full bg-emerald-500 ${prefersReducedMotion ? '' : 'animate-pulse'}`} />
                   Available for full-time roles & contracts
                 </span>
-                <span className="text-xs font-mono text-neutral-400">Based in Dhaka, Bangladesh / Remote</span>
+                <span className="text-xs font-mono text-neutral-400">Dhaka, Bangladesh / Remote</span>
               </motion.div>
 
               {/* Heading */}
-              <motion.div variants={itemVariants} className="flex flex-col gap-2 w-full items-center lg:items-start">
-                <span className="text-sm font-mono text-neutral-400 font-medium">Hello, World! I am</span>
-                <h1 className="relative text-4xl sm:text-5xl font-sans font-bold tracking-tight text-white leading-tight grid">
+              <motion.div variants={itemVariants} className="flex flex-col gap-1.5 w-full items-center lg:items-start">
+                <span className="text-xs sm:text-sm font-mono text-neutral-400 font-medium">Hello, World! I am</span>
+                <h1 className="relative text-3xl sm:text-5xl font-sans font-bold tracking-tight text-white leading-tight grid">
                   <span aria-hidden="true" className="invisible pointer-events-none select-none col-start-1 row-start-1">
                     {personalInfo.name}
                     <span className="inline-block w-[3px] h-[0.8em] ml-1.5" />
@@ -119,7 +125,7 @@ export default function Hero({ onOpenResumeModal }: HeroProps) {
                     />
                   </span>
                 </h1>
-                <p className="text-xl sm:text-2xl font-sans text-neutral-300 font-medium">
+                <p className="text-lg sm:text-2xl font-sans text-neutral-200 font-semibold">
                   Backend Software Engineer & <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-violet-400">AI Application Developer</span>
                 </p>
               </motion.div>
@@ -127,19 +133,40 @@ export default function Hero({ onOpenResumeModal }: HeroProps) {
               {/* Tagline / Subtitle */}
               <motion.p
                 variants={itemVariants}
-                className="text-neutral-400 max-w-xl text-base leading-relaxed"
+                className="text-neutral-400 max-w-xl text-sm sm:text-base leading-relaxed"
               >
-                I build production-grade backend APIs, integrate LLM-powered features into real applications, and design automated testing infrastructure.  <span className="text-indigo-400 font-medium">Open to full-time roles and contracts</span>.
+                I build production-grade Python/Django APIs, integrate LLM-powered agent workflows, and ship automated QA test suites alongside the code.
               </motion.p>
 
+              {/* Compact 3-Item Quantified Impact Strip (verified metrics from src/data.ts) */}
+              <motion.dl
+                variants={itemVariants}
+                aria-label="Verified engineering impact metrics"
+                className="w-full max-w-xl grid grid-cols-3 divide-x divide-neutral-800/80 rounded-xl bg-neutral-900/50 border border-neutral-800/80"
+              >
+                {impactMetrics.map((metric) => (
+                  <div
+                    key={metric.label}
+                    className="px-2.5 py-2.5 sm:px-4 sm:py-3 flex flex-col justify-center items-center lg:items-start text-center lg:text-left gap-0.5"
+                  >
+                    <dt className="order-2 text-[10px] sm:text-xs font-mono text-neutral-400 leading-snug">
+                      {metric.label}
+                    </dt>
+                    <dd className="order-1 text-sm sm:text-lg font-mono font-bold text-white tabular-nums tracking-tight">
+                      {metric.value}
+                    </dd>
+                  </div>
+                ))}
+              </motion.dl>
+
               {/* Call to Actions */}
-              <motion.div variants={itemVariants} className="flex flex-wrap justify-center lg:justify-start gap-4 pt-2">
+              <motion.div variants={itemVariants} className="flex flex-wrap justify-center lg:justify-start gap-3 pt-1">
                 <button
                   id="hero-cta-projects"
                   onClick={scrollToProjects}
-                  className="bg-indigo-500 hover:bg-indigo-600 text-white font-semibold px-6 py-3 rounded-xl transition-colors duration-200 flex items-center gap-2 shadow-lg shadow-indigo-500/25 group cursor-pointer motion-safe:active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400"
+                  className="bg-indigo-500 hover:bg-indigo-600 text-white font-semibold text-sm sm:text-base px-5 sm:px-6 py-3 rounded-xl transition-colors duration-200 flex items-center gap-2 shadow-lg shadow-indigo-500/25 group cursor-pointer motion-safe:active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400"
                 >
-                  View Work
+                  View Projects
                   <ArrowDown size={16} className="motion-safe:group-hover:translate-y-0.5 transition-transform duration-200" />
                 </button>
                 <a
@@ -147,7 +174,7 @@ export default function Hero({ onOpenResumeModal }: HeroProps) {
                   href={personalInfo.resumeUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-neutral-900 hover:bg-neutral-800 border border-neutral-800 hover:border-neutral-700 text-neutral-200 font-semibold px-6 py-3 rounded-xl transition-colors duration-200 flex items-center gap-2 group cursor-pointer motion-safe:active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50"
+                  className="bg-neutral-900 hover:bg-neutral-800 border border-neutral-800 hover:border-neutral-700 text-neutral-200 font-semibold text-sm sm:text-base px-5 sm:px-6 py-3 rounded-xl transition-colors duration-200 flex items-center gap-2 group cursor-pointer motion-safe:active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50"
                 >
                   View Resume
                   <Download size={16} className="motion-safe:group-hover:translate-y-0.5 transition-transform duration-200" />
