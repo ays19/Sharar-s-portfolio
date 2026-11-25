@@ -117,8 +117,8 @@ export const projects: Project[] = [
       import.meta.env.BASE_URL + 'Project/Helpdesk/10.jpg',  
     ],
     metrics: [
-      '145 automated tests — 118 Vitest/RTL + 27 Playwright E2E across 20 files',
       '3-agent PgBoss queue: Classification → Auto-Resolve → Email Worker',
+      '145 automated tests — 118 Vitest/RTL + 27 Playwright E2E across 20 files',
       'Race condition eliminated with SELECT FOR UPDATE row-level locking',
       'Google × Kaggle 2026 AI Agents Intensive Capstone — "Agents for Business"',
     ],

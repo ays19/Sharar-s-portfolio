@@ -161,7 +161,7 @@ function ProjectCard({
           </h3>
           <p
             title={project.description}
-            className="text-xs sm:text-sm text-neutral-400 leading-snug line-clamp-1"
+            className="text-xs sm:text-sm text-neutral-400 leading-snug line-clamp-2"
           >
             {project.description}
           </p>
@@ -190,7 +190,7 @@ function ProjectCard({
 
             {project.metrics.length > 1 && (
               <ul className="flex flex-col gap-1 px-1">
-                {project.metrics.slice(1, 3).map((metric, mIdx) => (
+                {project.metrics.slice(1).map((metric, mIdx) => (
                   <li key={mIdx} className="text-[11px] text-neutral-400 flex items-start gap-1.5 font-sans leading-snug">
                     <span
                       aria-hidden="true"
