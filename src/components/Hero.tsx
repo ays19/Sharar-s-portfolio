@@ -66,8 +66,8 @@ export default function Hero({ onOpenResumeModal }: HeroProps) {
 
   const impactMetrics = [
     { value: '1,002 → 3', label: 'DB queries (35% faster)' },
-    { value: '200+', label: 'Selenium E2E tests' },
-    { value: '145', label: 'Vitest & Playwright tests' },
+    { value: '3-Agent', label: 'Production AI pipeline' },
+    { value: '9 Apps', label: 'Modular Django + Stripe SaaS' },
   ];
 
   return (
@@ -135,7 +135,7 @@ export default function Hero({ onOpenResumeModal }: HeroProps) {
                 variants={itemVariants}
                 className="text-neutral-400 max-w-xl text-sm sm:text-base leading-relaxed"
               >
-                I build production-grade Python/Django APIs, integrate LLM-powered agent workflows, and ship automated QA test suites alongside the code.
+                I architect scalable Python/Django backends, build production LLM agent pipelines, and ship reliable, well-tested web systems.
               </motion.p>
 
               {/* Compact 3-Item Quantified Impact Strip (verified metrics from src/data.ts) */}
